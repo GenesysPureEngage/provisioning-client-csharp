@@ -24,26 +24,34 @@ using System.ComponentModel.DataAnnotations;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// ApiSuccessResponseStatus
+    /// Properties related to WWE. 
     /// </summary>
     [DataContract]
-    public partial class ApiSuccessResponseStatus :  IEquatable<ApiSuccessResponseStatus>, IValidatableObject
+    public partial class UpdateUserDataWwe :  IEquatable<UpdateUserDataWwe>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiSuccessResponseStatus" /> class.
+        /// Initializes a new instance of the <see cref="UpdateUserDataWwe" /> class.
         /// </summary>
-        /// <param name="Code">On error will provide a code that can be used to get more detail about the error..</param>
-        public ApiSuccessResponseStatus(int? Code = default(int?))
+        /// <param name="Roles">The roles that will be added to the user. .</param>
+        /// <param name="DeletedRoles">The roles that will be removed from the user. .</param>
+        public UpdateUserDataWwe(List<string> Roles = default(List<string>), List<string> DeletedRoles = default(List<string>))
         {
-            this.Code = Code;
+            this.Roles = Roles;
+            this.DeletedRoles = DeletedRoles;
         }
         
         /// <summary>
-        /// On error will provide a code that can be used to get more detail about the error.
+        /// The roles that will be added to the user. 
         /// </summary>
-        /// <value>On error will provide a code that can be used to get more detail about the error.</value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public int? Code { get; set; }
+        /// <value>The roles that will be added to the user. </value>
+        [DataMember(Name="roles", EmitDefaultValue=false)]
+        public List<string> Roles { get; set; }
+        /// <summary>
+        /// The roles that will be removed from the user. 
+        /// </summary>
+        /// <value>The roles that will be removed from the user. </value>
+        [DataMember(Name="deletedRoles", EmitDefaultValue=false)]
+        public List<string> DeletedRoles { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -51,8 +59,9 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ApiSuccessResponseStatus {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class UpdateUserDataWwe {\n");
+            sb.Append("  Roles: ").Append(Roles).Append("\n");
+            sb.Append("  DeletedRoles: ").Append(DeletedRoles).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,15 +83,15 @@ namespace Genesys.Provisioning.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ApiSuccessResponseStatus);
+            return this.Equals(obj as UpdateUserDataWwe);
         }
 
         /// <summary>
-        /// Returns true if ApiSuccessResponseStatus instances are equal
+        /// Returns true if UpdateUserDataWwe instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApiSuccessResponseStatus to be compared</param>
+        /// <param name="other">Instance of UpdateUserDataWwe to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiSuccessResponseStatus other)
+        public bool Equals(UpdateUserDataWwe other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -90,9 +99,14 @@ namespace Genesys.Provisioning.Model
 
             return 
                 (
-                    this.Code == other.Code ||
-                    this.Code != null &&
-                    this.Code.Equals(other.Code)
+                    this.Roles == other.Roles ||
+                    this.Roles != null &&
+                    this.Roles.SequenceEqual(other.Roles)
+                ) && 
+                (
+                    this.DeletedRoles == other.DeletedRoles ||
+                    this.DeletedRoles != null &&
+                    this.DeletedRoles.SequenceEqual(other.DeletedRoles)
                 );
         }
 
@@ -107,8 +121,10 @@ namespace Genesys.Provisioning.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Code != null)
-                    hash = hash * 59 + this.Code.GetHashCode();
+                if (this.Roles != null)
+                    hash = hash * 59 + this.Roles.GetHashCode();
+                if (this.DeletedRoles != null)
+                    hash = hash * 59 + this.DeletedRoles.GetHashCode();
                 return hash;
             }
         }

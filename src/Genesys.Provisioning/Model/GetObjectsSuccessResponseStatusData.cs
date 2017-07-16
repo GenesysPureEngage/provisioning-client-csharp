@@ -24,26 +24,42 @@ using System.ComponentModel.DataAnnotations;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// ApiSuccessResponseStatus
+    /// GetObjectsSuccessResponseStatusData
     /// </summary>
     [DataContract]
-    public partial class ApiSuccessResponseStatus :  IEquatable<ApiSuccessResponseStatus>, IValidatableObject
+    public partial class GetObjectsSuccessResponseStatusData :  IEquatable<GetObjectsSuccessResponseStatusData>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiSuccessResponseStatus" /> class.
+        /// Initializes a new instance of the <see cref="GetObjectsSuccessResponseStatusData" /> class.
         /// </summary>
-        /// <param name="Code">On error will provide a code that can be used to get more detail about the error..</param>
-        public ApiSuccessResponseStatus(int? Code = default(int?))
+        /// <param name="Dns">List of DN objects fetched.</param>
+        /// <param name="AgentGroups">List of Agent Group objects fetched..</param>
+        /// <param name="TotalCount">Total number of object..</param>
+        public GetObjectsSuccessResponseStatusData(List<Object> Dns = default(List<Object>), List<Object> AgentGroups = default(List<Object>), int? TotalCount = default(int?))
         {
-            this.Code = Code;
+            this.Dns = Dns;
+            this.AgentGroups = AgentGroups;
+            this.TotalCount = TotalCount;
         }
         
         /// <summary>
-        /// On error will provide a code that can be used to get more detail about the error.
+        /// List of DN objects fetched
         /// </summary>
-        /// <value>On error will provide a code that can be used to get more detail about the error.</value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public int? Code { get; set; }
+        /// <value>List of DN objects fetched</value>
+        [DataMember(Name="dns", EmitDefaultValue=false)]
+        public List<Object> Dns { get; set; }
+        /// <summary>
+        /// List of Agent Group objects fetched.
+        /// </summary>
+        /// <value>List of Agent Group objects fetched.</value>
+        [DataMember(Name="agent-groups", EmitDefaultValue=false)]
+        public List<Object> AgentGroups { get; set; }
+        /// <summary>
+        /// Total number of object.
+        /// </summary>
+        /// <value>Total number of object.</value>
+        [DataMember(Name="totalCount", EmitDefaultValue=false)]
+        public int? TotalCount { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -51,8 +67,10 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ApiSuccessResponseStatus {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class GetObjectsSuccessResponseStatusData {\n");
+            sb.Append("  Dns: ").Append(Dns).Append("\n");
+            sb.Append("  AgentGroups: ").Append(AgentGroups).Append("\n");
+            sb.Append("  TotalCount: ").Append(TotalCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,15 +92,15 @@ namespace Genesys.Provisioning.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ApiSuccessResponseStatus);
+            return this.Equals(obj as GetObjectsSuccessResponseStatusData);
         }
 
         /// <summary>
-        /// Returns true if ApiSuccessResponseStatus instances are equal
+        /// Returns true if GetObjectsSuccessResponseStatusData instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApiSuccessResponseStatus to be compared</param>
+        /// <param name="other">Instance of GetObjectsSuccessResponseStatusData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiSuccessResponseStatus other)
+        public bool Equals(GetObjectsSuccessResponseStatusData other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -90,9 +108,19 @@ namespace Genesys.Provisioning.Model
 
             return 
                 (
-                    this.Code == other.Code ||
-                    this.Code != null &&
-                    this.Code.Equals(other.Code)
+                    this.Dns == other.Dns ||
+                    this.Dns != null &&
+                    this.Dns.SequenceEqual(other.Dns)
+                ) && 
+                (
+                    this.AgentGroups == other.AgentGroups ||
+                    this.AgentGroups != null &&
+                    this.AgentGroups.SequenceEqual(other.AgentGroups)
+                ) && 
+                (
+                    this.TotalCount == other.TotalCount ||
+                    this.TotalCount != null &&
+                    this.TotalCount.Equals(other.TotalCount)
                 );
         }
 
@@ -107,8 +135,12 @@ namespace Genesys.Provisioning.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Code != null)
-                    hash = hash * 59 + this.Code.GetHashCode();
+                if (this.Dns != null)
+                    hash = hash * 59 + this.Dns.GetHashCode();
+                if (this.AgentGroups != null)
+                    hash = hash * 59 + this.AgentGroups.GetHashCode();
+                if (this.TotalCount != null)
+                    hash = hash * 59 + this.TotalCount.GetHashCode();
                 return hash;
             }
         }

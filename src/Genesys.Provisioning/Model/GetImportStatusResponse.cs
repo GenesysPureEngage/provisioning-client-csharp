@@ -24,26 +24,32 @@ using System.ComponentModel.DataAnnotations;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// ApiSuccessResponseStatus
+    /// GetImportStatusResponse
     /// </summary>
     [DataContract]
-    public partial class ApiSuccessResponseStatus :  IEquatable<ApiSuccessResponseStatus>, IValidatableObject
+    public partial class GetImportStatusResponse :  IEquatable<GetImportStatusResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiSuccessResponseStatus" /> class.
+        /// Initializes a new instance of the <see cref="GetImportStatusResponse" /> class.
         /// </summary>
-        /// <param name="Code">On error will provide a code that can be used to get more detail about the error..</param>
-        public ApiSuccessResponseStatus(int? Code = default(int?))
+        /// <param name="Status">Status.</param>
+        /// <param name="Data">Data.</param>
+        public GetImportStatusResponse(GetImportStatusResponseStatus Status = default(GetImportStatusResponseStatus), GetImportStatusResponseData Data = default(GetImportStatusResponseData))
         {
-            this.Code = Code;
+            this.Status = Status;
+            this.Data = Data;
         }
         
         /// <summary>
-        /// On error will provide a code that can be used to get more detail about the error.
+        /// Gets or Sets Status
         /// </summary>
-        /// <value>On error will provide a code that can be used to get more detail about the error.</value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public int? Code { get; set; }
+        [DataMember(Name="status", EmitDefaultValue=false)]
+        public GetImportStatusResponseStatus Status { get; set; }
+        /// <summary>
+        /// Gets or Sets Data
+        /// </summary>
+        [DataMember(Name="data", EmitDefaultValue=false)]
+        public GetImportStatusResponseData Data { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -51,8 +57,9 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ApiSuccessResponseStatus {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class GetImportStatusResponse {\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,15 +81,15 @@ namespace Genesys.Provisioning.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ApiSuccessResponseStatus);
+            return this.Equals(obj as GetImportStatusResponse);
         }
 
         /// <summary>
-        /// Returns true if ApiSuccessResponseStatus instances are equal
+        /// Returns true if GetImportStatusResponse instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApiSuccessResponseStatus to be compared</param>
+        /// <param name="other">Instance of GetImportStatusResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiSuccessResponseStatus other)
+        public bool Equals(GetImportStatusResponse other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -90,9 +97,14 @@ namespace Genesys.Provisioning.Model
 
             return 
                 (
-                    this.Code == other.Code ||
-                    this.Code != null &&
-                    this.Code.Equals(other.Code)
+                    this.Status == other.Status ||
+                    this.Status != null &&
+                    this.Status.Equals(other.Status)
+                ) && 
+                (
+                    this.Data == other.Data ||
+                    this.Data != null &&
+                    this.Data.Equals(other.Data)
                 );
         }
 
@@ -107,8 +119,10 @@ namespace Genesys.Provisioning.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Code != null)
-                    hash = hash * 59 + this.Code.GetHashCode();
+                if (this.Status != null)
+                    hash = hash * 59 + this.Status.GetHashCode();
+                if (this.Data != null)
+                    hash = hash * 59 + this.Data.GetHashCode();
                 return hash;
             }
         }

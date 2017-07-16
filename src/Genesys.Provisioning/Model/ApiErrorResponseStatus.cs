@@ -24,18 +24,20 @@ using System.ComponentModel.DataAnnotations;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// ApiSuccessResponseStatus
+    /// ApiErrorResponseStatus
     /// </summary>
     [DataContract]
-    public partial class ApiSuccessResponseStatus :  IEquatable<ApiSuccessResponseStatus>, IValidatableObject
+    public partial class ApiErrorResponseStatus :  IEquatable<ApiErrorResponseStatus>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiSuccessResponseStatus" /> class.
+        /// Initializes a new instance of the <see cref="ApiErrorResponseStatus" /> class.
         /// </summary>
         /// <param name="Code">On error will provide a code that can be used to get more detail about the error..</param>
-        public ApiSuccessResponseStatus(int? Code = default(int?))
+        /// <param name="Message">On error will provide a message with more detail about the error. Keep in mind that the error message will be fairly general and internal details are not exposed..</param>
+        public ApiErrorResponseStatus(int? Code = default(int?), string Message = default(string))
         {
             this.Code = Code;
+            this.Message = Message;
         }
         
         /// <summary>
@@ -45,14 +47,21 @@ namespace Genesys.Provisioning.Model
         [DataMember(Name="code", EmitDefaultValue=false)]
         public int? Code { get; set; }
         /// <summary>
+        /// On error will provide a message with more detail about the error. Keep in mind that the error message will be fairly general and internal details are not exposed.
+        /// </summary>
+        /// <value>On error will provide a message with more detail about the error. Keep in mind that the error message will be fairly general and internal details are not exposed.</value>
+        [DataMember(Name="message", EmitDefaultValue=false)]
+        public string Message { get; set; }
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ApiSuccessResponseStatus {\n");
+            sb.Append("class ApiErrorResponseStatus {\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,15 +83,15 @@ namespace Genesys.Provisioning.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ApiSuccessResponseStatus);
+            return this.Equals(obj as ApiErrorResponseStatus);
         }
 
         /// <summary>
-        /// Returns true if ApiSuccessResponseStatus instances are equal
+        /// Returns true if ApiErrorResponseStatus instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApiSuccessResponseStatus to be compared</param>
+        /// <param name="other">Instance of ApiErrorResponseStatus to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiSuccessResponseStatus other)
+        public bool Equals(ApiErrorResponseStatus other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -93,6 +102,11 @@ namespace Genesys.Provisioning.Model
                     this.Code == other.Code ||
                     this.Code != null &&
                     this.Code.Equals(other.Code)
+                ) && 
+                (
+                    this.Message == other.Message ||
+                    this.Message != null &&
+                    this.Message.Equals(other.Message)
                 );
         }
 
@@ -109,6 +123,8 @@ namespace Genesys.Provisioning.Model
                 // Suitable nullity checks etc, of course :)
                 if (this.Code != null)
                     hash = hash * 59 + this.Code.GetHashCode();
+                if (this.Message != null)
+                    hash = hash * 59 + this.Message.GetHashCode();
                 return hash;
             }
         }

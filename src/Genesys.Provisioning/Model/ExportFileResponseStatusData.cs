@@ -24,26 +24,26 @@ using System.ComponentModel.DataAnnotations;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// ApiSuccessResponseStatus
+    /// ExportFileResponseStatusData
     /// </summary>
     [DataContract]
-    public partial class ApiSuccessResponseStatus :  IEquatable<ApiSuccessResponseStatus>, IValidatableObject
+    public partial class ExportFileResponseStatusData :  IEquatable<ExportFileResponseStatusData>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiSuccessResponseStatus" /> class.
+        /// Initializes a new instance of the <see cref="ExportFileResponseStatusData" /> class.
         /// </summary>
-        /// <param name="Code">On error will provide a code that can be used to get more detail about the error..</param>
-        public ApiSuccessResponseStatus(int? Code = default(int?))
+        /// <param name="Id">Export ID .</param>
+        public ExportFileResponseStatusData(decimal? Id = default(decimal?))
         {
-            this.Code = Code;
+            this.Id = Id;
         }
         
         /// <summary>
-        /// On error will provide a code that can be used to get more detail about the error.
+        /// Export ID 
         /// </summary>
-        /// <value>On error will provide a code that can be used to get more detail about the error.</value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public int? Code { get; set; }
+        /// <value>Export ID </value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public decimal? Id { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -51,8 +51,8 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ApiSuccessResponseStatus {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class ExportFileResponseStatusData {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,15 +74,15 @@ namespace Genesys.Provisioning.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ApiSuccessResponseStatus);
+            return this.Equals(obj as ExportFileResponseStatusData);
         }
 
         /// <summary>
-        /// Returns true if ApiSuccessResponseStatus instances are equal
+        /// Returns true if ExportFileResponseStatusData instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApiSuccessResponseStatus to be compared</param>
+        /// <param name="other">Instance of ExportFileResponseStatusData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiSuccessResponseStatus other)
+        public bool Equals(ExportFileResponseStatusData other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -90,9 +90,9 @@ namespace Genesys.Provisioning.Model
 
             return 
                 (
-                    this.Code == other.Code ||
-                    this.Code != null &&
-                    this.Code.Equals(other.Code)
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
                 );
         }
 
@@ -107,8 +107,8 @@ namespace Genesys.Provisioning.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Code != null)
-                    hash = hash * 59 + this.Code.GetHashCode();
+                if (this.Id != null)
+                    hash = hash * 59 + this.Id.GetHashCode();
                 return hash;
             }
         }

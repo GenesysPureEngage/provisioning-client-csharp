@@ -24,26 +24,26 @@ using System.ComponentModel.DataAnnotations;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// ApiSuccessResponseStatus
+    /// GetImportStatusResponseStatus
     /// </summary>
     [DataContract]
-    public partial class ApiSuccessResponseStatus :  IEquatable<ApiSuccessResponseStatus>, IValidatableObject
+    public partial class GetImportStatusResponseStatus :  IEquatable<GetImportStatusResponseStatus>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiSuccessResponseStatus" /> class.
+        /// Initializes a new instance of the <see cref="GetImportStatusResponseStatus" /> class.
         /// </summary>
-        /// <param name="Code">On error will provide a code that can be used to get more detail about the error..</param>
-        public ApiSuccessResponseStatus(int? Code = default(int?))
+        /// <param name="Code">Operation code..</param>
+        public GetImportStatusResponseStatus(decimal? Code = default(decimal?))
         {
             this.Code = Code;
         }
         
         /// <summary>
-        /// On error will provide a code that can be used to get more detail about the error.
+        /// Operation code.
         /// </summary>
-        /// <value>On error will provide a code that can be used to get more detail about the error.</value>
+        /// <value>Operation code.</value>
         [DataMember(Name="code", EmitDefaultValue=false)]
-        public int? Code { get; set; }
+        public decimal? Code { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -51,7 +51,7 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ApiSuccessResponseStatus {\n");
+            sb.Append("class GetImportStatusResponseStatus {\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -74,15 +74,15 @@ namespace Genesys.Provisioning.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ApiSuccessResponseStatus);
+            return this.Equals(obj as GetImportStatusResponseStatus);
         }
 
         /// <summary>
-        /// Returns true if ApiSuccessResponseStatus instances are equal
+        /// Returns true if GetImportStatusResponseStatus instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApiSuccessResponseStatus to be compared</param>
+        /// <param name="other">Instance of GetImportStatusResponseStatus to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiSuccessResponseStatus other)
+        public bool Equals(GetImportStatusResponseStatus other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)

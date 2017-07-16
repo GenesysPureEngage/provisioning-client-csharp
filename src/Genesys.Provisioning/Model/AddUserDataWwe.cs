@@ -24,26 +24,26 @@ using System.ComponentModel.DataAnnotations;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// ApiSuccessResponseStatus
+    /// Properties related to WWE. 
     /// </summary>
     [DataContract]
-    public partial class ApiSuccessResponseStatus :  IEquatable<ApiSuccessResponseStatus>, IValidatableObject
+    public partial class AddUserDataWwe :  IEquatable<AddUserDataWwe>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiSuccessResponseStatus" /> class.
+        /// Initializes a new instance of the <see cref="AddUserDataWwe" /> class.
         /// </summary>
-        /// <param name="Code">On error will provide a code that can be used to get more detail about the error..</param>
-        public ApiSuccessResponseStatus(int? Code = default(int?))
+        /// <param name="Roles">The roles that will be added to the user. .</param>
+        public AddUserDataWwe(List<string> Roles = default(List<string>))
         {
-            this.Code = Code;
+            this.Roles = Roles;
         }
         
         /// <summary>
-        /// On error will provide a code that can be used to get more detail about the error.
+        /// The roles that will be added to the user. 
         /// </summary>
-        /// <value>On error will provide a code that can be used to get more detail about the error.</value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public int? Code { get; set; }
+        /// <value>The roles that will be added to the user. </value>
+        [DataMember(Name="roles", EmitDefaultValue=false)]
+        public List<string> Roles { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -51,8 +51,8 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ApiSuccessResponseStatus {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class AddUserDataWwe {\n");
+            sb.Append("  Roles: ").Append(Roles).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,15 +74,15 @@ namespace Genesys.Provisioning.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ApiSuccessResponseStatus);
+            return this.Equals(obj as AddUserDataWwe);
         }
 
         /// <summary>
-        /// Returns true if ApiSuccessResponseStatus instances are equal
+        /// Returns true if AddUserDataWwe instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApiSuccessResponseStatus to be compared</param>
+        /// <param name="other">Instance of AddUserDataWwe to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiSuccessResponseStatus other)
+        public bool Equals(AddUserDataWwe other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -90,9 +90,9 @@ namespace Genesys.Provisioning.Model
 
             return 
                 (
-                    this.Code == other.Code ||
-                    this.Code != null &&
-                    this.Code.Equals(other.Code)
+                    this.Roles == other.Roles ||
+                    this.Roles != null &&
+                    this.Roles.SequenceEqual(other.Roles)
                 );
         }
 
@@ -107,8 +107,8 @@ namespace Genesys.Provisioning.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Code != null)
-                    hash = hash * 59 + this.Code.GetHashCode();
+                if (this.Roles != null)
+                    hash = hash * 59 + this.Roles.GetHashCode();
                 return hash;
             }
         }

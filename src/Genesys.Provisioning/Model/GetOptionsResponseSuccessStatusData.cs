@@ -24,34 +24,42 @@ using System.ComponentModel.DataAnnotations;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// Skill
+    /// GetOptionsResponseSuccessStatusData
     /// </summary>
     [DataContract]
-    public partial class Skill :  IEquatable<Skill>, IValidatableObject
+    public partial class GetOptionsResponseSuccessStatusData :  IEquatable<GetOptionsResponseSuccessStatusData>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Skill" /> class.
+        /// Initializes a new instance of the <see cref="GetOptionsResponseSuccessStatusData" /> class.
         /// </summary>
-        /// <param name="Level">Skill level. Should be a positive integer number in numeric or string format. If level is equal to &#39;&#39; the skill will be unassigned..</param>
-        /// <param name="Name">Skill name.</param>
-        public Skill(int? Level = default(int?), string Name = default(string))
+        /// <param name="Options">Sections, keys and values of CloudCluster/Options..</param>
+        /// <param name="CmeAppName">Name of the CME App (CloudCluster by default)..</param>
+        /// <param name="CmeAppDBID">DBID of the CME App..</param>
+        public GetOptionsResponseSuccessStatusData(Object Options = default(Object), string CmeAppName = default(string), string CmeAppDBID = default(string))
         {
-            this.Level = Level;
-            this.Name = Name;
+            this.Options = Options;
+            this.CmeAppName = CmeAppName;
+            this.CmeAppDBID = CmeAppDBID;
         }
         
         /// <summary>
-        /// Skill level. Should be a positive integer number in numeric or string format. If level is equal to &#39;&#39; the skill will be unassigned.
+        /// Sections, keys and values of CloudCluster/Options.
         /// </summary>
-        /// <value>Skill level. Should be a positive integer number in numeric or string format. If level is equal to &#39;&#39; the skill will be unassigned.</value>
-        [DataMember(Name="level", EmitDefaultValue=false)]
-        public int? Level { get; set; }
+        /// <value>Sections, keys and values of CloudCluster/Options.</value>
+        [DataMember(Name="options", EmitDefaultValue=false)]
+        public Object Options { get; set; }
         /// <summary>
-        /// Skill name
+        /// Name of the CME App (CloudCluster by default).
         /// </summary>
-        /// <value>Skill name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
+        /// <value>Name of the CME App (CloudCluster by default).</value>
+        [DataMember(Name="cmeAppName", EmitDefaultValue=false)]
+        public string CmeAppName { get; set; }
+        /// <summary>
+        /// DBID of the CME App.
+        /// </summary>
+        /// <value>DBID of the CME App.</value>
+        [DataMember(Name="cmeAppDBID", EmitDefaultValue=false)]
+        public string CmeAppDBID { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -59,9 +67,10 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Skill {\n");
-            sb.Append("  Level: ").Append(Level).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("class GetOptionsResponseSuccessStatusData {\n");
+            sb.Append("  Options: ").Append(Options).Append("\n");
+            sb.Append("  CmeAppName: ").Append(CmeAppName).Append("\n");
+            sb.Append("  CmeAppDBID: ").Append(CmeAppDBID).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -83,15 +92,15 @@ namespace Genesys.Provisioning.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Skill);
+            return this.Equals(obj as GetOptionsResponseSuccessStatusData);
         }
 
         /// <summary>
-        /// Returns true if Skill instances are equal
+        /// Returns true if GetOptionsResponseSuccessStatusData instances are equal
         /// </summary>
-        /// <param name="other">Instance of Skill to be compared</param>
+        /// <param name="other">Instance of GetOptionsResponseSuccessStatusData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Skill other)
+        public bool Equals(GetOptionsResponseSuccessStatusData other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -99,14 +108,19 @@ namespace Genesys.Provisioning.Model
 
             return 
                 (
-                    this.Level == other.Level ||
-                    this.Level != null &&
-                    this.Level.Equals(other.Level)
+                    this.Options == other.Options ||
+                    this.Options != null &&
+                    this.Options.Equals(other.Options)
                 ) && 
                 (
-                    this.Name == other.Name ||
-                    this.Name != null &&
-                    this.Name.Equals(other.Name)
+                    this.CmeAppName == other.CmeAppName ||
+                    this.CmeAppName != null &&
+                    this.CmeAppName.Equals(other.CmeAppName)
+                ) && 
+                (
+                    this.CmeAppDBID == other.CmeAppDBID ||
+                    this.CmeAppDBID != null &&
+                    this.CmeAppDBID.Equals(other.CmeAppDBID)
                 );
         }
 
@@ -121,10 +135,12 @@ namespace Genesys.Provisioning.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Level != null)
-                    hash = hash * 59 + this.Level.GetHashCode();
-                if (this.Name != null)
-                    hash = hash * 59 + this.Name.GetHashCode();
+                if (this.Options != null)
+                    hash = hash * 59 + this.Options.GetHashCode();
+                if (this.CmeAppName != null)
+                    hash = hash * 59 + this.CmeAppName.GetHashCode();
+                if (this.CmeAppDBID != null)
+                    hash = hash * 59 + this.CmeAppDBID.GetHashCode();
                 return hash;
             }
         }

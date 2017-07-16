@@ -21,156 +21,160 @@ namespace Genesys.Provisioning.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IOptionsApi : IApiAccessor
+    public interface IImportApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Read options
+        /// Get import users status
         /// </summary>
         /// <remarks>
-        /// The GET operation will fetch CloudCluster/Options and merges it with person and sgent groups annexes.
+        /// The GET operation will get active importers.
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="personDbid">DBID of a person. Options will be merged with the Person&#39;s annex and annexes of it&#39;s agent groups. Mutual with agent_group_dbid. (optional)</param>
-        /// <param name="agentGroupDbid">DBID of a person. Options will be merged with the Agent Groups&#39;s annex. Mutual with person_dbid. (optional)</param>
-        /// <returns>GetOptionsResponseSuccess</returns>
-        GetOptionsResponseSuccess GetOptions (string personDbid = null, string agentGroupDbid = null);
+        /// <param name="adminName">Admin login.</param>
+        /// <param name="tenantName">Tenant name.</param>
+        /// <returns>GetImportStatusResponse</returns>
+        GetImportStatusResponse GetImportStatus (string adminName, string tenantName);
 
         /// <summary>
-        /// Read options
+        /// Get import users status
         /// </summary>
         /// <remarks>
-        /// The GET operation will fetch CloudCluster/Options and merges it with person and sgent groups annexes.
+        /// The GET operation will get active importers.
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="personDbid">DBID of a person. Options will be merged with the Person&#39;s annex and annexes of it&#39;s agent groups. Mutual with agent_group_dbid. (optional)</param>
-        /// <param name="agentGroupDbid">DBID of a person. Options will be merged with the Agent Groups&#39;s annex. Mutual with person_dbid. (optional)</param>
-        /// <returns>ApiResponse of GetOptionsResponseSuccess</returns>
-        ApiResponse<GetOptionsResponseSuccess> GetOptionsWithHttpInfo (string personDbid = null, string agentGroupDbid = null);
+        /// <param name="adminName">Admin login.</param>
+        /// <param name="tenantName">Tenant name.</param>
+        /// <returns>ApiResponse of GetImportStatusResponse</returns>
+        ApiResponse<GetImportStatusResponse> GetImportStatusWithHttpInfo (string adminName, string tenantName);
         /// <summary>
-        /// Modify options
+        /// Import file
         /// </summary>
         /// <remarks>
-        /// The POST operation will replace CloudCluster/Options with new values
+        /// The POST operation will import file.
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
+        /// <param name="validateBeforeImport">Validate file before actual import. (optional, default to false)</param>
         /// <returns>ApiSuccessResponse</returns>
-        ApiSuccessResponse ModifyOptions (ModifyOptionsData body);
+        ApiSuccessResponse ImportFile (System.IO.Stream csvfile = null, bool? validateBeforeImport = null);
 
         /// <summary>
-        /// Modify options
+        /// Import file
         /// </summary>
         /// <remarks>
-        /// The POST operation will replace CloudCluster/Options with new values
+        /// The POST operation will import file.
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
+        /// <param name="validateBeforeImport">Validate file before actual import. (optional, default to false)</param>
         /// <returns>ApiResponse of ApiSuccessResponse</returns>
-        ApiResponse<ApiSuccessResponse> ModifyOptionsWithHttpInfo (ModifyOptionsData body);
+        ApiResponse<ApiSuccessResponse> ImportFileWithHttpInfo (System.IO.Stream csvfile = null, bool? validateBeforeImport = null);
         /// <summary>
-        /// Add, edit or delete options
+        /// Perform import file prevalidation
         /// </summary>
         /// <remarks>
-        /// The PUT operation will add, change or delete values in CloudCluster/Options.
+        /// The POST operation validate import file.
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
         /// <returns>ApiSuccessResponse</returns>
-        ApiSuccessResponse UpdateOptions (UpdateOptionsData body);
+        ApiSuccessResponse ValidateImportFile (System.IO.Stream csvfile = null);
 
         /// <summary>
-        /// Add, edit or delete options
+        /// Perform import file prevalidation
         /// </summary>
         /// <remarks>
-        /// The PUT operation will add, change or delete values in CloudCluster/Options.
+        /// The POST operation validate import file.
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
         /// <returns>ApiResponse of ApiSuccessResponse</returns>
-        ApiResponse<ApiSuccessResponse> UpdateOptionsWithHttpInfo (UpdateOptionsData body);
+        ApiResponse<ApiSuccessResponse> ValidateImportFileWithHttpInfo (System.IO.Stream csvfile = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Read options
+        /// Get import users status
         /// </summary>
         /// <remarks>
-        /// The GET operation will fetch CloudCluster/Options and merges it with person and sgent groups annexes.
+        /// The GET operation will get active importers.
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="personDbid">DBID of a person. Options will be merged with the Person&#39;s annex and annexes of it&#39;s agent groups. Mutual with agent_group_dbid. (optional)</param>
-        /// <param name="agentGroupDbid">DBID of a person. Options will be merged with the Agent Groups&#39;s annex. Mutual with person_dbid. (optional)</param>
-        /// <returns>Task of GetOptionsResponseSuccess</returns>
-        System.Threading.Tasks.Task<GetOptionsResponseSuccess> GetOptionsAsync (string personDbid = null, string agentGroupDbid = null);
+        /// <param name="adminName">Admin login.</param>
+        /// <param name="tenantName">Tenant name.</param>
+        /// <returns>Task of GetImportStatusResponse</returns>
+        System.Threading.Tasks.Task<GetImportStatusResponse> GetImportStatusAsync (string adminName, string tenantName);
 
         /// <summary>
-        /// Read options
+        /// Get import users status
         /// </summary>
         /// <remarks>
-        /// The GET operation will fetch CloudCluster/Options and merges it with person and sgent groups annexes.
+        /// The GET operation will get active importers.
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="personDbid">DBID of a person. Options will be merged with the Person&#39;s annex and annexes of it&#39;s agent groups. Mutual with agent_group_dbid. (optional)</param>
-        /// <param name="agentGroupDbid">DBID of a person. Options will be merged with the Agent Groups&#39;s annex. Mutual with person_dbid. (optional)</param>
-        /// <returns>Task of ApiResponse (GetOptionsResponseSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetOptionsResponseSuccess>> GetOptionsAsyncWithHttpInfo (string personDbid = null, string agentGroupDbid = null);
+        /// <param name="adminName">Admin login.</param>
+        /// <param name="tenantName">Tenant name.</param>
+        /// <returns>Task of ApiResponse (GetImportStatusResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetImportStatusResponse>> GetImportStatusAsyncWithHttpInfo (string adminName, string tenantName);
         /// <summary>
-        /// Modify options
+        /// Import file
         /// </summary>
         /// <remarks>
-        /// The POST operation will replace CloudCluster/Options with new values
+        /// The POST operation will import file.
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
+        /// <param name="validateBeforeImport">Validate file before actual import. (optional, default to false)</param>
         /// <returns>Task of ApiSuccessResponse</returns>
-        System.Threading.Tasks.Task<ApiSuccessResponse> ModifyOptionsAsync (ModifyOptionsData body);
+        System.Threading.Tasks.Task<ApiSuccessResponse> ImportFileAsync (System.IO.Stream csvfile = null, bool? validateBeforeImport = null);
 
         /// <summary>
-        /// Modify options
+        /// Import file
         /// </summary>
         /// <remarks>
-        /// The POST operation will replace CloudCluster/Options with new values
+        /// The POST operation will import file.
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
+        /// <param name="validateBeforeImport">Validate file before actual import. (optional, default to false)</param>
         /// <returns>Task of ApiResponse (ApiSuccessResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> ModifyOptionsAsyncWithHttpInfo (ModifyOptionsData body);
+        System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> ImportFileAsyncWithHttpInfo (System.IO.Stream csvfile = null, bool? validateBeforeImport = null);
         /// <summary>
-        /// Add, edit or delete options
+        /// Perform import file prevalidation
         /// </summary>
         /// <remarks>
-        /// The PUT operation will add, change or delete values in CloudCluster/Options.
+        /// The POST operation validate import file.
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
         /// <returns>Task of ApiSuccessResponse</returns>
-        System.Threading.Tasks.Task<ApiSuccessResponse> UpdateOptionsAsync (UpdateOptionsData body);
+        System.Threading.Tasks.Task<ApiSuccessResponse> ValidateImportFileAsync (System.IO.Stream csvfile = null);
 
         /// <summary>
-        /// Add, edit or delete options
+        /// Perform import file prevalidation
         /// </summary>
         /// <remarks>
-        /// The PUT operation will add, change or delete values in CloudCluster/Options.
+        /// The POST operation validate import file.
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
         /// <returns>Task of ApiResponse (ApiSuccessResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> UpdateOptionsAsyncWithHttpInfo (UpdateOptionsData body);
+        System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> ValidateImportFileAsyncWithHttpInfo (System.IO.Stream csvfile = null);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class OptionsApi : IOptionsApi
+    public partial class ImportApi : IImportApi
     {
         private Genesys.Provisioning.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OptionsApi"/> class.
+        /// Initializes a new instance of the <see cref="ImportApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public OptionsApi(String basePath)
+        public ImportApi(String basePath)
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
 
@@ -184,12 +188,12 @@ namespace Genesys.Provisioning.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OptionsApi"/> class
+        /// Initializes a new instance of the <see cref="ImportApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public OptionsApi(Configuration configuration = null)
+        public ImportApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -269,29 +273,35 @@ namespace Genesys.Provisioning.Api
         }
 
         /// <summary>
-        /// Read options The GET operation will fetch CloudCluster/Options and merges it with person and sgent groups annexes.
+        /// Get import users status The GET operation will get active importers.
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="personDbid">DBID of a person. Options will be merged with the Person&#39;s annex and annexes of it&#39;s agent groups. Mutual with agent_group_dbid. (optional)</param>
-        /// <param name="agentGroupDbid">DBID of a person. Options will be merged with the Agent Groups&#39;s annex. Mutual with person_dbid. (optional)</param>
-        /// <returns>GetOptionsResponseSuccess</returns>
-        public GetOptionsResponseSuccess GetOptions (string personDbid = null, string agentGroupDbid = null)
+        /// <param name="adminName">Admin login.</param>
+        /// <param name="tenantName">Tenant name.</param>
+        /// <returns>GetImportStatusResponse</returns>
+        public GetImportStatusResponse GetImportStatus (string adminName, string tenantName)
         {
-             ApiResponse<GetOptionsResponseSuccess> localVarResponse = GetOptionsWithHttpInfo(personDbid, agentGroupDbid);
+             ApiResponse<GetImportStatusResponse> localVarResponse = GetImportStatusWithHttpInfo(adminName, tenantName);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Read options The GET operation will fetch CloudCluster/Options and merges it with person and sgent groups annexes.
+        /// Get import users status The GET operation will get active importers.
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="personDbid">DBID of a person. Options will be merged with the Person&#39;s annex and annexes of it&#39;s agent groups. Mutual with agent_group_dbid. (optional)</param>
-        /// <param name="agentGroupDbid">DBID of a person. Options will be merged with the Agent Groups&#39;s annex. Mutual with person_dbid. (optional)</param>
-        /// <returns>ApiResponse of GetOptionsResponseSuccess</returns>
-        public ApiResponse< GetOptionsResponseSuccess > GetOptionsWithHttpInfo (string personDbid = null, string agentGroupDbid = null)
+        /// <param name="adminName">Admin login.</param>
+        /// <param name="tenantName">Tenant name.</param>
+        /// <returns>ApiResponse of GetImportStatusResponse</returns>
+        public ApiResponse< GetImportStatusResponse > GetImportStatusWithHttpInfo (string adminName, string tenantName)
         {
+            // verify the required parameter 'adminName' is set
+            if (adminName == null)
+                throw new ApiException(400, "Missing required parameter 'adminName' when calling ImportApi->GetImportStatus");
+            // verify the required parameter 'tenantName' is set
+            if (tenantName == null)
+                throw new ApiException(400, "Missing required parameter 'tenantName' when calling ImportApi->GetImportStatus");
 
-            var localVarPath = "/options";
+            var localVarPath = "/import-users/check-status";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -316,8 +326,8 @@ namespace Genesys.Provisioning.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (personDbid != null) localVarQueryParams.Add("person_dbid", Configuration.ApiClient.ParameterToString(personDbid)); // query parameter
-            if (agentGroupDbid != null) localVarQueryParams.Add("agent_group_dbid", Configuration.ApiClient.ParameterToString(agentGroupDbid)); // query parameter
+            if (adminName != null) localVarQueryParams.Add("adminName", Configuration.ApiClient.ParameterToString(adminName)); // query parameter
+            if (tenantName != null) localVarQueryParams.Add("tenantName", Configuration.ApiClient.ParameterToString(tenantName)); // query parameter
 
 
             // make the HTTP request
@@ -329,41 +339,47 @@ namespace Genesys.Provisioning.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetOptions", localVarResponse);
+                Exception exception = ExceptionFactory("GetImportStatus", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GetOptionsResponseSuccess>(localVarStatusCode,
+            return new ApiResponse<GetImportStatusResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GetOptionsResponseSuccess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetOptionsResponseSuccess)));
+                (GetImportStatusResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetImportStatusResponse)));
             
         }
 
         /// <summary>
-        /// Read options The GET operation will fetch CloudCluster/Options and merges it with person and sgent groups annexes.
+        /// Get import users status The GET operation will get active importers.
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="personDbid">DBID of a person. Options will be merged with the Person&#39;s annex and annexes of it&#39;s agent groups. Mutual with agent_group_dbid. (optional)</param>
-        /// <param name="agentGroupDbid">DBID of a person. Options will be merged with the Agent Groups&#39;s annex. Mutual with person_dbid. (optional)</param>
-        /// <returns>Task of GetOptionsResponseSuccess</returns>
-        public async System.Threading.Tasks.Task<GetOptionsResponseSuccess> GetOptionsAsync (string personDbid = null, string agentGroupDbid = null)
+        /// <param name="adminName">Admin login.</param>
+        /// <param name="tenantName">Tenant name.</param>
+        /// <returns>Task of GetImportStatusResponse</returns>
+        public async System.Threading.Tasks.Task<GetImportStatusResponse> GetImportStatusAsync (string adminName, string tenantName)
         {
-             ApiResponse<GetOptionsResponseSuccess> localVarResponse = await GetOptionsAsyncWithHttpInfo(personDbid, agentGroupDbid);
+             ApiResponse<GetImportStatusResponse> localVarResponse = await GetImportStatusAsyncWithHttpInfo(adminName, tenantName);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Read options The GET operation will fetch CloudCluster/Options and merges it with person and sgent groups annexes.
+        /// Get import users status The GET operation will get active importers.
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="personDbid">DBID of a person. Options will be merged with the Person&#39;s annex and annexes of it&#39;s agent groups. Mutual with agent_group_dbid. (optional)</param>
-        /// <param name="agentGroupDbid">DBID of a person. Options will be merged with the Agent Groups&#39;s annex. Mutual with person_dbid. (optional)</param>
-        /// <returns>Task of ApiResponse (GetOptionsResponseSuccess)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetOptionsResponseSuccess>> GetOptionsAsyncWithHttpInfo (string personDbid = null, string agentGroupDbid = null)
+        /// <param name="adminName">Admin login.</param>
+        /// <param name="tenantName">Tenant name.</param>
+        /// <returns>Task of ApiResponse (GetImportStatusResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetImportStatusResponse>> GetImportStatusAsyncWithHttpInfo (string adminName, string tenantName)
         {
+            // verify the required parameter 'adminName' is set
+            if (adminName == null)
+                throw new ApiException(400, "Missing required parameter 'adminName' when calling ImportApi->GetImportStatus");
+            // verify the required parameter 'tenantName' is set
+            if (tenantName == null)
+                throw new ApiException(400, "Missing required parameter 'tenantName' when calling ImportApi->GetImportStatus");
 
-            var localVarPath = "/options";
+            var localVarPath = "/import-users/check-status";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -388,8 +404,8 @@ namespace Genesys.Provisioning.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (personDbid != null) localVarQueryParams.Add("person_dbid", Configuration.ApiClient.ParameterToString(personDbid)); // query parameter
-            if (agentGroupDbid != null) localVarQueryParams.Add("agent_group_dbid", Configuration.ApiClient.ParameterToString(agentGroupDbid)); // query parameter
+            if (adminName != null) localVarQueryParams.Add("adminName", Configuration.ApiClient.ParameterToString(adminName)); // query parameter
+            if (tenantName != null) localVarQueryParams.Add("tenantName", Configuration.ApiClient.ParameterToString(tenantName)); // query parameter
 
 
             // make the HTTP request
@@ -401,41 +417,40 @@ namespace Genesys.Provisioning.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetOptions", localVarResponse);
+                Exception exception = ExceptionFactory("GetImportStatus", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GetOptionsResponseSuccess>(localVarStatusCode,
+            return new ApiResponse<GetImportStatusResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GetOptionsResponseSuccess) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetOptionsResponseSuccess)));
+                (GetImportStatusResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetImportStatusResponse)));
             
         }
 
         /// <summary>
-        /// Modify options The POST operation will replace CloudCluster/Options with new values
+        /// Import file The POST operation will import file.
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
+        /// <param name="validateBeforeImport">Validate file before actual import. (optional, default to false)</param>
         /// <returns>ApiSuccessResponse</returns>
-        public ApiSuccessResponse ModifyOptions (ModifyOptionsData body)
+        public ApiSuccessResponse ImportFile (System.IO.Stream csvfile = null, bool? validateBeforeImport = null)
         {
-             ApiResponse<ApiSuccessResponse> localVarResponse = ModifyOptionsWithHttpInfo(body);
+             ApiResponse<ApiSuccessResponse> localVarResponse = ImportFileWithHttpInfo(csvfile, validateBeforeImport);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Modify options The POST operation will replace CloudCluster/Options with new values
+        /// Import file The POST operation will import file.
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
+        /// <param name="validateBeforeImport">Validate file before actual import. (optional, default to false)</param>
         /// <returns>ApiResponse of ApiSuccessResponse</returns>
-        public ApiResponse< ApiSuccessResponse > ModifyOptionsWithHttpInfo (ModifyOptionsData body)
+        public ApiResponse< ApiSuccessResponse > ImportFileWithHttpInfo (System.IO.Stream csvfile = null, bool? validateBeforeImport = null)
         {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling OptionsApi->ModifyOptions");
 
-            var localVarPath = "/options";
+            var localVarPath = "/import-users/csv";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -445,7 +460,7 @@ namespace Genesys.Provisioning.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
+                "multipart/form-data"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -460,21 +475,8 @@ namespace Genesys.Provisioning.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // authentication (basicAuth) required
-            // http basic authentication required
-            if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
-            {
-                localVarHeaderParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
-            }
+            if (csvfile != null) localVarFileParams.Add("csvfile", Configuration.ApiClient.ParameterToFile("csvfile", csvfile));
+            if (validateBeforeImport != null) localVarFormParams.Add("validateBeforeImport", Configuration.ApiClient.ParameterToString(validateBeforeImport)); // form parameter
 
 
             // make the HTTP request
@@ -486,7 +488,7 @@ namespace Genesys.Provisioning.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ModifyOptions", localVarResponse);
+                Exception exception = ExceptionFactory("ImportFile", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -497,31 +499,30 @@ namespace Genesys.Provisioning.Api
         }
 
         /// <summary>
-        /// Modify options The POST operation will replace CloudCluster/Options with new values
+        /// Import file The POST operation will import file.
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
+        /// <param name="validateBeforeImport">Validate file before actual import. (optional, default to false)</param>
         /// <returns>Task of ApiSuccessResponse</returns>
-        public async System.Threading.Tasks.Task<ApiSuccessResponse> ModifyOptionsAsync (ModifyOptionsData body)
+        public async System.Threading.Tasks.Task<ApiSuccessResponse> ImportFileAsync (System.IO.Stream csvfile = null, bool? validateBeforeImport = null)
         {
-             ApiResponse<ApiSuccessResponse> localVarResponse = await ModifyOptionsAsyncWithHttpInfo(body);
+             ApiResponse<ApiSuccessResponse> localVarResponse = await ImportFileAsyncWithHttpInfo(csvfile, validateBeforeImport);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Modify options The POST operation will replace CloudCluster/Options with new values
+        /// Import file The POST operation will import file.
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
+        /// <param name="validateBeforeImport">Validate file before actual import. (optional, default to false)</param>
         /// <returns>Task of ApiResponse (ApiSuccessResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> ModifyOptionsAsyncWithHttpInfo (ModifyOptionsData body)
+        public async System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> ImportFileAsyncWithHttpInfo (System.IO.Stream csvfile = null, bool? validateBeforeImport = null)
         {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling OptionsApi->ModifyOptions");
 
-            var localVarPath = "/options";
+            var localVarPath = "/import-users/csv";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -531,7 +532,7 @@ namespace Genesys.Provisioning.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
+                "multipart/form-data"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -546,21 +547,9 @@ namespace Genesys.Provisioning.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
+            if (csvfile != null) localVarFileParams.Add("csvfile", Configuration.ApiClient.ParameterToFile("csvfile", csvfile));
+            if (validateBeforeImport != null) localVarFormParams.Add("validateBeforeImport", Configuration.ApiClient.ParameterToString(validateBeforeImport)); // form parameter
 
-            // authentication (basicAuth) required
-            // http basic authentication required
-            if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
-            {
-                localVarHeaderParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
-            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -571,7 +560,7 @@ namespace Genesys.Provisioning.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ModifyOptions", localVarResponse);
+                Exception exception = ExceptionFactory("ImportFile", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -582,30 +571,27 @@ namespace Genesys.Provisioning.Api
         }
 
         /// <summary>
-        /// Add, edit or delete options The PUT operation will add, change or delete values in CloudCluster/Options.
+        /// Perform import file prevalidation The POST operation validate import file.
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
         /// <returns>ApiSuccessResponse</returns>
-        public ApiSuccessResponse UpdateOptions (UpdateOptionsData body)
+        public ApiSuccessResponse ValidateImportFile (System.IO.Stream csvfile = null)
         {
-             ApiResponse<ApiSuccessResponse> localVarResponse = UpdateOptionsWithHttpInfo(body);
+             ApiResponse<ApiSuccessResponse> localVarResponse = ValidateImportFileWithHttpInfo(csvfile);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Add, edit or delete options The PUT operation will add, change or delete values in CloudCluster/Options.
+        /// Perform import file prevalidation The POST operation validate import file.
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
         /// <returns>ApiResponse of ApiSuccessResponse</returns>
-        public ApiResponse< ApiSuccessResponse > UpdateOptionsWithHttpInfo (UpdateOptionsData body)
+        public ApiResponse< ApiSuccessResponse > ValidateImportFileWithHttpInfo (System.IO.Stream csvfile = null)
         {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling OptionsApi->UpdateOptions");
 
-            var localVarPath = "/options";
+            var localVarPath = "/import-users/validate-csv";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -615,7 +601,7 @@ namespace Genesys.Provisioning.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
+                "multipart/form-data"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -630,33 +616,19 @@ namespace Genesys.Provisioning.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // authentication (basicAuth) required
-            // http basic authentication required
-            if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
-            {
-                localVarHeaderParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
-            }
+            if (csvfile != null) localVarFileParams.Add("csvfile", Configuration.ApiClient.ParameterToFile("csvfile", csvfile));
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("UpdateOptions", localVarResponse);
+                Exception exception = ExceptionFactory("ValidateImportFile", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -667,31 +639,28 @@ namespace Genesys.Provisioning.Api
         }
 
         /// <summary>
-        /// Add, edit or delete options The PUT operation will add, change or delete values in CloudCluster/Options.
+        /// Perform import file prevalidation The POST operation validate import file.
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
         /// <returns>Task of ApiSuccessResponse</returns>
-        public async System.Threading.Tasks.Task<ApiSuccessResponse> UpdateOptionsAsync (UpdateOptionsData body)
+        public async System.Threading.Tasks.Task<ApiSuccessResponse> ValidateImportFileAsync (System.IO.Stream csvfile = null)
         {
-             ApiResponse<ApiSuccessResponse> localVarResponse = await UpdateOptionsAsyncWithHttpInfo(body);
+             ApiResponse<ApiSuccessResponse> localVarResponse = await ValidateImportFileAsyncWithHttpInfo(csvfile);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Add, edit or delete options The PUT operation will add, change or delete values in CloudCluster/Options.
+        /// Perform import file prevalidation The POST operation validate import file.
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Body Data</param>
+        /// <param name="csvfile">CSV/XLS file to import. (optional)</param>
         /// <returns>Task of ApiResponse (ApiSuccessResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> UpdateOptionsAsyncWithHttpInfo (UpdateOptionsData body)
+        public async System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> ValidateImportFileAsyncWithHttpInfo (System.IO.Stream csvfile = null)
         {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling OptionsApi->UpdateOptions");
 
-            var localVarPath = "/options";
+            var localVarPath = "/import-users/validate-csv";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -701,7 +670,7 @@ namespace Genesys.Provisioning.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
+                "multipart/form-data"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -716,32 +685,19 @@ namespace Genesys.Provisioning.Api
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
+            if (csvfile != null) localVarFileParams.Add("csvfile", Configuration.ApiClient.ParameterToFile("csvfile", csvfile));
 
-            // authentication (basicAuth) required
-            // http basic authentication required
-            if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
-            {
-                localVarHeaderParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
-            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("UpdateOptions", localVarResponse);
+                Exception exception = ExceptionFactory("ValidateImportFile", localVarResponse);
                 if (exception != null) throw exception;
             }
 

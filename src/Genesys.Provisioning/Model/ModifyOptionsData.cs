@@ -24,26 +24,39 @@ using System.ComponentModel.DataAnnotations;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// ApiSuccessResponseStatus
+    /// ModifyOptionsData
     /// </summary>
     [DataContract]
-    public partial class ApiSuccessResponseStatus :  IEquatable<ApiSuccessResponseStatus>, IValidatableObject
+    public partial class ModifyOptionsData :  IEquatable<ModifyOptionsData>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiSuccessResponseStatus" /> class.
+        /// Initializes a new instance of the <see cref="ModifyOptionsData" /> class.
         /// </summary>
-        /// <param name="Code">On error will provide a code that can be used to get more detail about the error..</param>
-        public ApiSuccessResponseStatus(int? Code = default(int?))
+        [JsonConstructorAttribute]
+        protected ModifyOptionsData() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ModifyOptionsData" /> class.
+        /// </summary>
+        /// <param name="Options">New CloudCluster app Options.  Effect: Replaces sections, keys and values in CloudCluster/Options  (required).</param>
+        public ModifyOptionsData(Object Options = default(Object))
         {
-            this.Code = Code;
+            // to ensure "Options" is required (not null)
+            if (Options == null)
+            {
+                throw new InvalidDataException("Options is a required property for ModifyOptionsData and cannot be null");
+            }
+            else
+            {
+                this.Options = Options;
+            }
         }
         
         /// <summary>
-        /// On error will provide a code that can be used to get more detail about the error.
+        /// New CloudCluster app Options.  Effect: Replaces sections, keys and values in CloudCluster/Options 
         /// </summary>
-        /// <value>On error will provide a code that can be used to get more detail about the error.</value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public int? Code { get; set; }
+        /// <value>New CloudCluster app Options.  Effect: Replaces sections, keys and values in CloudCluster/Options </value>
+        [DataMember(Name="options", EmitDefaultValue=false)]
+        public Object Options { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -51,8 +64,8 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ApiSuccessResponseStatus {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class ModifyOptionsData {\n");
+            sb.Append("  Options: ").Append(Options).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,15 +87,15 @@ namespace Genesys.Provisioning.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ApiSuccessResponseStatus);
+            return this.Equals(obj as ModifyOptionsData);
         }
 
         /// <summary>
-        /// Returns true if ApiSuccessResponseStatus instances are equal
+        /// Returns true if ModifyOptionsData instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApiSuccessResponseStatus to be compared</param>
+        /// <param name="other">Instance of ModifyOptionsData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiSuccessResponseStatus other)
+        public bool Equals(ModifyOptionsData other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -90,9 +103,9 @@ namespace Genesys.Provisioning.Model
 
             return 
                 (
-                    this.Code == other.Code ||
-                    this.Code != null &&
-                    this.Code.Equals(other.Code)
+                    this.Options == other.Options ||
+                    this.Options != null &&
+                    this.Options.Equals(other.Options)
                 );
         }
 
@@ -107,8 +120,8 @@ namespace Genesys.Provisioning.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Code != null)
-                    hash = hash * 59 + this.Code.GetHashCode();
+                if (this.Options != null)
+                    hash = hash * 59 + this.Options.GetHashCode();
                 return hash;
             }
         }

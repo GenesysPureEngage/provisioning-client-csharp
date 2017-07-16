@@ -24,26 +24,26 @@ using System.ComponentModel.DataAnnotations;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// ApiSuccessResponseStatus
+    /// DeleteUserData
     /// </summary>
     [DataContract]
-    public partial class ApiSuccessResponseStatus :  IEquatable<ApiSuccessResponseStatus>, IValidatableObject
+    public partial class DeleteUserData :  IEquatable<DeleteUserData>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiSuccessResponseStatus" /> class.
+        /// Initializes a new instance of the <see cref="DeleteUserData" /> class.
         /// </summary>
-        /// <param name="Code">On error will provide a code that can be used to get more detail about the error..</param>
-        public ApiSuccessResponseStatus(int? Code = default(int?))
+        /// <param name="KeepPlaces">If &#39;true&#39; or absent, user&#39;s places and their DNs will not be deleted Effect: Controls if user&#39;s places and their DNs will be deleted .</param>
+        public DeleteUserData(bool? KeepPlaces = default(bool?))
         {
-            this.Code = Code;
+            this.KeepPlaces = KeepPlaces;
         }
         
         /// <summary>
-        /// On error will provide a code that can be used to get more detail about the error.
+        /// If &#39;true&#39; or absent, user&#39;s places and their DNs will not be deleted Effect: Controls if user&#39;s places and their DNs will be deleted 
         /// </summary>
-        /// <value>On error will provide a code that can be used to get more detail about the error.</value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public int? Code { get; set; }
+        /// <value>If &#39;true&#39; or absent, user&#39;s places and their DNs will not be deleted Effect: Controls if user&#39;s places and their DNs will be deleted </value>
+        [DataMember(Name="keep_places", EmitDefaultValue=false)]
+        public bool? KeepPlaces { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -51,8 +51,8 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ApiSuccessResponseStatus {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class DeleteUserData {\n");
+            sb.Append("  KeepPlaces: ").Append(KeepPlaces).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,15 +74,15 @@ namespace Genesys.Provisioning.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ApiSuccessResponseStatus);
+            return this.Equals(obj as DeleteUserData);
         }
 
         /// <summary>
-        /// Returns true if ApiSuccessResponseStatus instances are equal
+        /// Returns true if DeleteUserData instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApiSuccessResponseStatus to be compared</param>
+        /// <param name="other">Instance of DeleteUserData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiSuccessResponseStatus other)
+        public bool Equals(DeleteUserData other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -90,9 +90,9 @@ namespace Genesys.Provisioning.Model
 
             return 
                 (
-                    this.Code == other.Code ||
-                    this.Code != null &&
-                    this.Code.Equals(other.Code)
+                    this.KeepPlaces == other.KeepPlaces ||
+                    this.KeepPlaces != null &&
+                    this.KeepPlaces.Equals(other.KeepPlaces)
                 );
         }
 
@@ -107,8 +107,8 @@ namespace Genesys.Provisioning.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Code != null)
-                    hash = hash * 59 + this.Code.GetHashCode();
+                if (this.KeepPlaces != null)
+                    hash = hash * 59 + this.KeepPlaces.GetHashCode();
                 return hash;
             }
         }

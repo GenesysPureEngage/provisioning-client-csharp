@@ -25,25 +25,38 @@ using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// ApiErrorResponse
+    /// ApiAuditSuccessResponseData
     /// </summary>
     [DataContract]
-    public partial class ApiErrorResponse :  IEquatable<ApiErrorResponse>, IValidatableObject
+    public partial class ApiAuditSuccessResponseData :  IEquatable<ApiAuditSuccessResponseData>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiErrorResponse" /> class.
+        /// Initializes a new instance of the <see cref="ApiAuditSuccessResponseData" /> class.
         /// </summary>
-        /// <param name="Status">Status.</param>
-        public ApiErrorResponse(ApiErrorResponseStatus Status = default(ApiErrorResponseStatus))
+        [JsonConstructorAttribute]
+        protected ApiAuditSuccessResponseData() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiAuditSuccessResponseData" /> class.
+        /// </summary>
+        /// <param name="Rows">Rows (required).</param>
+        public ApiAuditSuccessResponseData(List<ApiAuditSuccessResponseDataRows> Rows = default(List<ApiAuditSuccessResponseDataRows>))
         {
-            this.Status = Status;
+            // to ensure "Rows" is required (not null)
+            if (Rows == null)
+            {
+                throw new InvalidDataException("Rows is a required property for ApiAuditSuccessResponseData and cannot be null");
+            }
+            else
+            {
+                this.Rows = Rows;
+            }
         }
         
         /// <summary>
-        /// Gets or Sets Status
+        /// Gets or Sets Rows
         /// </summary>
-        [DataMember(Name="status", EmitDefaultValue=false)]
-        public ApiErrorResponseStatus Status { get; set; }
+        [DataMember(Name="rows", EmitDefaultValue=false)]
+        public List<ApiAuditSuccessResponseDataRows> Rows { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,8 +65,8 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ApiErrorResponse {\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("class ApiAuditSuccessResponseData {\n");
+            sb.Append("  Rows: ").Append(Rows).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -75,15 +88,15 @@ namespace Genesys.Provisioning.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ApiErrorResponse);
+            return this.Equals(obj as ApiAuditSuccessResponseData);
         }
 
         /// <summary>
-        /// Returns true if ApiErrorResponse instances are equal
+        /// Returns true if ApiAuditSuccessResponseData instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApiErrorResponse to be compared</param>
+        /// <param name="other">Instance of ApiAuditSuccessResponseData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiErrorResponse other)
+        public bool Equals(ApiAuditSuccessResponseData other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -91,9 +104,9 @@ namespace Genesys.Provisioning.Model
 
             return 
                 (
-                    this.Status == other.Status ||
-                    this.Status != null &&
-                    this.Status.Equals(other.Status)
+                    this.Rows == other.Rows ||
+                    this.Rows != null &&
+                    this.Rows.SequenceEqual(other.Rows)
                 );
         }
 
@@ -108,8 +121,8 @@ namespace Genesys.Provisioning.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Status != null)
-                    hash = hash * 59 + this.Status.GetHashCode();
+                if (this.Rows != null)
+                    hash = hash * 59 + this.Rows.GetHashCode();
                 return hash;
             }
         }

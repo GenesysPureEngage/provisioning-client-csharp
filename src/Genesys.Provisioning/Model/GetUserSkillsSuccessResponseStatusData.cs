@@ -25,25 +25,26 @@ using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// ApiErrorResponse
+    /// GetUserSkillsSuccessResponseStatusData
     /// </summary>
     [DataContract]
-    public partial class ApiErrorResponse :  IEquatable<ApiErrorResponse>, IValidatableObject
+    public partial class GetUserSkillsSuccessResponseStatusData :  IEquatable<GetUserSkillsSuccessResponseStatusData>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiErrorResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetUserSkillsSuccessResponseStatusData" /> class.
         /// </summary>
-        /// <param name="Status">Status.</param>
-        public ApiErrorResponse(ApiErrorResponseStatus Status = default(ApiErrorResponseStatus))
+        /// <param name="Skills">skills assigned to any user. Available if dbid parameter is equal to &#39;skills&#39;..</param>
+        public GetUserSkillsSuccessResponseStatusData(List<GetUserSkillsSuccessResponseStatusDataSkills> Skills = default(List<GetUserSkillsSuccessResponseStatusDataSkills>))
         {
-            this.Status = Status;
+            this.Skills = Skills;
         }
         
         /// <summary>
-        /// Gets or Sets Status
+        /// skills assigned to any user. Available if dbid parameter is equal to &#39;skills&#39;.
         /// </summary>
-        [DataMember(Name="status", EmitDefaultValue=false)]
-        public ApiErrorResponseStatus Status { get; set; }
+        /// <value>skills assigned to any user. Available if dbid parameter is equal to &#39;skills&#39;.</value>
+        [DataMember(Name="skills", EmitDefaultValue=false)]
+        public List<GetUserSkillsSuccessResponseStatusDataSkills> Skills { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,8 +53,8 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ApiErrorResponse {\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("class GetUserSkillsSuccessResponseStatusData {\n");
+            sb.Append("  Skills: ").Append(Skills).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -75,15 +76,15 @@ namespace Genesys.Provisioning.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ApiErrorResponse);
+            return this.Equals(obj as GetUserSkillsSuccessResponseStatusData);
         }
 
         /// <summary>
-        /// Returns true if ApiErrorResponse instances are equal
+        /// Returns true if GetUserSkillsSuccessResponseStatusData instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApiErrorResponse to be compared</param>
+        /// <param name="other">Instance of GetUserSkillsSuccessResponseStatusData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiErrorResponse other)
+        public bool Equals(GetUserSkillsSuccessResponseStatusData other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -91,9 +92,9 @@ namespace Genesys.Provisioning.Model
 
             return 
                 (
-                    this.Status == other.Status ||
-                    this.Status != null &&
-                    this.Status.Equals(other.Status)
+                    this.Skills == other.Skills ||
+                    this.Skills != null &&
+                    this.Skills.SequenceEqual(other.Skills)
                 );
         }
 
@@ -108,8 +109,8 @@ namespace Genesys.Provisioning.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Status != null)
-                    hash = hash * 59 + this.Status.GetHashCode();
+                if (this.Skills != null)
+                    hash = hash * 59 + this.Skills.GetHashCode();
                 return hash;
             }
         }

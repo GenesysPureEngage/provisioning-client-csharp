@@ -25,40 +25,50 @@ using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// LoginData
+    /// ChangePasswordData
     /// </summary>
     [DataContract]
-    public partial class LoginData :  IEquatable<LoginData>, IValidatableObject
+    public partial class ChangePasswordData :  IEquatable<ChangePasswordData>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoginData" /> class.
+        /// Initializes a new instance of the <see cref="ChangePasswordData" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected LoginData() { }
+        protected ChangePasswordData() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoginData" /> class.
+        /// Initializes a new instance of the <see cref="ChangePasswordData" /> class.
         /// </summary>
-        /// <param name="DomainUsername">User unique login in form: domain.com\\login  (required) (default to &quot;domain.com\login&quot;).</param>
-        /// <param name="Password">Password as plain text.  (required) (default to &quot;password&quot;).</param>
-        public LoginData(string DomainUsername = "domain.com\login", string Password = "password")
+        /// <param name="DomainUsername">User unique login in form: domain.com\\login  (required).</param>
+        /// <param name="OldPassword">Old password as plain text.  (required).</param>
+        /// <param name="NewPassword">New password as plain text.  (required).</param>
+        public ChangePasswordData(string DomainUsername = default(string), string OldPassword = default(string), string NewPassword = default(string))
         {
             // to ensure "DomainUsername" is required (not null)
             if (DomainUsername == null)
             {
-                throw new InvalidDataException("DomainUsername is a required property for LoginData and cannot be null");
+                throw new InvalidDataException("DomainUsername is a required property for ChangePasswordData and cannot be null");
             }
             else
             {
                 this.DomainUsername = DomainUsername;
             }
-            // to ensure "Password" is required (not null)
-            if (Password == null)
+            // to ensure "OldPassword" is required (not null)
+            if (OldPassword == null)
             {
-                throw new InvalidDataException("Password is a required property for LoginData and cannot be null");
+                throw new InvalidDataException("OldPassword is a required property for ChangePasswordData and cannot be null");
             }
             else
             {
-                this.Password = Password;
+                this.OldPassword = OldPassword;
+            }
+            // to ensure "NewPassword" is required (not null)
+            if (NewPassword == null)
+            {
+                throw new InvalidDataException("NewPassword is a required property for ChangePasswordData and cannot be null");
+            }
+            else
+            {
+                this.NewPassword = NewPassword;
             }
         }
         
@@ -70,11 +80,18 @@ namespace Genesys.Provisioning.Model
         public string DomainUsername { get; set; }
 
         /// <summary>
-        /// Password as plain text. 
+        /// Old password as plain text. 
         /// </summary>
-        /// <value>Password as plain text. </value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
-        public string Password { get; set; }
+        /// <value>Old password as plain text. </value>
+        [DataMember(Name="oldPassword", EmitDefaultValue=false)]
+        public string OldPassword { get; set; }
+
+        /// <summary>
+        /// New password as plain text. 
+        /// </summary>
+        /// <value>New password as plain text. </value>
+        [DataMember(Name="newPassword", EmitDefaultValue=false)]
+        public string NewPassword { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,9 +100,10 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class LoginData {\n");
+            sb.Append("class ChangePasswordData {\n");
             sb.Append("  DomainUsername: ").Append(DomainUsername).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  OldPassword: ").Append(OldPassword).Append("\n");
+            sb.Append("  NewPassword: ").Append(NewPassword).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -107,15 +125,15 @@ namespace Genesys.Provisioning.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as LoginData);
+            return this.Equals(obj as ChangePasswordData);
         }
 
         /// <summary>
-        /// Returns true if LoginData instances are equal
+        /// Returns true if ChangePasswordData instances are equal
         /// </summary>
-        /// <param name="other">Instance of LoginData to be compared</param>
+        /// <param name="other">Instance of ChangePasswordData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(LoginData other)
+        public bool Equals(ChangePasswordData other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -128,9 +146,14 @@ namespace Genesys.Provisioning.Model
                     this.DomainUsername.Equals(other.DomainUsername)
                 ) && 
                 (
-                    this.Password == other.Password ||
-                    this.Password != null &&
-                    this.Password.Equals(other.Password)
+                    this.OldPassword == other.OldPassword ||
+                    this.OldPassword != null &&
+                    this.OldPassword.Equals(other.OldPassword)
+                ) && 
+                (
+                    this.NewPassword == other.NewPassword ||
+                    this.NewPassword != null &&
+                    this.NewPassword.Equals(other.NewPassword)
                 );
         }
 
@@ -147,8 +170,10 @@ namespace Genesys.Provisioning.Model
                 // Suitable nullity checks etc, of course :)
                 if (this.DomainUsername != null)
                     hash = hash * 59 + this.DomainUsername.GetHashCode();
-                if (this.Password != null)
-                    hash = hash * 59 + this.Password.GetHashCode();
+                if (this.OldPassword != null)
+                    hash = hash * 59 + this.OldPassword.GetHashCode();
+                if (this.NewPassword != null)
+                    hash = hash * 59 + this.NewPassword.GetHashCode();
                 return hash;
             }
         }

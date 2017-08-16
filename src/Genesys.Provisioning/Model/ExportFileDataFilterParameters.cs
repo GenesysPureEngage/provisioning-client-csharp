@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 
 namespace Genesys.Provisioning.Model
 {
@@ -58,24 +59,28 @@ namespace Genesys.Provisioning.Model
         /// <value>Comma-separated list of subresources to include to export.</value>
         [DataMember(Name="subresources", EmitDefaultValue=false)]
         public string Subresources { get; set; }
+
         /// <summary>
         /// Sort order - Ascending or Descending
         /// </summary>
         /// <value>Sort order - Ascending or Descending</value>
         [DataMember(Name="order", EmitDefaultValue=false)]
         public string Order { get; set; }
+
         /// <summary>
         /// Array of group names to which user should be included.
         /// </summary>
         /// <value>Array of group names to which user should be included.</value>
         [DataMember(Name="agentGroupFilter", EmitDefaultValue=false)]
         public List<string> AgentGroupFilter { get; set; }
+
         /// <summary>
         /// Comma-separated list of fields to sort on.
         /// </summary>
         /// <value>Comma-separated list of fields to sort on.</value>
         [DataMember(Name="sortBy", EmitDefaultValue=false)]
         public List<string> SortBy { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -169,8 +174,13 @@ namespace Genesys.Provisioning.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

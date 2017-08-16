@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 
 namespace Genesys.Provisioning.Model
 {
@@ -48,18 +49,21 @@ namespace Genesys.Provisioning.Model
         /// <value>List of Agent Group objects fetched.</value>
         [DataMember(Name="agent-groups", EmitDefaultValue=false)]
         public List<Object> AgentGroups { get; set; }
+
         /// <summary>
         /// Total number of object.
         /// </summary>
         /// <value>Total number of object.</value>
         [DataMember(Name="totalCount", EmitDefaultValue=false)]
         public int? TotalCount { get; set; }
+
         /// <summary>
         /// List of DN objects fetched
         /// </summary>
         /// <value>List of DN objects fetched</value>
         [DataMember(Name="dns", EmitDefaultValue=false)]
         public List<Object> Dns { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -145,8 +149,13 @@ namespace Genesys.Provisioning.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

@@ -361,9 +361,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (adminName != null) localVarQueryParams.Add("adminName", Configuration.ApiClient.ParameterToString(adminName)); // query parameter
             if (tenantName != null) localVarQueryParams.Add("tenantName", Configuration.ApiClient.ParameterToString(tenantName)); // query parameter
 
@@ -384,7 +381,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<GetImportStatusResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (GetImportStatusResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetImportStatusResponse)));
-            
         }
 
         /// <summary>
@@ -439,9 +435,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (adminName != null) localVarQueryParams.Add("adminName", Configuration.ApiClient.ParameterToString(adminName)); // query parameter
             if (tenantName != null) localVarQueryParams.Add("tenantName", Configuration.ApiClient.ParameterToString(tenantName)); // query parameter
 
@@ -462,7 +455,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<GetImportStatusResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (GetImportStatusResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetImportStatusResponse)));
-            
         }
 
         /// <summary>
@@ -510,9 +502,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (csvfile != null) localVarFileParams.Add("csvfile", Configuration.ApiClient.ParameterToFile("csvfile", csvfile));
             if (validateBeforeImport != null) localVarFormParams.Add("validateBeforeImport", Configuration.ApiClient.ParameterToString(validateBeforeImport)); // form parameter
 
@@ -533,7 +522,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
-            
         }
 
         /// <summary>
@@ -582,9 +570,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (csvfile != null) localVarFileParams.Add("csvfile", Configuration.ApiClient.ParameterToFile("csvfile", csvfile));
             if (validateBeforeImport != null) localVarFormParams.Add("validateBeforeImport", Configuration.ApiClient.ParameterToString(validateBeforeImport)); // form parameter
 
@@ -605,7 +590,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
-            
         }
 
         /// <summary>
@@ -649,9 +633,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
 
 
             // make the HTTP request
@@ -670,7 +651,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
-            
         }
 
         /// <summary>
@@ -715,9 +695,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
 
 
             // make the HTTP request
@@ -736,7 +713,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
-            
         }
 
         /// <summary>
@@ -782,9 +758,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (csvfile != null) localVarFileParams.Add("csvfile", Configuration.ApiClient.ParameterToFile("csvfile", csvfile));
 
 
@@ -804,7 +777,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
-            
         }
 
         /// <summary>
@@ -851,9 +823,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (csvfile != null) localVarFileParams.Add("csvfile", Configuration.ApiClient.ParameterToFile("csvfile", csvfile));
 
 
@@ -873,7 +842,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
-            
         }
 
     }

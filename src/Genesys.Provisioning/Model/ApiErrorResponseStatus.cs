@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 
 namespace Genesys.Provisioning.Model
 {
@@ -46,12 +47,14 @@ namespace Genesys.Provisioning.Model
         /// <value>On error will provide a message with more detail about the error. Keep in mind that the error message will be fairly general and internal details are not exposed.</value>
         [DataMember(Name="message", EmitDefaultValue=false)]
         public string Message { get; set; }
+
         /// <summary>
         /// On error will provide a code that can be used to get more detail about the error.
         /// </summary>
         /// <value>On error will provide a code that can be used to get more detail about the error.</value>
         [DataMember(Name="code", EmitDefaultValue=false)]
         public int? Code { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -129,8 +132,13 @@ namespace Genesys.Provisioning.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

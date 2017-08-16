@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 
 namespace Genesys.Provisioning.Model
 {
@@ -50,24 +51,28 @@ namespace Genesys.Provisioning.Model
         /// <value>Name of the corresponding place name</value>
         [DataMember(Name="placeName", EmitDefaultValue=false)]
         public string PlaceName { get; set; }
+
         /// <summary>
         /// Phone number
         /// </summary>
         /// <value>Phone number</value>
         [DataMember(Name="number", EmitDefaultValue=false)]
         public string Number { get; set; }
+
         /// <summary>
         /// true/false
         /// </summary>
         /// <value>true/false</value>
         [DataMember(Name="isDefault", EmitDefaultValue=false)]
         public bool? IsDefault { get; set; }
+
         /// <summary>
         /// Desrciption (Mobile, Office)
         /// </summary>
         /// <value>Desrciption (Mobile, Office)</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public string Description { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -161,8 +166,13 @@ namespace Genesys.Provisioning.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

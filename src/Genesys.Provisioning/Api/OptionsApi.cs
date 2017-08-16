@@ -313,9 +313,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (personDbid != null) localVarQueryParams.Add("person_dbid", Configuration.ApiClient.ParameterToString(personDbid)); // query parameter
             if (agentGroupDbid != null) localVarQueryParams.Add("agent_group_dbid", Configuration.ApiClient.ParameterToString(agentGroupDbid)); // query parameter
 
@@ -336,7 +333,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<GetOptionsResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (GetOptionsResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetOptionsResponse)));
-            
         }
 
         /// <summary>
@@ -385,9 +381,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (personDbid != null) localVarQueryParams.Add("person_dbid", Configuration.ApiClient.ParameterToString(personDbid)); // query parameter
             if (agentGroupDbid != null) localVarQueryParams.Add("agent_group_dbid", Configuration.ApiClient.ParameterToString(agentGroupDbid)); // query parameter
 
@@ -408,7 +401,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<GetOptionsResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (GetOptionsResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetOptionsResponse)));
-            
         }
 
         /// <summary>
@@ -457,9 +449,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -493,7 +482,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
-            
         }
 
         /// <summary>
@@ -543,9 +531,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -578,7 +563,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
-            
         }
 
         /// <summary>
@@ -627,9 +611,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -663,7 +644,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
-            
         }
 
         /// <summary>
@@ -713,9 +693,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -748,7 +725,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
-            
         }
 
     }

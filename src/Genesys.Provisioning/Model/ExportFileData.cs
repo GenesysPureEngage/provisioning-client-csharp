@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 
 namespace Genesys.Provisioning.Model
 {
@@ -79,23 +80,27 @@ namespace Genesys.Provisioning.Model
         /// <value>Array of user property names to include  Effect: Only these names will be included in exported user structure </value>
         [DataMember(Name="fields", EmitDefaultValue=false)]
         public List<string> Fields { get; set; }
+
         /// <summary>
         /// Gets or Sets FilterParameters
         /// </summary>
         [DataMember(Name="filterParameters", EmitDefaultValue=false)]
         public ExportFileDataFilterParameters FilterParameters { get; set; }
+
         /// <summary>
         /// List of User IDs to export  Effect: Controls which users will be exported. 
         /// </summary>
         /// <value>List of User IDs to export  Effect: Controls which users will be exported. </value>
         [DataMember(Name="personDBIDs", EmitDefaultValue=false)]
         public List<string> PersonDBIDs { get; set; }
+
         /// <summary>
         /// File Name to save exported users.  Effect: Controls the file name to save. 
         /// </summary>
         /// <value>File Name to save exported users.  Effect: Controls the file name to save. </value>
         [DataMember(Name="fileName", EmitDefaultValue=false)]
         public string FileName { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -189,8 +194,13 @@ namespace Genesys.Provisioning.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

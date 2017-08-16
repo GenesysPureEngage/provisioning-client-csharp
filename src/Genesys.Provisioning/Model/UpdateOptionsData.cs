@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 
 namespace Genesys.Provisioning.Model
 {
@@ -48,18 +49,21 @@ namespace Genesys.Provisioning.Model
         /// <value>Changed CloudCluster app Options.  Effect: Updates existing values in CloudCluster/Options </value>
         [DataMember(Name="changedOptions", EmitDefaultValue=false)]
         public Object ChangedOptions { get; set; }
+
         /// <summary>
         /// Deleted CloudCluster app Options.  Effect: Deletes sections, keys and values in CloudCluster/Options 
         /// </summary>
         /// <value>Deleted CloudCluster app Options.  Effect: Deletes sections, keys and values in CloudCluster/Options </value>
         [DataMember(Name="deletedOptions", EmitDefaultValue=false)]
         public Object DeletedOptions { get; set; }
+
         /// <summary>
         /// New CloudCluster app Options.  Effect: Adds sections, keys and values in CloudCluster/Options 
         /// </summary>
         /// <value>New CloudCluster app Options.  Effect: Adds sections, keys and values in CloudCluster/Options </value>
         [DataMember(Name="newOptions", EmitDefaultValue=false)]
         public Object NewOptions { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -145,8 +149,13 @@ namespace Genesys.Provisioning.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

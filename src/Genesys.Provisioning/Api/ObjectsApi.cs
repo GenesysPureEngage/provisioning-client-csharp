@@ -262,9 +262,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (objectType != null) localVarPathParams.Add("object_type", Configuration.ApiClient.ParameterToString(objectType)); // path parameter
             if (dnType != null) localVarQueryParams.Add("dn_type", Configuration.ApiClient.ParameterToString(dnType)); // query parameter
             if (limit != null) localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
@@ -290,7 +287,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<GetObjectsSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (GetObjectsSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetObjectsSuccessResponse)));
-            
         }
 
         /// <summary>
@@ -352,9 +348,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (objectType != null) localVarPathParams.Add("object_type", Configuration.ApiClient.ParameterToString(objectType)); // path parameter
             if (dnType != null) localVarQueryParams.Add("dn_type", Configuration.ApiClient.ParameterToString(dnType)); // query parameter
             if (limit != null) localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
@@ -380,7 +373,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<GetObjectsSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (GetObjectsSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetObjectsSuccessResponse)));
-            
         }
 
     }

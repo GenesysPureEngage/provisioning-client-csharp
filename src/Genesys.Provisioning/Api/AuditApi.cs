@@ -253,9 +253,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (limit != null) localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
             if (asc != null) localVarQueryParams.Add("asc", Configuration.ApiClient.ParameterToString(asc)); // query parameter
             if (orderBy != null) localVarQueryParams.Add("orderBy", Configuration.ApiClient.ParameterToString(orderBy)); // query parameter
@@ -280,7 +277,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<ApiAuditSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ApiAuditSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiAuditSuccessResponse)));
-            
         }
 
         /// <summary>
@@ -337,9 +333,6 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (limit != null) localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
             if (asc != null) localVarQueryParams.Add("asc", Configuration.ApiClient.ParameterToString(asc)); // query parameter
             if (orderBy != null) localVarQueryParams.Add("orderBy", Configuration.ApiClient.ParameterToString(orderBy)); // query parameter
@@ -364,7 +357,6 @@ namespace Genesys.Provisioning.Api
             return new ApiResponse<ApiAuditSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (ApiAuditSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiAuditSuccessResponse)));
-            
         }
 
     }

@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 
 namespace Genesys.Provisioning.Model
 {
@@ -48,18 +49,21 @@ namespace Genesys.Provisioning.Model
         /// <value>DBID of the CME App.</value>
         [DataMember(Name="cmeAppDBID", EmitDefaultValue=false)]
         public string CmeAppDBID { get; set; }
+
         /// <summary>
         /// Sections, keys and values of CloudCluster/Options.
         /// </summary>
         /// <value>Sections, keys and values of CloudCluster/Options.</value>
         [DataMember(Name="options", EmitDefaultValue=false)]
         public Object Options { get; set; }
+
         /// <summary>
         /// Name of the CME App (CloudCluster by default).
         /// </summary>
         /// <value>Name of the CME App (CloudCluster by default).</value>
         [DataMember(Name="cmeAppName", EmitDefaultValue=false)]
         public string CmeAppName { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -145,8 +149,13 @@ namespace Genesys.Provisioning.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

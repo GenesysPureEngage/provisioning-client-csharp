@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 
 namespace Genesys.Provisioning.Model
 {
@@ -46,12 +47,14 @@ namespace Genesys.Provisioning.Model
         /// <value>Skill name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
         /// <summary>
         /// Skill level. Should be a positive integer number in numeric or string format. If level is equal to &#39;&#39; the skill will be unassigned.
         /// </summary>
         /// <value>Skill level. Should be a positive integer number in numeric or string format. If level is equal to &#39;&#39; the skill will be unassigned.</value>
         [DataMember(Name="level", EmitDefaultValue=false)]
         public int? Level { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -129,8 +132,13 @@ namespace Genesys.Provisioning.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

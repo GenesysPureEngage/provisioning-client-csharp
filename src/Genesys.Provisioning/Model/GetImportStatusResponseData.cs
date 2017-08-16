@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 
 namespace Genesys.Provisioning.Model
 {
@@ -62,60 +63,70 @@ namespace Genesys.Provisioning.Model
         /// <value>Active importers IDs.</value>
         [DataMember(Name="activeImporters", EmitDefaultValue=false)]
         public List<string> ActiveImporters { get; set; }
+
         /// <summary>
         /// Last object name processed.
         /// </summary>
         /// <value>Last object name processed.</value>
         [DataMember(Name="lastEntity", EmitDefaultValue=false)]
         public string LastEntity { get; set; }
+
         /// <summary>
         /// Admin login.
         /// </summary>
         /// <value>Admin login.</value>
         [DataMember(Name="adminName", EmitDefaultValue=false)]
         public string AdminName { get; set; }
+
         /// <summary>
         /// Sheet name processed.
         /// </summary>
         /// <value>Sheet name processed.</value>
         [DataMember(Name="sheetName", EmitDefaultValue=false)]
         public string SheetName { get; set; }
+
         /// <summary>
         /// Number of records processed total.
         /// </summary>
         /// <value>Number of records processed total.</value>
         [DataMember(Name="totalCount", EmitDefaultValue=false)]
         public decimal? TotalCount { get; set; }
+
         /// <summary>
         /// true if user pressed Stop Import
         /// </summary>
         /// <value>true if user pressed Stop Import</value>
         [DataMember(Name="stopRequested", EmitDefaultValue=false)]
         public bool? StopRequested { get; set; }
+
         /// <summary>
         /// Number of records processed succesfully.
         /// </summary>
         /// <value>Number of records processed succesfully.</value>
         [DataMember(Name="succeedCount", EmitDefaultValue=false)]
         public decimal? SucceedCount { get; set; }
+
         /// <summary>
         /// Array of errors during import.
         /// </summary>
         /// <value>Array of errors during import.</value>
         [DataMember(Name="failed", EmitDefaultValue=false)]
         public List<string> Failed { get; set; }
+
         /// <summary>
         /// true if import stopped.
         /// </summary>
         /// <value>true if import stopped.</value>
         [DataMember(Name="stopped", EmitDefaultValue=false)]
         public bool? Stopped { get; set; }
+
         /// <summary>
         /// Current operation.
         /// </summary>
         /// <value>Current operation.</value>
         [DataMember(Name="operation", EmitDefaultValue=false)]
         public string Operation { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -257,8 +268,13 @@ namespace Genesys.Provisioning.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

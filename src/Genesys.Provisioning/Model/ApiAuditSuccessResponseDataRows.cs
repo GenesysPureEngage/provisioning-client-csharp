@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 
 namespace Genesys.Provisioning.Model
 {
@@ -62,36 +63,42 @@ namespace Genesys.Provisioning.Model
         /// <value>User name for audit action in domain\\login format</value>
         [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
+
         /// <summary>
         /// Audit level (info, error)
         /// </summary>
         /// <value>Audit level (info, error)</value>
         [DataMember(Name="level", EmitDefaultValue=false)]
         public string Level { get; set; }
+
         /// <summary>
         /// Additional Audit data
         /// </summary>
         /// <value>Additional Audit data</value>
         [DataMember(Name="extradata", EmitDefaultValue=false)]
         public Object Extradata { get; set; }
+
         /// <summary>
         /// Audit message
         /// </summary>
         /// <value>Audit message</value>
         [DataMember(Name="msg", EmitDefaultValue=false)]
         public string Msg { get; set; }
+
         /// <summary>
         /// Database ID of Audit log line
         /// </summary>
         /// <value>Database ID of Audit log line</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public decimal? Id { get; set; }
+
         /// <summary>
         /// Audit log line create time
         /// </summary>
         /// <value>Audit log line create time</value>
         [DataMember(Name="createdat", EmitDefaultValue=false)]
         public string Createdat { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -201,8 +208,13 @@ namespace Genesys.Provisioning.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

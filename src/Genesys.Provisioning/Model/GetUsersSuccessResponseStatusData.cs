@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 
 namespace Genesys.Provisioning.Model
 {
@@ -48,18 +49,21 @@ namespace Genesys.Provisioning.Model
         /// <value>Total number of users. Available if dbid parameter is absent.</value>
         [DataMember(Name="totalCount", EmitDefaultValue=false)]
         public int? TotalCount { get; set; }
+
         /// <summary>
         /// List of user objects fetched if dbid parameter is absent.
         /// </summary>
         /// <value>List of user objects fetched if dbid parameter is absent.</value>
         [DataMember(Name="users", EmitDefaultValue=false)]
         public List<Object> Users { get; set; }
+
         /// <summary>
         /// User object fetched if dbid parameter is a person DBID or &#39;me&#39;.
         /// </summary>
         /// <value>User object fetched if dbid parameter is a person DBID or &#39;me&#39;.</value>
         [DataMember(Name="user", EmitDefaultValue=false)]
         public Object User { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -145,8 +149,13 @@ namespace Genesys.Provisioning.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

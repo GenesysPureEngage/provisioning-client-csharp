@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 
 namespace Genesys.Provisioning.Model
 {
@@ -30,9 +31,9 @@ namespace Genesys.Provisioning.Model
     public partial class AddUserData :  IEquatable<AddUserData>, IValidatableObject
     {
         /// <summary>
-        /// Specifies the sip phone typed if supportSoftPhone = true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN's \"TServer\" section 
+        /// Specifies the sip phone typed if supportSoftPhone &#x3D; true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN&#39;s \&quot;TServer\&quot; section 
         /// </summary>
-        /// <value>Specifies the sip phone typed if supportSoftPhone = true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN's \"TServer\" section </value>
+        /// <value>Specifies the sip phone typed if supportSoftPhone &#x3D; true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN&#39;s \&quot;TServer\&quot; section </value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum SipPhoneTypeEnum
         {
@@ -63,9 +64,9 @@ namespace Genesys.Provisioning.Model
         }
 
         /// <summary>
-        /// Specifies the sip phone typed if supportSoftPhone = true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN's \"TServer\" section 
+        /// Specifies the sip phone typed if supportSoftPhone &#x3D; true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN&#39;s \&quot;TServer\&quot; section 
         /// </summary>
-        /// <value>Specifies the sip phone typed if supportSoftPhone = true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN's \"TServer\" section </value>
+        /// <value>Specifies the sip phone typed if supportSoftPhone &#x3D; true.  Effect: Specifies  the sip phone type and corresponding annex to be written to the DN&#39;s \&quot;TServer\&quot; section </value>
         [DataMember(Name="sipPhoneType", EmitDefaultValue=false)]
         public SipPhoneTypeEnum? SipPhoneType { get; set; }
         /// <summary>
@@ -234,125 +235,147 @@ namespace Genesys.Provisioning.Model
         /// <value>Enable SIP Phone, true/false.  Effect: Writes corresponding information to the TServer annex of the created DNs (see sipPhoneType) </value>
         [DataMember(Name="supportSoftPhone", EmitDefaultValue=false)]
         public bool? SupportSoftPhone { get; set; }
+
         /// <summary>
         /// user&#39;s Employee ID.  Effect: Controls the value of the corresponding CfgPerson attribute 
         /// </summary>
         /// <value>user&#39;s Employee ID.  Effect: Controls the value of the corresponding CfgPerson attribute </value>
         [DataMember(Name="employeeID", EmitDefaultValue=false)]
         public string EmployeeID { get; set; }
+
         /// <summary>
         /// A list of phone number descriptors used to create the user&#39;s DNs.  Effect: For each phone number, a corresponding DN will be created on all of the switches specified by \&quot;switchNames\&quot; and assigned to the specified place. 
         /// </summary>
         /// <value>A list of phone number descriptors used to create the user&#39;s DNs.  Effect: For each phone number, a corresponding DN will be created on all of the switches specified by \&quot;switchNames\&quot; and assigned to the specified place. </value>
         [DataMember(Name="phones", EmitDefaultValue=false)]
         public List<Extension> Phones { get; set; }
+
         /// <summary>
         /// List of access groups that the user should belong to.  Effect: The user will be assigned to each group that can be located. If a group does not already exist, it will NOT be created. 
         /// </summary>
         /// <value>List of access groups that the user should belong to.  Effect: The user will be assigned to each group that can be located. If a group does not already exist, it will NOT be created. </value>
         [DataMember(Name="accessGroups", EmitDefaultValue=false)]
         public List<string> AccessGroups { get; set; }
+
         /// <summary>
         /// Gets or Sets Wwe
         /// </summary>
         [DataMember(Name="wwe", EmitDefaultValue=false)]
         public AddUserDataWwe Wwe { get; set; }
+
         /// <summary>
         /// External ID.  Effect: Controls the value of the corresponding CfgPerson attribute 
         /// </summary>
         /// <value>External ID.  Effect: Controls the value of the corresponding CfgPerson attribute </value>
         [DataMember(Name="externalID", EmitDefaultValue=false)]
         public string ExternalID { get; set; }
+
         /// <summary>
         /// A list of places available to the user (for multimedia only users). This field is mutual with &#39;phones&#39;. Effect: The list is written to the current CfgPerson&#39;s \&quot;htcc\&quot; annex. e.g. CfgPerson/userProperties/htcc/place &#x3D; p1, p2, p3 
         /// </summary>
         /// <value>A list of places available to the user (for multimedia only users). This field is mutual with &#39;phones&#39;. Effect: The list is written to the current CfgPerson&#39;s \&quot;htcc\&quot; annex. e.g. CfgPerson/userProperties/htcc/place &#x3D; p1, p2, p3 </value>
         [DataMember(Name="placeNames", EmitDefaultValue=false)]
         public List<string> PlaceNames { get; set; }
+
         /// <summary>
         /// List of agent groups that the user should be assigned to.  Effect: The user will be assigned to each group that already exists. If a particular group is not already in the system it will be created. 
         /// </summary>
         /// <value>List of agent groups that the user should be assigned to.  Effect: The user will be assigned to each group that already exists. If a particular group is not already in the system it will be created. </value>
         [DataMember(Name="agentGroups", EmitDefaultValue=false)]
         public List<string> AgentGroups { get; set; }
+
         /// <summary>
         /// User&#39;s Voice Mail. Effect: Written to the user&#39;s CfgAgentLogin.userProperties.TServer.gvm_mailbox 
         /// </summary>
         /// <value>User&#39;s Voice Mail. Effect: Written to the user&#39;s CfgAgentLogin.userProperties.TServer.gvm_mailbox </value>
         [DataMember(Name="voiceMail", EmitDefaultValue=false)]
         public int? VoiceMail { get; set; }
+
         /// <summary>
         /// User&#39;s email.  Effect: Controls the value of the corresponding CfgPerson attribute 
         /// </summary>
         /// <value>User&#39;s email.  Effect: Controls the value of the corresponding CfgPerson attribute </value>
         [DataMember(Name="emailAddress", EmitDefaultValue=false)]
         public string EmailAddress { get; set; }
+
         /// <summary>
         /// Password as plain text.  Effect: Controls the value of the corresponding CfgPerson attribute 
         /// </summary>
         /// <value>Password as plain text.  Effect: Controls the value of the corresponding CfgPerson attribute </value>
         [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
+
         /// <summary>
         /// if &#39;true&#39;, user will be asked to change password on first login.  Effect: Controls the value of the corresponding CfgPerson attribute 
         /// </summary>
         /// <value>if &#39;true&#39;, user will be asked to change password on first login.  Effect: Controls the value of the corresponding CfgPerson attribute </value>
         [DataMember(Name="changePasswordOnNextLogin", EmitDefaultValue=false)]
         public bool? ChangePasswordOnNextLogin { get; set; }
+
         /// <summary>
         /// User unique login.  Effect: Controls the value of the corresponding CfgPerson attribute 
         /// </summary>
         /// <value>User unique login.  Effect: Controls the value of the corresponding CfgPerson attribute </value>
         [DataMember(Name="userName", EmitDefaultValue=false)]
         public string UserName { get; set; }
+
         /// <summary>
         /// User&#39;s first name.  Effect: Controls the value of the corresponding CfgPerson attribute 
         /// </summary>
         /// <value>User&#39;s first name.  Effect: Controls the value of the corresponding CfgPerson attribute </value>
         [DataMember(Name="firstName", EmitDefaultValue=false)]
         public string FirstName { get; set; }
+
         /// <summary>
         /// List of Skills to assign to the user.  Effect: The list contains a collection of skill descriptors. If the corresponding skill is found, it is assigned to the user with the specified level. If it is not found, the skill is created and then assigned. 
         /// </summary>
         /// <value>List of Skills to assign to the user.  Effect: The list contains a collection of skill descriptors. If the corresponding skill is found, it is assigned to the user with the specified level. If it is not found, the skill is created and then assigned. </value>
         [DataMember(Name="skills", EmitDefaultValue=false)]
         public List<Skill> Skills { get; set; }
+
         /// <summary>
         /// User&#39;s last name.  Effect: Controls the value of the corresponding CfgPerson attribute 
         /// </summary>
         /// <value>User&#39;s last name.  Effect: Controls the value of the corresponding CfgPerson attribute </value>
         [DataMember(Name="lastName", EmitDefaultValue=false)]
         public string LastName { get; set; }
+
         /// <summary>
         /// User is enabled or disabled.  Effect: Controls the value of the corresponding CfgPerson attribute 
         /// </summary>
         /// <value>User is enabled or disabled.  Effect: Controls the value of the corresponding CfgPerson attribute </value>
         [DataMember(Name="enabled", EmitDefaultValue=false)]
         public bool? Enabled { get; set; }
+
         /// <summary>
         /// The switch names that the user will work on.  Effect: A list of switches where the user&#39;s telephony objects will be created (i.e. dns, agent logins) 
         /// </summary>
         /// <value>The switch names that the user will work on.  Effect: A list of switches where the user&#39;s telephony objects will be created (i.e. dns, agent logins) </value>
         [DataMember(Name="switchNames", EmitDefaultValue=false)]
         public List<string> SwitchNames { get; set; }
+
+
         /// <summary>
         /// Specifies if the user is an agent. 
         /// </summary>
         /// <value>Specifies if the user is an agent. </value>
         [DataMember(Name="isAgent", EmitDefaultValue=false)]
         public bool? IsAgent { get; set; }
+
         /// <summary>
         /// User&#39;s Wrap Up Time.  Effect: Configured for each CfgAgentLogin 
         /// </summary>
         /// <value>User&#39;s Wrap Up Time.  Effect: Configured for each CfgAgentLogin </value>
         [DataMember(Name="wrapUpTime", EmitDefaultValue=false)]
         public string WrapUpTime { get; set; }
+
         /// <summary>
         /// The user&#39;s login code.  Effect: A corresponding CfgAgentLogin will be created on all switches in the \&quot;switchNames\&quot; collection. It will then be assigned to the CfgPerson that&#39;s being created. 
         /// </summary>
         /// <value>The user&#39;s login code.  Effect: A corresponding CfgAgentLogin will be created on all switches in the \&quot;switchNames\&quot; collection. It will then be assigned to the CfgPerson that&#39;s being created. </value>
         [DataMember(Name="loginCode", EmitDefaultValue=false)]
         public string LoginCode { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -590,8 +613,13 @@ namespace Genesys.Provisioning.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

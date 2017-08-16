@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 
 namespace Genesys.Provisioning.Model
 {
@@ -67,12 +68,14 @@ namespace Genesys.Provisioning.Model
         /// <value>User unique login in form: domain.com\\login </value>
         [DataMember(Name="domain_username", EmitDefaultValue=false)]
         public string DomainUsername { get; set; }
+
         /// <summary>
         /// Password as plain text. 
         /// </summary>
         /// <value>Password as plain text. </value>
         [DataMember(Name="password", EmitDefaultValue=false)]
         public string Password { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -150,8 +153,13 @@ namespace Genesys.Provisioning.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

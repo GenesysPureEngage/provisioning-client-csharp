@@ -14,70 +14,75 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Genesys.Provisioning.Client;
+using Genesys.Provisioning.Model;
 
 namespace Genesys.Provisioning.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IDocumentationApi : IApiAccessor
+    public interface ISystemApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Returns API description in Swagger format
+        /// execute service method on Node to avoid excessive requests from client
         /// </summary>
         /// <remarks>
-        /// Returns API description in Swagger format
+        /// This operation will execute service method on Node
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceName">Service name</param>
         /// <returns></returns>
-        void SwaggerDoc ();
+        void ExecuteServiceMethod (string serviceName);
 
         /// <summary>
-        /// Returns API description in Swagger format
+        /// execute service method on Node to avoid excessive requests from client
         /// </summary>
         /// <remarks>
-        /// Returns API description in Swagger format
+        /// This operation will execute service method on Node
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceName">Service name</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> SwaggerDocWithHttpInfo ();
+        ApiResponse<Object> ExecuteServiceMethodWithHttpInfo (string serviceName);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Returns API description in Swagger format
+        /// execute service method on Node to avoid excessive requests from client
         /// </summary>
         /// <remarks>
-        /// Returns API description in Swagger format
+        /// This operation will execute service method on Node
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceName">Service name</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SwaggerDocAsync ();
+        System.Threading.Tasks.Task ExecuteServiceMethodAsync (string serviceName);
 
         /// <summary>
-        /// Returns API description in Swagger format
+        /// execute service method on Node to avoid excessive requests from client
         /// </summary>
         /// <remarks>
-        /// Returns API description in Swagger format
+        /// This operation will execute service method on Node
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceName">Service name</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SwaggerDocAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> ExecuteServiceMethodAsyncWithHttpInfo (string serviceName);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class DocumentationApi : IDocumentationApi
+    public partial class SystemApi : ISystemApi
     {
         private Genesys.Provisioning.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DocumentationApi"/> class.
+        /// Initializes a new instance of the <see cref="SystemApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public DocumentationApi(String basePath)
+        public SystemApi(String basePath)
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
 
@@ -91,12 +96,12 @@ namespace Genesys.Provisioning.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DocumentationApi"/> class
+        /// Initializes a new instance of the <see cref="SystemApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public DocumentationApi(Configuration configuration = null)
+        public SystemApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -176,24 +181,29 @@ namespace Genesys.Provisioning.Api
         }
 
         /// <summary>
-        /// Returns API description in Swagger format Returns API description in Swagger format
+        /// execute service method on Node to avoid excessive requests from client This operation will execute service method on Node
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceName">Service name</param>
         /// <returns></returns>
-        public void SwaggerDoc ()
+        public void ExecuteServiceMethod (string serviceName)
         {
-             SwaggerDocWithHttpInfo();
+             ExecuteServiceMethodWithHttpInfo(serviceName);
         }
 
         /// <summary>
-        /// Returns API description in Swagger format Returns API description in Swagger format
+        /// execute service method on Node to avoid excessive requests from client This operation will execute service method on Node
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceName">Service name</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> SwaggerDocWithHttpInfo ()
+        public ApiResponse<Object> ExecuteServiceMethodWithHttpInfo (string serviceName)
         {
+            // verify the required parameter 'serviceName' is set
+            if (serviceName == null)
+                throw new ApiException(400, "Missing required parameter 'serviceName' when calling SystemApi->ExecuteServiceMethod");
 
-            var localVarPath = "/doc";
+            var localVarPath = "/service-proxy/{serviceName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -215,18 +225,19 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (serviceName != null) localVarPathParams.Add("serviceName", Configuration.ApiClient.ParameterToString(serviceName)); // path parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("SwaggerDoc", localVarResponse);
+                Exception exception = ExceptionFactory("ExecuteServiceMethod", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -236,25 +247,30 @@ namespace Genesys.Provisioning.Api
         }
 
         /// <summary>
-        /// Returns API description in Swagger format Returns API description in Swagger format
+        /// execute service method on Node to avoid excessive requests from client This operation will execute service method on Node
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceName">Service name</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SwaggerDocAsync ()
+        public async System.Threading.Tasks.Task ExecuteServiceMethodAsync (string serviceName)
         {
-             await SwaggerDocAsyncWithHttpInfo();
+             await ExecuteServiceMethodAsyncWithHttpInfo(serviceName);
 
         }
 
         /// <summary>
-        /// Returns API description in Swagger format Returns API description in Swagger format
+        /// execute service method on Node to avoid excessive requests from client This operation will execute service method on Node
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceName">Service name</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> SwaggerDocAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ExecuteServiceMethodAsyncWithHttpInfo (string serviceName)
         {
+            // verify the required parameter 'serviceName' is set
+            if (serviceName == null)
+                throw new ApiException(400, "Missing required parameter 'serviceName' when calling SystemApi->ExecuteServiceMethod");
 
-            var localVarPath = "/doc";
+            var localVarPath = "/service-proxy/{serviceName}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -276,18 +292,19 @@ namespace Genesys.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (serviceName != null) localVarPathParams.Add("serviceName", Configuration.ApiClient.ParameterToString(serviceName)); // path parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("SwaggerDoc", localVarResponse);
+                Exception exception = ExceptionFactory("ExecuteServiceMethod", localVarResponse);
                 if (exception != null) throw exception;
             }
 

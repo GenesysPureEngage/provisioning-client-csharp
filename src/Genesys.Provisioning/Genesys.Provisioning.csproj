@@ -4,7 +4,7 @@ Provisioning API
 
 The provisioning service will be used to create objects in configuration server in a way that is consistent with the BEC model. The \"users\" resource will be used to perform CRUD operations on config server person objects. Note that this API will extend the low level configuration server API to add additional functionality that will allow persons to be created in a way that makes them immediately useable in BEC. Operations on this resource may result in other configuration objects being modified as well. 
 
-OpenAPI spec version: 9.0.000.00.876
+OpenAPI spec version: 9.0.000.00.877
 
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
@@ -12,7 +12,7 @@ OpenAPI spec version: 9.0.000.00.876
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6086C900-24E7-4F22-A418-15AEB43C0CC7}</ProjectGuid>
+    <ProjectGuid>{123BCB97-72C6-41F8-BAAF-43DB0A7FABC8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Genesys.Provisioning</RootNamespace>

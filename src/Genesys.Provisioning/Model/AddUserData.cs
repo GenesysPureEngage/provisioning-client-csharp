@@ -82,6 +82,7 @@ namespace Genesys.Provisioning.Model
         /// <param name="EmployeeID">user&#39;s Employee ID.  Effect: Controls the value of the corresponding CfgPerson attribute  (default to &quot;empid123&quot;).</param>
         /// <param name="ExternalID">External ID.  Effect: Controls the value of the corresponding CfgPerson attribute  (default to &quot;extid123&quot;).</param>
         /// <param name="Enabled">User is enabled or disabled.  Effect: Controls the value of the corresponding CfgPerson attribute  (default to true).</param>
+        /// <param name="Folder">Folder where create a new user. If no folder is specified user will be created in a root folder .</param>
         /// <param name="UserName">User unique login.  Effect: Controls the value of the corresponding CfgPerson attribute  (required) (default to &quot;username123&quot;).</param>
         /// <param name="FirstName">User&#39;s first name.  Effect: Controls the value of the corresponding CfgPerson attribute  (required) (default to &quot;firstname123&quot;).</param>
         /// <param name="LastName">User&#39;s last name.  Effect: Controls the value of the corresponding CfgPerson attribute  (required) (default to &quot;lastname123&quot;).</param>
@@ -99,7 +100,7 @@ namespace Genesys.Provisioning.Model
         /// <param name="AccessGroups">List of access groups that the user should belong to.  Effect: The user will be assigned to each group that can be located. If a group does not already exist, it will NOT be created. .</param>
         /// <param name="VoiceMail">User&#39;s Voice Mail. Effect: Written to the user&#39;s CfgAgentLogin.userProperties.TServer.gvm_mailbox .</param>
         /// <param name="WrapUpTime">User&#39;s Wrap Up Time.  Effect: Configured for each CfgAgentLogin  (default to &quot;123&quot;).</param>
-        public AddUserData(bool? ChangePasswordOnNextLogin = false, string EmailAddress = "test@email.com", string EmployeeID = "empid123", string ExternalID = "extid123", bool? Enabled = true, string UserName = "username123", string FirstName = "firstname123", string LastName = "lastname123", string LoginCode = default(string), string Password = "username123", List<string> PlaceNames = default(List<string>), bool? IsAgent = true, AddUserDataWwe Wwe = default(AddUserDataWwe), List<string> SwitchNames = default(List<string>), List<Extension> Phones = default(List<Extension>), bool? SupportSoftPhone = false, SipPhoneTypeEnum? SipPhoneType = SipPhoneTypeEnum.DISABLECTI, List<Skill> Skills = default(List<Skill>), List<string> AgentGroups = default(List<string>), List<string> AccessGroups = default(List<string>), int? VoiceMail = default(int?), string WrapUpTime = "123")
+        public AddUserData(bool? ChangePasswordOnNextLogin = false, string EmailAddress = "test@email.com", string EmployeeID = "empid123", string ExternalID = "extid123", bool? Enabled = true, string Folder = default(string), string UserName = "username123", string FirstName = "firstname123", string LastName = "lastname123", string LoginCode = default(string), string Password = "username123", List<string> PlaceNames = default(List<string>), bool? IsAgent = true, AddUserDataWwe Wwe = default(AddUserDataWwe), List<string> SwitchNames = default(List<string>), List<Extension> Phones = default(List<Extension>), bool? SupportSoftPhone = false, SipPhoneTypeEnum? SipPhoneType = SipPhoneTypeEnum.DISABLECTI, List<Skill> Skills = default(List<Skill>), List<string> AgentGroups = default(List<string>), List<string> AccessGroups = default(List<string>), int? VoiceMail = default(int?), string WrapUpTime = "123")
         {
             // to ensure "UserName" is required (not null)
             if (UserName == null)
@@ -182,6 +183,7 @@ namespace Genesys.Provisioning.Model
             {
                 this.Enabled = Enabled;
             }
+            this.Folder = Folder;
             this.LoginCode = LoginCode;
             this.PlaceNames = PlaceNames;
             // use default value if no "IsAgent" provided
@@ -263,6 +265,13 @@ namespace Genesys.Provisioning.Model
         /// <value>User is enabled or disabled.  Effect: Controls the value of the corresponding CfgPerson attribute </value>
         [DataMember(Name="enabled", EmitDefaultValue=false)]
         public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// Folder where create a new user. If no folder is specified user will be created in a root folder 
+        /// </summary>
+        /// <value>Folder where create a new user. If no folder is specified user will be created in a root folder </value>
+        [DataMember(Name="folder", EmitDefaultValue=false)]
+        public string Folder { get; set; }
 
         /// <summary>
         /// User unique login.  Effect: Controls the value of the corresponding CfgPerson attribute 
@@ -389,6 +398,7 @@ namespace Genesys.Provisioning.Model
             sb.Append("  EmployeeID: ").Append(EmployeeID).Append("\n");
             sb.Append("  ExternalID: ").Append(ExternalID).Append("\n");
             sb.Append("  Enabled: ").Append(Enabled).Append("\n");
+            sb.Append("  Folder: ").Append(Folder).Append("\n");
             sb.Append("  UserName: ").Append(UserName).Append("\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
@@ -466,6 +476,11 @@ namespace Genesys.Provisioning.Model
                     this.Enabled == other.Enabled ||
                     this.Enabled != null &&
                     this.Enabled.Equals(other.Enabled)
+                ) && 
+                (
+                    this.Folder == other.Folder ||
+                    this.Folder != null &&
+                    this.Folder.Equals(other.Folder)
                 ) && 
                 (
                     this.UserName == other.UserName ||
@@ -575,6 +590,8 @@ namespace Genesys.Provisioning.Model
                     hash = hash * 59 + this.ExternalID.GetHashCode();
                 if (this.Enabled != null)
                     hash = hash * 59 + this.Enabled.GetHashCode();
+                if (this.Folder != null)
+                    hash = hash * 59 + this.Folder.GetHashCode();
                 if (this.UserName != null)
                     hash = hash * 59 + this.UserName.GetHashCode();
                 if (this.FirstName != null)

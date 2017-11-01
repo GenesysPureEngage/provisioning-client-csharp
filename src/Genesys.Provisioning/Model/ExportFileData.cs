@@ -129,45 +129,43 @@ namespace Genesys.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ExportFileData);
+            return this.Equals(input as ExportFileData);
         }
 
         /// <summary>
         /// Returns true if ExportFileData instances are equal
         /// </summary>
-        /// <param name="other">Instance of ExportFileData to be compared</param>
+        /// <param name="input">Instance of ExportFileData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ExportFileData other)
+        public bool Equals(ExportFileData input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Fields == other.Fields ||
+                    this.Fields == input.Fields ||
                     this.Fields != null &&
-                    this.Fields.SequenceEqual(other.Fields)
+                    this.Fields.SequenceEqual(input.Fields)
                 ) && 
                 (
-                    this.FileName == other.FileName ||
-                    this.FileName != null &&
-                    this.FileName.Equals(other.FileName)
+                    this.FileName == input.FileName ||
+                    (this.FileName != null &&
+                    this.FileName.Equals(input.FileName))
                 ) && 
                 (
-                    this.PersonDBIDs == other.PersonDBIDs ||
+                    this.PersonDBIDs == input.PersonDBIDs ||
                     this.PersonDBIDs != null &&
-                    this.PersonDBIDs.SequenceEqual(other.PersonDBIDs)
+                    this.PersonDBIDs.SequenceEqual(input.PersonDBIDs)
                 ) && 
                 (
-                    this.FilterParameters == other.FilterParameters ||
-                    this.FilterParameters != null &&
-                    this.FilterParameters.Equals(other.FilterParameters)
+                    this.FilterParameters == input.FilterParameters ||
+                    (this.FilterParameters != null &&
+                    this.FilterParameters.Equals(input.FilterParameters))
                 );
         }
 
@@ -177,20 +175,18 @@ namespace Genesys.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Fields != null)
-                    hash = hash * 59 + this.Fields.GetHashCode();
+                    hashCode = hashCode * 59 + this.Fields.GetHashCode();
                 if (this.FileName != null)
-                    hash = hash * 59 + this.FileName.GetHashCode();
+                    hashCode = hashCode * 59 + this.FileName.GetHashCode();
                 if (this.PersonDBIDs != null)
-                    hash = hash * 59 + this.PersonDBIDs.GetHashCode();
+                    hashCode = hashCode * 59 + this.PersonDBIDs.GetHashCode();
                 if (this.FilterParameters != null)
-                    hash = hash * 59 + this.FilterParameters.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.FilterParameters.GetHashCode();
+                return hashCode;
             }
         }
 

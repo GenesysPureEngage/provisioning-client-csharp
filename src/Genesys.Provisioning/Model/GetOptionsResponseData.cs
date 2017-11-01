@@ -91,40 +91,38 @@ namespace Genesys.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as GetOptionsResponseData);
+            return this.Equals(input as GetOptionsResponseData);
         }
 
         /// <summary>
         /// Returns true if GetOptionsResponseData instances are equal
         /// </summary>
-        /// <param name="other">Instance of GetOptionsResponseData to be compared</param>
+        /// <param name="input">Instance of GetOptionsResponseData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetOptionsResponseData other)
+        public bool Equals(GetOptionsResponseData input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Options == other.Options ||
-                    this.Options != null &&
-                    this.Options.Equals(other.Options)
+                    this.Options == input.Options ||
+                    (this.Options != null &&
+                    this.Options.Equals(input.Options))
                 ) && 
                 (
-                    this.CmeAppName == other.CmeAppName ||
-                    this.CmeAppName != null &&
-                    this.CmeAppName.Equals(other.CmeAppName)
+                    this.CmeAppName == input.CmeAppName ||
+                    (this.CmeAppName != null &&
+                    this.CmeAppName.Equals(input.CmeAppName))
                 ) && 
                 (
-                    this.CmeAppDBID == other.CmeAppDBID ||
-                    this.CmeAppDBID != null &&
-                    this.CmeAppDBID.Equals(other.CmeAppDBID)
+                    this.CmeAppDBID == input.CmeAppDBID ||
+                    (this.CmeAppDBID != null &&
+                    this.CmeAppDBID.Equals(input.CmeAppDBID))
                 );
         }
 
@@ -134,18 +132,16 @@ namespace Genesys.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Options != null)
-                    hash = hash * 59 + this.Options.GetHashCode();
+                    hashCode = hashCode * 59 + this.Options.GetHashCode();
                 if (this.CmeAppName != null)
-                    hash = hash * 59 + this.CmeAppName.GetHashCode();
+                    hashCode = hashCode * 59 + this.CmeAppName.GetHashCode();
                 if (this.CmeAppDBID != null)
-                    hash = hash * 59 + this.CmeAppDBID.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.CmeAppDBID.GetHashCode();
+                return hashCode;
             }
         }
 

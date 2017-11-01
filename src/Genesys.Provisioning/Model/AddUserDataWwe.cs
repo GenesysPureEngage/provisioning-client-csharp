@@ -71,30 +71,28 @@ namespace Genesys.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as AddUserDataWwe);
+            return this.Equals(input as AddUserDataWwe);
         }
 
         /// <summary>
         /// Returns true if AddUserDataWwe instances are equal
         /// </summary>
-        /// <param name="other">Instance of AddUserDataWwe to be compared</param>
+        /// <param name="input">Instance of AddUserDataWwe to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AddUserDataWwe other)
+        public bool Equals(AddUserDataWwe input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Roles == other.Roles ||
+                    this.Roles == input.Roles ||
                     this.Roles != null &&
-                    this.Roles.SequenceEqual(other.Roles)
+                    this.Roles.SequenceEqual(input.Roles)
                 );
         }
 
@@ -104,14 +102,12 @@ namespace Genesys.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Roles != null)
-                    hash = hash * 59 + this.Roles.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Roles.GetHashCode();
+                return hashCode;
             }
         }
 

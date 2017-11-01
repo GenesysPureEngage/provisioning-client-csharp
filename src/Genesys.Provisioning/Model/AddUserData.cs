@@ -432,140 +432,138 @@ namespace Genesys.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as AddUserData);
+            return this.Equals(input as AddUserData);
         }
 
         /// <summary>
         /// Returns true if AddUserData instances are equal
         /// </summary>
-        /// <param name="other">Instance of AddUserData to be compared</param>
+        /// <param name="input">Instance of AddUserData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AddUserData other)
+        public bool Equals(AddUserData input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.ChangePasswordOnNextLogin == other.ChangePasswordOnNextLogin ||
-                    this.ChangePasswordOnNextLogin != null &&
-                    this.ChangePasswordOnNextLogin.Equals(other.ChangePasswordOnNextLogin)
+                    this.ChangePasswordOnNextLogin == input.ChangePasswordOnNextLogin ||
+                    (this.ChangePasswordOnNextLogin != null &&
+                    this.ChangePasswordOnNextLogin.Equals(input.ChangePasswordOnNextLogin))
                 ) && 
                 (
-                    this.EmailAddress == other.EmailAddress ||
-                    this.EmailAddress != null &&
-                    this.EmailAddress.Equals(other.EmailAddress)
+                    this.EmailAddress == input.EmailAddress ||
+                    (this.EmailAddress != null &&
+                    this.EmailAddress.Equals(input.EmailAddress))
                 ) && 
                 (
-                    this.EmployeeID == other.EmployeeID ||
-                    this.EmployeeID != null &&
-                    this.EmployeeID.Equals(other.EmployeeID)
+                    this.EmployeeID == input.EmployeeID ||
+                    (this.EmployeeID != null &&
+                    this.EmployeeID.Equals(input.EmployeeID))
                 ) && 
                 (
-                    this.ExternalID == other.ExternalID ||
-                    this.ExternalID != null &&
-                    this.ExternalID.Equals(other.ExternalID)
+                    this.ExternalID == input.ExternalID ||
+                    (this.ExternalID != null &&
+                    this.ExternalID.Equals(input.ExternalID))
                 ) && 
                 (
-                    this.Enabled == other.Enabled ||
-                    this.Enabled != null &&
-                    this.Enabled.Equals(other.Enabled)
+                    this.Enabled == input.Enabled ||
+                    (this.Enabled != null &&
+                    this.Enabled.Equals(input.Enabled))
                 ) && 
                 (
-                    this.Folder == other.Folder ||
-                    this.Folder != null &&
-                    this.Folder.Equals(other.Folder)
+                    this.Folder == input.Folder ||
+                    (this.Folder != null &&
+                    this.Folder.Equals(input.Folder))
                 ) && 
                 (
-                    this.UserName == other.UserName ||
-                    this.UserName != null &&
-                    this.UserName.Equals(other.UserName)
+                    this.UserName == input.UserName ||
+                    (this.UserName != null &&
+                    this.UserName.Equals(input.UserName))
                 ) && 
                 (
-                    this.FirstName == other.FirstName ||
-                    this.FirstName != null &&
-                    this.FirstName.Equals(other.FirstName)
+                    this.FirstName == input.FirstName ||
+                    (this.FirstName != null &&
+                    this.FirstName.Equals(input.FirstName))
                 ) && 
                 (
-                    this.LastName == other.LastName ||
-                    this.LastName != null &&
-                    this.LastName.Equals(other.LastName)
+                    this.LastName == input.LastName ||
+                    (this.LastName != null &&
+                    this.LastName.Equals(input.LastName))
                 ) && 
                 (
-                    this.LoginCode == other.LoginCode ||
-                    this.LoginCode != null &&
-                    this.LoginCode.Equals(other.LoginCode)
+                    this.LoginCode == input.LoginCode ||
+                    (this.LoginCode != null &&
+                    this.LoginCode.Equals(input.LoginCode))
                 ) && 
                 (
-                    this.Password == other.Password ||
-                    this.Password != null &&
-                    this.Password.Equals(other.Password)
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
                 ) && 
                 (
-                    this.PlaceNames == other.PlaceNames ||
+                    this.PlaceNames == input.PlaceNames ||
                     this.PlaceNames != null &&
-                    this.PlaceNames.SequenceEqual(other.PlaceNames)
+                    this.PlaceNames.SequenceEqual(input.PlaceNames)
                 ) && 
                 (
-                    this.IsAgent == other.IsAgent ||
-                    this.IsAgent != null &&
-                    this.IsAgent.Equals(other.IsAgent)
+                    this.IsAgent == input.IsAgent ||
+                    (this.IsAgent != null &&
+                    this.IsAgent.Equals(input.IsAgent))
                 ) && 
                 (
-                    this.Wwe == other.Wwe ||
-                    this.Wwe != null &&
-                    this.Wwe.Equals(other.Wwe)
+                    this.Wwe == input.Wwe ||
+                    (this.Wwe != null &&
+                    this.Wwe.Equals(input.Wwe))
                 ) && 
                 (
-                    this.SwitchNames == other.SwitchNames ||
+                    this.SwitchNames == input.SwitchNames ||
                     this.SwitchNames != null &&
-                    this.SwitchNames.SequenceEqual(other.SwitchNames)
+                    this.SwitchNames.SequenceEqual(input.SwitchNames)
                 ) && 
                 (
-                    this.Phones == other.Phones ||
+                    this.Phones == input.Phones ||
                     this.Phones != null &&
-                    this.Phones.SequenceEqual(other.Phones)
+                    this.Phones.SequenceEqual(input.Phones)
                 ) && 
                 (
-                    this.SupportSoftPhone == other.SupportSoftPhone ||
-                    this.SupportSoftPhone != null &&
-                    this.SupportSoftPhone.Equals(other.SupportSoftPhone)
+                    this.SupportSoftPhone == input.SupportSoftPhone ||
+                    (this.SupportSoftPhone != null &&
+                    this.SupportSoftPhone.Equals(input.SupportSoftPhone))
                 ) && 
                 (
-                    this.SipPhoneType == other.SipPhoneType ||
-                    this.SipPhoneType != null &&
-                    this.SipPhoneType.Equals(other.SipPhoneType)
+                    this.SipPhoneType == input.SipPhoneType ||
+                    (this.SipPhoneType != null &&
+                    this.SipPhoneType.Equals(input.SipPhoneType))
                 ) && 
                 (
-                    this.Skills == other.Skills ||
+                    this.Skills == input.Skills ||
                     this.Skills != null &&
-                    this.Skills.SequenceEqual(other.Skills)
+                    this.Skills.SequenceEqual(input.Skills)
                 ) && 
                 (
-                    this.AgentGroups == other.AgentGroups ||
+                    this.AgentGroups == input.AgentGroups ||
                     this.AgentGroups != null &&
-                    this.AgentGroups.SequenceEqual(other.AgentGroups)
+                    this.AgentGroups.SequenceEqual(input.AgentGroups)
                 ) && 
                 (
-                    this.AccessGroups == other.AccessGroups ||
+                    this.AccessGroups == input.AccessGroups ||
                     this.AccessGroups != null &&
-                    this.AccessGroups.SequenceEqual(other.AccessGroups)
+                    this.AccessGroups.SequenceEqual(input.AccessGroups)
                 ) && 
                 (
-                    this.VoiceMail == other.VoiceMail ||
-                    this.VoiceMail != null &&
-                    this.VoiceMail.Equals(other.VoiceMail)
+                    this.VoiceMail == input.VoiceMail ||
+                    (this.VoiceMail != null &&
+                    this.VoiceMail.Equals(input.VoiceMail))
                 ) && 
                 (
-                    this.WrapUpTime == other.WrapUpTime ||
-                    this.WrapUpTime != null &&
-                    this.WrapUpTime.Equals(other.WrapUpTime)
+                    this.WrapUpTime == input.WrapUpTime ||
+                    (this.WrapUpTime != null &&
+                    this.WrapUpTime.Equals(input.WrapUpTime))
                 );
         }
 
@@ -575,58 +573,56 @@ namespace Genesys.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.ChangePasswordOnNextLogin != null)
-                    hash = hash * 59 + this.ChangePasswordOnNextLogin.GetHashCode();
+                    hashCode = hashCode * 59 + this.ChangePasswordOnNextLogin.GetHashCode();
                 if (this.EmailAddress != null)
-                    hash = hash * 59 + this.EmailAddress.GetHashCode();
+                    hashCode = hashCode * 59 + this.EmailAddress.GetHashCode();
                 if (this.EmployeeID != null)
-                    hash = hash * 59 + this.EmployeeID.GetHashCode();
+                    hashCode = hashCode * 59 + this.EmployeeID.GetHashCode();
                 if (this.ExternalID != null)
-                    hash = hash * 59 + this.ExternalID.GetHashCode();
+                    hashCode = hashCode * 59 + this.ExternalID.GetHashCode();
                 if (this.Enabled != null)
-                    hash = hash * 59 + this.Enabled.GetHashCode();
+                    hashCode = hashCode * 59 + this.Enabled.GetHashCode();
                 if (this.Folder != null)
-                    hash = hash * 59 + this.Folder.GetHashCode();
+                    hashCode = hashCode * 59 + this.Folder.GetHashCode();
                 if (this.UserName != null)
-                    hash = hash * 59 + this.UserName.GetHashCode();
+                    hashCode = hashCode * 59 + this.UserName.GetHashCode();
                 if (this.FirstName != null)
-                    hash = hash * 59 + this.FirstName.GetHashCode();
+                    hashCode = hashCode * 59 + this.FirstName.GetHashCode();
                 if (this.LastName != null)
-                    hash = hash * 59 + this.LastName.GetHashCode();
+                    hashCode = hashCode * 59 + this.LastName.GetHashCode();
                 if (this.LoginCode != null)
-                    hash = hash * 59 + this.LoginCode.GetHashCode();
+                    hashCode = hashCode * 59 + this.LoginCode.GetHashCode();
                 if (this.Password != null)
-                    hash = hash * 59 + this.Password.GetHashCode();
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 if (this.PlaceNames != null)
-                    hash = hash * 59 + this.PlaceNames.GetHashCode();
+                    hashCode = hashCode * 59 + this.PlaceNames.GetHashCode();
                 if (this.IsAgent != null)
-                    hash = hash * 59 + this.IsAgent.GetHashCode();
+                    hashCode = hashCode * 59 + this.IsAgent.GetHashCode();
                 if (this.Wwe != null)
-                    hash = hash * 59 + this.Wwe.GetHashCode();
+                    hashCode = hashCode * 59 + this.Wwe.GetHashCode();
                 if (this.SwitchNames != null)
-                    hash = hash * 59 + this.SwitchNames.GetHashCode();
+                    hashCode = hashCode * 59 + this.SwitchNames.GetHashCode();
                 if (this.Phones != null)
-                    hash = hash * 59 + this.Phones.GetHashCode();
+                    hashCode = hashCode * 59 + this.Phones.GetHashCode();
                 if (this.SupportSoftPhone != null)
-                    hash = hash * 59 + this.SupportSoftPhone.GetHashCode();
+                    hashCode = hashCode * 59 + this.SupportSoftPhone.GetHashCode();
                 if (this.SipPhoneType != null)
-                    hash = hash * 59 + this.SipPhoneType.GetHashCode();
+                    hashCode = hashCode * 59 + this.SipPhoneType.GetHashCode();
                 if (this.Skills != null)
-                    hash = hash * 59 + this.Skills.GetHashCode();
+                    hashCode = hashCode * 59 + this.Skills.GetHashCode();
                 if (this.AgentGroups != null)
-                    hash = hash * 59 + this.AgentGroups.GetHashCode();
+                    hashCode = hashCode * 59 + this.AgentGroups.GetHashCode();
                 if (this.AccessGroups != null)
-                    hash = hash * 59 + this.AccessGroups.GetHashCode();
+                    hashCode = hashCode * 59 + this.AccessGroups.GetHashCode();
                 if (this.VoiceMail != null)
-                    hash = hash * 59 + this.VoiceMail.GetHashCode();
+                    hashCode = hashCode * 59 + this.VoiceMail.GetHashCode();
                 if (this.WrapUpTime != null)
-                    hash = hash * 59 + this.WrapUpTime.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.WrapUpTime.GetHashCode();
+                return hashCode;
             }
         }
 

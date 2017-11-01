@@ -129,55 +129,53 @@ namespace Genesys.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ApiAuditSuccessResponseDataRows);
+            return this.Equals(input as ApiAuditSuccessResponseDataRows);
         }
 
         /// <summary>
         /// Returns true if ApiAuditSuccessResponseDataRows instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApiAuditSuccessResponseDataRows to be compared</param>
+        /// <param name="input">Instance of ApiAuditSuccessResponseDataRows to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApiAuditSuccessResponseDataRows other)
+        public bool Equals(ApiAuditSuccessResponseDataRows input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Createdat == other.Createdat ||
-                    this.Createdat != null &&
-                    this.Createdat.Equals(other.Createdat)
+                    this.Createdat == input.Createdat ||
+                    (this.Createdat != null &&
+                    this.Createdat.Equals(input.Createdat))
                 ) && 
                 (
-                    this.Username == other.Username ||
-                    this.Username != null &&
-                    this.Username.Equals(other.Username)
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
                 ) && 
                 (
-                    this.Level == other.Level ||
-                    this.Level != null &&
-                    this.Level.Equals(other.Level)
+                    this.Level == input.Level ||
+                    (this.Level != null &&
+                    this.Level.Equals(input.Level))
                 ) && 
                 (
-                    this.Msg == other.Msg ||
-                    this.Msg != null &&
-                    this.Msg.Equals(other.Msg)
+                    this.Msg == input.Msg ||
+                    (this.Msg != null &&
+                    this.Msg.Equals(input.Msg))
                 ) && 
                 (
-                    this.Extradata == other.Extradata ||
-                    this.Extradata != null &&
-                    this.Extradata.Equals(other.Extradata)
+                    this.Extradata == input.Extradata ||
+                    (this.Extradata != null &&
+                    this.Extradata.Equals(input.Extradata))
                 );
         }
 
@@ -187,24 +185,22 @@ namespace Genesys.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Createdat != null)
-                    hash = hash * 59 + this.Createdat.GetHashCode();
+                    hashCode = hashCode * 59 + this.Createdat.GetHashCode();
                 if (this.Username != null)
-                    hash = hash * 59 + this.Username.GetHashCode();
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 if (this.Level != null)
-                    hash = hash * 59 + this.Level.GetHashCode();
+                    hashCode = hashCode * 59 + this.Level.GetHashCode();
                 if (this.Msg != null)
-                    hash = hash * 59 + this.Msg.GetHashCode();
+                    hashCode = hashCode * 59 + this.Msg.GetHashCode();
                 if (this.Extradata != null)
-                    hash = hash * 59 + this.Extradata.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Extradata.GetHashCode();
+                return hashCode;
             }
         }
 

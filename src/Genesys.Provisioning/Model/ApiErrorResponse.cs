@@ -33,10 +33,23 @@ namespace Genesys.Provisioning.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiErrorResponse" /> class.
         /// </summary>
-        /// <param name="Status">Status.</param>
+        [JsonConstructorAttribute]
+        protected ApiErrorResponse() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiErrorResponse" /> class.
+        /// </summary>
+        /// <param name="Status">Status (required).</param>
         public ApiErrorResponse(ApiErrorResponseStatus Status = default(ApiErrorResponseStatus))
         {
-            this.Status = Status;
+            // to ensure "Status" is required (not null)
+            if (Status == null)
+            {
+                throw new InvalidDataException("Status is a required property for ApiErrorResponse and cannot be null");
+            }
+            else
+            {
+                this.Status = Status;
+            }
         }
         
         /// <summary>

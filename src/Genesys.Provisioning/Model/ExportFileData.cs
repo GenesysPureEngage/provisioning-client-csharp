@@ -41,7 +41,7 @@ namespace Genesys.Provisioning.Model
         /// <param name="Fields">Array of user property names to include  Effect: Only these names will be included in exported user structure  (required).</param>
         /// <param name="FileName">File Name to save exported users.  Effect: Controls the file name to save.  (required) (default to &quot;users.csv&quot;).</param>
         /// <param name="PersonDBIDs">List of User IDs to export  Effect: Controls which users will be exported.  (required).</param>
-        /// <param name="FilterParameters">FilterParameters.</param>
+        /// <param name="FilterParameters">FilterParameters (required).</param>
         public ExportFileData(List<string> Fields = default(List<string>), string FileName = "users.csv", List<string> PersonDBIDs = default(List<string>), ExportFileDataFilterParameters FilterParameters = default(ExportFileDataFilterParameters))
         {
             // to ensure "Fields" is required (not null)
@@ -71,7 +71,15 @@ namespace Genesys.Provisioning.Model
             {
                 this.PersonDBIDs = PersonDBIDs;
             }
-            this.FilterParameters = FilterParameters;
+            // to ensure "FilterParameters" is required (not null)
+            if (FilterParameters == null)
+            {
+                throw new InvalidDataException("FilterParameters is a required property for ExportFileData and cannot be null");
+            }
+            else
+            {
+                this.FilterParameters = FilterParameters;
+            }
         }
         
         /// <summary>

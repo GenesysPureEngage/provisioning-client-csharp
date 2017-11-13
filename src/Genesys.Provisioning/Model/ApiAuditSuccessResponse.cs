@@ -39,7 +39,7 @@ namespace Genesys.Provisioning.Model
         /// Initializes a new instance of the <see cref="ApiAuditSuccessResponse" /> class.
         /// </summary>
         /// <param name="Code">Zero code meaning success (required).</param>
-        /// <param name="Data">Data.</param>
+        /// <param name="Data">Data (required).</param>
         public ApiAuditSuccessResponse(decimal? Code = default(decimal?), ApiAuditSuccessResponseData Data = default(ApiAuditSuccessResponseData))
         {
             // to ensure "Code" is required (not null)
@@ -51,7 +51,15 @@ namespace Genesys.Provisioning.Model
             {
                 this.Code = Code;
             }
-            this.Data = Data;
+            // to ensure "Data" is required (not null)
+            if (Data == null)
+            {
+                throw new InvalidDataException("Data is a required property for ApiAuditSuccessResponse and cannot be null");
+            }
+            else
+            {
+                this.Data = Data;
+            }
         }
         
         /// <summary>

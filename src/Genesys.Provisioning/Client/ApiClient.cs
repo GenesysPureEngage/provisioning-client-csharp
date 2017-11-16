@@ -53,12 +53,12 @@ namespace Genesys.Provisioning.Client
         public ApiClient()
         {
             Configuration = Genesys.Provisioning.Client.Configuration.Default;
-            RestClient = new RestClient("https://localhost/provisioning/v3");
+            RestClient = new RestClient("http://localhost/provisioning/v3");
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path (https://localhost/provisioning/v3).
+        /// with default base path (http://localhost/provisioning/v3).
         /// </summary>
         /// <param name="config">An instance of Configuration.</param>
         public ApiClient(Configuration config)
@@ -73,7 +73,7 @@ namespace Genesys.Provisioning.Client
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "https://localhost/provisioning/v3")
+        public ApiClient(String basePath = "http://localhost/provisioning/v3")
         {
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");

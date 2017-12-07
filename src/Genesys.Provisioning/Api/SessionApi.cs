@@ -31,7 +31,7 @@ namespace Genesys.Provisioning.Api
         /// Initialize-provisioning operation will create a new sessionId and set default.yml:common.cookieName cookie (PROVISIONING_SESSIONID by default). 
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="code">Authentication code recieved from the Auth service</param>
+        /// <param name="code">Authentication code received from the Auth service</param>
         /// <returns>LoginSuccessResponse</returns>
         LoginSuccessResponse InitializeProvisioning (InitProvData code);
 
@@ -42,7 +42,7 @@ namespace Genesys.Provisioning.Api
         /// Initialize-provisioning operation will create a new sessionId and set default.yml:common.cookieName cookie (PROVISIONING_SESSIONID by default). 
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="code">Authentication code recieved from the Auth service</param>
+        /// <param name="code">Authentication code received from the Auth service</param>
         /// <returns>ApiResponse of LoginSuccessResponse</returns>
         ApiResponse<LoginSuccessResponse> InitializeProvisioningWithHttpInfo (InitProvData code);
         /// <summary>
@@ -73,7 +73,7 @@ namespace Genesys.Provisioning.Api
         /// Initialize-provisioning operation will create a new sessionId and set default.yml:common.cookieName cookie (PROVISIONING_SESSIONID by default). 
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="code">Authentication code recieved from the Auth service</param>
+        /// <param name="code">Authentication code received from the Auth service</param>
         /// <returns>Task of LoginSuccessResponse</returns>
         System.Threading.Tasks.Task<LoginSuccessResponse> InitializeProvisioningAsync (InitProvData code);
 
@@ -84,7 +84,7 @@ namespace Genesys.Provisioning.Api
         /// Initialize-provisioning operation will create a new sessionId and set default.yml:common.cookieName cookie (PROVISIONING_SESSIONID by default). 
         /// </remarks>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="code">Authentication code recieved from the Auth service</param>
+        /// <param name="code">Authentication code received from the Auth service</param>
         /// <returns>Task of ApiResponse (LoginSuccessResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<LoginSuccessResponse>> InitializeProvisioningAsyncWithHttpInfo (InitProvData code);
         /// <summary>
@@ -210,7 +210,7 @@ namespace Genesys.Provisioning.Api
         /// Authenticate user Initialize-provisioning operation will create a new sessionId and set default.yml:common.cookieName cookie (PROVISIONING_SESSIONID by default). 
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="code">Authentication code recieved from the Auth service</param>
+        /// <param name="code">Authentication code received from the Auth service</param>
         /// <returns>LoginSuccessResponse</returns>
         public LoginSuccessResponse InitializeProvisioning (InitProvData code)
         {
@@ -222,7 +222,7 @@ namespace Genesys.Provisioning.Api
         /// Authenticate user Initialize-provisioning operation will create a new sessionId and set default.yml:common.cookieName cookie (PROVISIONING_SESSIONID by default). 
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="code">Authentication code recieved from the Auth service</param>
+        /// <param name="code">Authentication code received from the Auth service</param>
         /// <returns>ApiResponse of LoginSuccessResponse</returns>
         public ApiResponse< LoginSuccessResponse > InitializeProvisioningWithHttpInfo (InitProvData code)
         {
@@ -284,7 +284,7 @@ namespace Genesys.Provisioning.Api
         /// Authenticate user Initialize-provisioning operation will create a new sessionId and set default.yml:common.cookieName cookie (PROVISIONING_SESSIONID by default). 
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="code">Authentication code recieved from the Auth service</param>
+        /// <param name="code">Authentication code received from the Auth service</param>
         /// <returns>Task of LoginSuccessResponse</returns>
         public async System.Threading.Tasks.Task<LoginSuccessResponse> InitializeProvisioningAsync (InitProvData code)
         {
@@ -297,7 +297,7 @@ namespace Genesys.Provisioning.Api
         /// Authenticate user Initialize-provisioning operation will create a new sessionId and set default.yml:common.cookieName cookie (PROVISIONING_SESSIONID by default). 
         /// </summary>
         /// <exception cref="Genesys.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="code">Authentication code recieved from the Auth service</param>
+        /// <param name="code">Authentication code received from the Auth service</param>
         /// <returns>Task of ApiResponse (LoginSuccessResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<LoginSuccessResponse>> InitializeProvisioningAsyncWithHttpInfo (InitProvData code)
         {

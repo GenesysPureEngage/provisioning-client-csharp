@@ -456,12 +456,6 @@ namespace Genesys.Provisioning.Api
                 localVarPostBody = body; // byte array
             }
 
-            // authentication (basicAuth) required
-            // http basic authentication required
-            if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
-            {
-                localVarHeaderParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
-            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -537,12 +531,6 @@ namespace Genesys.Provisioning.Api
                 localVarPostBody = body; // byte array
             }
 
-            // authentication (basicAuth) required
-            // http basic authentication required
-            if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
-            {
-                localVarHeaderParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
-            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
@@ -617,12 +605,6 @@ namespace Genesys.Provisioning.Api
                 localVarPostBody = body; // byte array
             }
 
-            // authentication (basicAuth) required
-            // http basic authentication required
-            if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
-            {
-                localVarHeaderParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
-            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
@@ -698,12 +680,6 @@ namespace Genesys.Provisioning.Api
                 localVarPostBody = body; // byte array
             }
 
-            // authentication (basicAuth) required
-            // http basic authentication required
-            if (!String.IsNullOrEmpty(Configuration.Username) || !String.IsNullOrEmpty(Configuration.Password))
-            {
-                localVarHeaderParams["Authorization"] = "Basic " + ApiClient.Base64Encode(Configuration.Username + ":" + Configuration.Password);
-            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,

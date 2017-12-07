@@ -25,33 +25,26 @@ using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// GetOptionsResponse
+    /// LoginSuccessResponseData
     /// </summary>
     [DataContract]
-    public partial class GetOptionsResponse :  IEquatable<GetOptionsResponse>, IValidatableObject
+    public partial class LoginSuccessResponseData :  IEquatable<LoginSuccessResponseData>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetOptionsResponse" /> class.
+        /// Initializes a new instance of the <see cref="LoginSuccessResponseData" /> class.
         /// </summary>
-        /// <param name="Code">Code.</param>
-        /// <param name="Data">Data.</param>
-        public GetOptionsResponse(int? Code = default(int?), GetOptionsResponseData Data = default(GetOptionsResponseData))
+        /// <param name="SessionId">Generated session ID.</param>
+        public LoginSuccessResponseData(string SessionId = default(string))
         {
-            this.Code = Code;
-            this.Data = Data;
+            this.SessionId = SessionId;
         }
         
         /// <summary>
-        /// Gets or Sets Code
+        /// Generated session ID
         /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public int? Code { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Data
-        /// </summary>
-        [DataMember(Name="data", EmitDefaultValue=false)]
-        public GetOptionsResponseData Data { get; set; }
+        /// <value>Generated session ID</value>
+        [DataMember(Name="sessionId", EmitDefaultValue=false)]
+        public string SessionId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,9 +53,8 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class GetOptionsResponse {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("class LoginSuccessResponseData {\n");
+            sb.Append("  SessionId: ").Append(SessionId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -83,29 +75,24 @@ namespace Genesys.Provisioning.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetOptionsResponse);
+            return this.Equals(input as LoginSuccessResponseData);
         }
 
         /// <summary>
-        /// Returns true if GetOptionsResponse instances are equal
+        /// Returns true if LoginSuccessResponseData instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetOptionsResponse to be compared</param>
+        /// <param name="input">Instance of LoginSuccessResponseData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetOptionsResponse input)
+        public bool Equals(LoginSuccessResponseData input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
-                ) && 
-                (
-                    this.Data == input.Data ||
-                    (this.Data != null &&
-                    this.Data.Equals(input.Data))
+                    this.SessionId == input.SessionId ||
+                    (this.SessionId != null &&
+                    this.SessionId.Equals(input.SessionId))
                 );
         }
 
@@ -118,10 +105,8 @@ namespace Genesys.Provisioning.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Code != null)
-                    hashCode = hashCode * 59 + this.Code.GetHashCode();
-                if (this.Data != null)
-                    hashCode = hashCode * 59 + this.Data.GetHashCode();
+                if (this.SessionId != null)
+                    hashCode = hashCode * 59 + this.SessionId.GetHashCode();
                 return hashCode;
             }
         }

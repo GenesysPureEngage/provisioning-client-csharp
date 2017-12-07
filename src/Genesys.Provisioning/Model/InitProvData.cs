@@ -25,33 +25,39 @@ using SwaggerDateConverter = Genesys.Provisioning.Client.SwaggerDateConverter;
 namespace Genesys.Provisioning.Model
 {
     /// <summary>
-    /// GetOptionsResponse
+    /// InitProvData
     /// </summary>
     [DataContract]
-    public partial class GetOptionsResponse :  IEquatable<GetOptionsResponse>, IValidatableObject
+    public partial class InitProvData :  IEquatable<InitProvData>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetOptionsResponse" /> class.
+        /// Initializes a new instance of the <see cref="InitProvData" /> class.
         /// </summary>
-        /// <param name="Code">Code.</param>
-        /// <param name="Data">Data.</param>
-        public GetOptionsResponse(int? Code = default(int?), GetOptionsResponseData Data = default(GetOptionsResponseData))
+        [JsonConstructorAttribute]
+        protected InitProvData() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InitProvData" /> class.
+        /// </summary>
+        /// <param name="Code">Authentication code received from the Auth service.  (required).</param>
+        public InitProvData(string Code = default(string))
         {
-            this.Code = Code;
-            this.Data = Data;
+            // to ensure "Code" is required (not null)
+            if (Code == null)
+            {
+                throw new InvalidDataException("Code is a required property for InitProvData and cannot be null");
+            }
+            else
+            {
+                this.Code = Code;
+            }
         }
         
         /// <summary>
-        /// Gets or Sets Code
+        /// Authentication code received from the Auth service. 
         /// </summary>
+        /// <value>Authentication code received from the Auth service. </value>
         [DataMember(Name="code", EmitDefaultValue=false)]
-        public int? Code { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Data
-        /// </summary>
-        [DataMember(Name="data", EmitDefaultValue=false)]
-        public GetOptionsResponseData Data { get; set; }
+        public string Code { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,9 +66,8 @@ namespace Genesys.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class GetOptionsResponse {\n");
+            sb.Append("class InitProvData {\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -83,15 +88,15 @@ namespace Genesys.Provisioning.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetOptionsResponse);
+            return this.Equals(input as InitProvData);
         }
 
         /// <summary>
-        /// Returns true if GetOptionsResponse instances are equal
+        /// Returns true if InitProvData instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetOptionsResponse to be compared</param>
+        /// <param name="input">Instance of InitProvData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetOptionsResponse input)
+        public bool Equals(InitProvData input)
         {
             if (input == null)
                 return false;
@@ -101,11 +106,6 @@ namespace Genesys.Provisioning.Model
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
-                ) && 
-                (
-                    this.Data == input.Data ||
-                    (this.Data != null &&
-                    this.Data.Equals(input.Data))
                 );
         }
 
@@ -120,8 +120,6 @@ namespace Genesys.Provisioning.Model
                 int hashCode = 41;
                 if (this.Code != null)
                     hashCode = hashCode * 59 + this.Code.GetHashCode();
-                if (this.Data != null)
-                    hashCode = hashCode * 59 + this.Data.GetHashCode();
                 return hashCode;
             }
         }

@@ -55,7 +55,7 @@ namespace Genesys.Internal.Provisioning.Api
         /// <param name="dbid">The users&#39; DBID.</param>
         /// <param name="keepPlaces">If &#x60;true&#x60; or absent, the user&#39;s places and DNs are not deleted.  (optional)</param>
         /// <returns>ApiSuccessResponse</returns>
-        ApiSuccessResponse DeleteUser (string dbid, string keepPlaces = null);
+        ApiSuccessResponse DeleteUser (string dbid, bool? keepPlaces = null);
 
         /// <summary>
         /// Remove a user.
@@ -67,7 +67,7 @@ namespace Genesys.Internal.Provisioning.Api
         /// <param name="dbid">The users&#39; DBID.</param>
         /// <param name="keepPlaces">If &#x60;true&#x60; or absent, the user&#39;s places and DNs are not deleted.  (optional)</param>
         /// <returns>ApiResponse of ApiSuccessResponse</returns>
-        ApiResponse<ApiSuccessResponse> DeleteUserWithHttpInfo (string dbid, string keepPlaces = null);
+        ApiResponse<ApiSuccessResponse> DeleteUserWithHttpInfo (string dbid, bool? keepPlaces = null);
         /// <summary>
         /// Get the logged in user.
         /// </summary>
@@ -203,7 +203,7 @@ namespace Genesys.Internal.Provisioning.Api
         /// <param name="dbid">The users&#39; DBID.</param>
         /// <param name="keepPlaces">If &#x60;true&#x60; or absent, the user&#39;s places and DNs are not deleted.  (optional)</param>
         /// <returns>Task of ApiSuccessResponse</returns>
-        System.Threading.Tasks.Task<ApiSuccessResponse> DeleteUserAsync (string dbid, string keepPlaces = null);
+        System.Threading.Tasks.Task<ApiSuccessResponse> DeleteUserAsync (string dbid, bool? keepPlaces = null);
 
         /// <summary>
         /// Remove a user.
@@ -215,7 +215,7 @@ namespace Genesys.Internal.Provisioning.Api
         /// <param name="dbid">The users&#39; DBID.</param>
         /// <param name="keepPlaces">If &#x60;true&#x60; or absent, the user&#39;s places and DNs are not deleted.  (optional)</param>
         /// <returns>Task of ApiResponse (ApiSuccessResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> DeleteUserAsyncWithHttpInfo (string dbid, string keepPlaces = null);
+        System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> DeleteUserAsyncWithHttpInfo (string dbid, bool? keepPlaces = null);
         /// <summary>
         /// Get the logged in user.
         /// </summary>
@@ -574,7 +574,7 @@ namespace Genesys.Internal.Provisioning.Api
         /// <param name="dbid">The users&#39; DBID.</param>
         /// <param name="keepPlaces">If &#x60;true&#x60; or absent, the user&#39;s places and DNs are not deleted.  (optional)</param>
         /// <returns>ApiSuccessResponse</returns>
-        public ApiSuccessResponse DeleteUser (string dbid, string keepPlaces = null)
+        public ApiSuccessResponse DeleteUser (string dbid, bool? keepPlaces = null)
         {
              ApiResponse<ApiSuccessResponse> localVarResponse = DeleteUserWithHttpInfo(dbid, keepPlaces);
              return localVarResponse.Data;
@@ -587,7 +587,7 @@ namespace Genesys.Internal.Provisioning.Api
         /// <param name="dbid">The users&#39; DBID.</param>
         /// <param name="keepPlaces">If &#x60;true&#x60; or absent, the user&#39;s places and DNs are not deleted.  (optional)</param>
         /// <returns>ApiResponse of ApiSuccessResponse</returns>
-        public ApiResponse< ApiSuccessResponse > DeleteUserWithHttpInfo (string dbid, string keepPlaces = null)
+        public ApiResponse< ApiSuccessResponse > DeleteUserWithHttpInfo (string dbid, bool? keepPlaces = null)
         {
             // verify the required parameter 'dbid' is set
             if (dbid == null)
@@ -644,7 +644,7 @@ namespace Genesys.Internal.Provisioning.Api
         /// <param name="dbid">The users&#39; DBID.</param>
         /// <param name="keepPlaces">If &#x60;true&#x60; or absent, the user&#39;s places and DNs are not deleted.  (optional)</param>
         /// <returns>Task of ApiSuccessResponse</returns>
-        public async System.Threading.Tasks.Task<ApiSuccessResponse> DeleteUserAsync (string dbid, string keepPlaces = null)
+        public async System.Threading.Tasks.Task<ApiSuccessResponse> DeleteUserAsync (string dbid, bool? keepPlaces = null)
         {
              ApiResponse<ApiSuccessResponse> localVarResponse = await DeleteUserAsyncWithHttpInfo(dbid, keepPlaces);
              return localVarResponse.Data;
@@ -658,7 +658,7 @@ namespace Genesys.Internal.Provisioning.Api
         /// <param name="dbid">The users&#39; DBID.</param>
         /// <param name="keepPlaces">If &#x60;true&#x60; or absent, the user&#39;s places and DNs are not deleted.  (optional)</param>
         /// <returns>Task of ApiResponse (ApiSuccessResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> DeleteUserAsyncWithHttpInfo (string dbid, string keepPlaces = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> DeleteUserAsyncWithHttpInfo (string dbid, bool? keepPlaces = null)
         {
             // verify the required parameter 'dbid' is set
             if (dbid == null)

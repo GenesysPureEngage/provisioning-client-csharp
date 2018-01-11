@@ -25,39 +25,65 @@ using SwaggerDateConverter = Genesys.Internal.Provisioning.Client.SwaggerDateCon
 namespace Genesys.Internal.Provisioning.Model
 {
     /// <summary>
-    /// InitProvData
+    /// ServiceProxyData
     /// </summary>
     [DataContract]
-    public partial class InitProvData :  IEquatable<InitProvData>, IValidatableObject
+    public partial class ServiceProxyData :  IEquatable<ServiceProxyData>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InitProvData" /> class.
+        /// Initializes a new instance of the <see cref="ServiceProxyData" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected InitProvData() { }
+        protected ServiceProxyData() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="InitProvData" /> class.
+        /// Initializes a new instance of the <see cref="ServiceProxyData" /> class.
         /// </summary>
-        /// <param name="Code">Authentication code received from the Auth service.  (required).</param>
-        public InitProvData(string Code = default(string))
+        /// <param name="Service">Service name (required).</param>
+        /// <param name="Method">Method name (required).</param>
+        /// <param name="Args">Optional method arguments array.</param>
+        public ServiceProxyData(string Service = default(string), string Method = default(string), Object Args = default(Object))
         {
-            // to ensure "Code" is required (not null)
-            if (Code == null)
+            // to ensure "Service" is required (not null)
+            if (Service == null)
             {
-                throw new InvalidDataException("Code is a required property for InitProvData and cannot be null");
+                throw new InvalidDataException("Service is a required property for ServiceProxyData and cannot be null");
             }
             else
             {
-                this.Code = Code;
+                this.Service = Service;
             }
+            // to ensure "Method" is required (not null)
+            if (Method == null)
+            {
+                throw new InvalidDataException("Method is a required property for ServiceProxyData and cannot be null");
+            }
+            else
+            {
+                this.Method = Method;
+            }
+            this.Args = Args;
         }
         
         /// <summary>
-        /// Authentication code received from the Auth service. 
+        /// Service name
         /// </summary>
-        /// <value>Authentication code received from the Auth service. </value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public string Code { get; set; }
+        /// <value>Service name</value>
+        [DataMember(Name="service", EmitDefaultValue=false)]
+        public string Service { get; set; }
+
+        /// <summary>
+        /// Method name
+        /// </summary>
+        /// <value>Method name</value>
+        [DataMember(Name="method", EmitDefaultValue=false)]
+        public string Method { get; set; }
+
+        /// <summary>
+        /// Optional method arguments array
+        /// </summary>
+        /// <value>Optional method arguments array</value>
+        [DataMember(Name="args", EmitDefaultValue=false)]
+        public Object Args { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +92,10 @@ namespace Genesys.Internal.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class InitProvData {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class ServiceProxyData {\n");
+            sb.Append("  Service: ").Append(Service).Append("\n");
+            sb.Append("  Method: ").Append(Method).Append("\n");
+            sb.Append("  Args: ").Append(Args).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,24 +116,34 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as InitProvData);
+            return this.Equals(input as ServiceProxyData);
         }
 
         /// <summary>
-        /// Returns true if InitProvData instances are equal
+        /// Returns true if ServiceProxyData instances are equal
         /// </summary>
-        /// <param name="input">Instance of InitProvData to be compared</param>
+        /// <param name="input">Instance of ServiceProxyData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(InitProvData input)
+        public bool Equals(ServiceProxyData input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
+                    this.Service == input.Service ||
+                    (this.Service != null &&
+                    this.Service.Equals(input.Service))
+                ) && 
+                (
+                    this.Method == input.Method ||
+                    (this.Method != null &&
+                    this.Method.Equals(input.Method))
+                ) && 
+                (
+                    this.Args == input.Args ||
+                    (this.Args != null &&
+                    this.Args.Equals(input.Args))
                 );
         }
 
@@ -118,8 +156,12 @@ namespace Genesys.Internal.Provisioning.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Code != null)
-                    hashCode = hashCode * 59 + this.Code.GetHashCode();
+                if (this.Service != null)
+                    hashCode = hashCode * 59 + this.Service.GetHashCode();
+                if (this.Method != null)
+                    hashCode = hashCode * 59 + this.Method.GetHashCode();
+                if (this.Args != null)
+                    hashCode = hashCode * 59 + this.Args.GetHashCode();
                 return hashCode;
             }
         }

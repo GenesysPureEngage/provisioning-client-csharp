@@ -39,25 +39,25 @@ namespace Genesys.Internal.Provisioning.Model
         {
             
             /// <summary>
-            /// Enum DISABLECTI for "DISABLE_CTI"
+            /// Enum DISABLECTI for value: DISABLE_CTI
             /// </summary>
             [EnumMember(Value = "DISABLE_CTI")]
             DISABLECTI = 1,
             
             /// <summary>
-            /// Enum GENESYSSOFTPHONE for "GENESYS_SOFTPHONE"
+            /// Enum GENESYSSOFTPHONE for value: GENESYS_SOFTPHONE
             /// </summary>
             [EnumMember(Value = "GENESYS_SOFTPHONE")]
             GENESYSSOFTPHONE = 2,
             
             /// <summary>
-            /// Enum GENESYS420HTAUDIOCODES4xxHD for "GENESYS_420HT_AUDIOCODES_4xxHD"
+            /// Enum GENESYS420HTAUDIOCODES4xxHD for value: GENESYS_420HT_AUDIOCODES_4xxHD
             /// </summary>
             [EnumMember(Value = "GENESYS_420HT_AUDIOCODES_4xxHD")]
             GENESYS420HTAUDIOCODES4xxHD = 3,
             
             /// <summary>
-            /// Enum GENERICPHONE for "GENERIC_PHONE"
+            /// Enum GENERICPHONE for value: GENERIC_PHONE
             /// </summary>
             [EnumMember(Value = "GENERIC_PHONE")]
             GENERICPHONE = 4

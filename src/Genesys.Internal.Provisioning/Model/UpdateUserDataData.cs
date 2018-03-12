@@ -39,7 +39,7 @@ namespace Genesys.Internal.Provisioning.Model
         {
             
             /// <summary>
-            /// Enum CTI for "Disable CTI"
+            /// Enum CTI for value: Disable CTI
             /// </summary>
             [EnumMember(Value = "Disable CTI")]
             CTI = 1

@@ -734,7 +734,7 @@ namespace Genesys.Internal.Provisioning.Api
         public ApiResponse<Object> NotificationsWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications";
+            var localVarPath = "/notifications-cometd";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -795,7 +795,7 @@ namespace Genesys.Internal.Provisioning.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> NotificationsAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications";
+            var localVarPath = "/notifications-cometd";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);

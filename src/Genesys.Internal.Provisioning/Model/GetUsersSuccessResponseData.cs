@@ -91,40 +91,38 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as GetUsersSuccessResponseData);
+            return this.Equals(input as GetUsersSuccessResponseData);
         }
 
         /// <summary>
         /// Returns true if GetUsersSuccessResponseData instances are equal
         /// </summary>
-        /// <param name="other">Instance of GetUsersSuccessResponseData to be compared</param>
+        /// <param name="input">Instance of GetUsersSuccessResponseData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetUsersSuccessResponseData other)
+        public bool Equals(GetUsersSuccessResponseData input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Users == other.Users ||
+                    this.Users == input.Users ||
                     this.Users != null &&
-                    this.Users.SequenceEqual(other.Users)
+                    this.Users.SequenceEqual(input.Users)
                 ) && 
                 (
-                    this.User == other.User ||
-                    this.User != null &&
-                    this.User.Equals(other.User)
+                    this.User == input.User ||
+                    (this.User != null &&
+                    this.User.Equals(input.User))
                 ) && 
                 (
-                    this.TotalCount == other.TotalCount ||
-                    this.TotalCount != null &&
-                    this.TotalCount.Equals(other.TotalCount)
+                    this.TotalCount == input.TotalCount ||
+                    (this.TotalCount != null &&
+                    this.TotalCount.Equals(input.TotalCount))
                 );
         }
 
@@ -134,18 +132,16 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Users != null)
-                    hash = hash * 59 + this.Users.GetHashCode();
+                    hashCode = hashCode * 59 + this.Users.GetHashCode();
                 if (this.User != null)
-                    hash = hash * 59 + this.User.GetHashCode();
+                    hashCode = hashCode * 59 + this.User.GetHashCode();
                 if (this.TotalCount != null)
-                    hash = hash * 59 + this.TotalCount.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.TotalCount.GetHashCode();
+                return hashCode;
             }
         }
 

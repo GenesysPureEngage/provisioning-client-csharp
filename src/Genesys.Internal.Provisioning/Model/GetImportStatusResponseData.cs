@@ -161,75 +161,73 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as GetImportStatusResponseData);
+            return this.Equals(input as GetImportStatusResponseData);
         }
 
         /// <summary>
         /// Returns true if GetImportStatusResponseData instances are equal
         /// </summary>
-        /// <param name="other">Instance of GetImportStatusResponseData to be compared</param>
+        /// <param name="input">Instance of GetImportStatusResponseData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetImportStatusResponseData other)
+        public bool Equals(GetImportStatusResponseData input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.ActiveImporters == other.ActiveImporters ||
+                    this.ActiveImporters == input.ActiveImporters ||
                     this.ActiveImporters != null &&
-                    this.ActiveImporters.SequenceEqual(other.ActiveImporters)
+                    this.ActiveImporters.SequenceEqual(input.ActiveImporters)
                 ) && 
                 (
-                    this.AdminName == other.AdminName ||
-                    this.AdminName != null &&
-                    this.AdminName.Equals(other.AdminName)
+                    this.AdminName == input.AdminName ||
+                    (this.AdminName != null &&
+                    this.AdminName.Equals(input.AdminName))
                 ) && 
                 (
-                    this.Failed == other.Failed ||
+                    this.Failed == input.Failed ||
                     this.Failed != null &&
-                    this.Failed.SequenceEqual(other.Failed)
+                    this.Failed.SequenceEqual(input.Failed)
                 ) && 
                 (
-                    this.LastEntity == other.LastEntity ||
-                    this.LastEntity != null &&
-                    this.LastEntity.Equals(other.LastEntity)
+                    this.LastEntity == input.LastEntity ||
+                    (this.LastEntity != null &&
+                    this.LastEntity.Equals(input.LastEntity))
                 ) && 
                 (
-                    this.Operation == other.Operation ||
-                    this.Operation != null &&
-                    this.Operation.Equals(other.Operation)
+                    this.Operation == input.Operation ||
+                    (this.Operation != null &&
+                    this.Operation.Equals(input.Operation))
                 ) && 
                 (
-                    this.SheetName == other.SheetName ||
-                    this.SheetName != null &&
-                    this.SheetName.Equals(other.SheetName)
+                    this.SheetName == input.SheetName ||
+                    (this.SheetName != null &&
+                    this.SheetName.Equals(input.SheetName))
                 ) && 
                 (
-                    this.StopRequested == other.StopRequested ||
-                    this.StopRequested != null &&
-                    this.StopRequested.Equals(other.StopRequested)
+                    this.StopRequested == input.StopRequested ||
+                    (this.StopRequested != null &&
+                    this.StopRequested.Equals(input.StopRequested))
                 ) && 
                 (
-                    this.Stopped == other.Stopped ||
-                    this.Stopped != null &&
-                    this.Stopped.Equals(other.Stopped)
+                    this.Stopped == input.Stopped ||
+                    (this.Stopped != null &&
+                    this.Stopped.Equals(input.Stopped))
                 ) && 
                 (
-                    this.SucceedCount == other.SucceedCount ||
-                    this.SucceedCount != null &&
-                    this.SucceedCount.Equals(other.SucceedCount)
+                    this.SucceedCount == input.SucceedCount ||
+                    (this.SucceedCount != null &&
+                    this.SucceedCount.Equals(input.SucceedCount))
                 ) && 
                 (
-                    this.TotalCount == other.TotalCount ||
-                    this.TotalCount != null &&
-                    this.TotalCount.Equals(other.TotalCount)
+                    this.TotalCount == input.TotalCount ||
+                    (this.TotalCount != null &&
+                    this.TotalCount.Equals(input.TotalCount))
                 );
         }
 
@@ -239,32 +237,30 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.ActiveImporters != null)
-                    hash = hash * 59 + this.ActiveImporters.GetHashCode();
+                    hashCode = hashCode * 59 + this.ActiveImporters.GetHashCode();
                 if (this.AdminName != null)
-                    hash = hash * 59 + this.AdminName.GetHashCode();
+                    hashCode = hashCode * 59 + this.AdminName.GetHashCode();
                 if (this.Failed != null)
-                    hash = hash * 59 + this.Failed.GetHashCode();
+                    hashCode = hashCode * 59 + this.Failed.GetHashCode();
                 if (this.LastEntity != null)
-                    hash = hash * 59 + this.LastEntity.GetHashCode();
+                    hashCode = hashCode * 59 + this.LastEntity.GetHashCode();
                 if (this.Operation != null)
-                    hash = hash * 59 + this.Operation.GetHashCode();
+                    hashCode = hashCode * 59 + this.Operation.GetHashCode();
                 if (this.SheetName != null)
-                    hash = hash * 59 + this.SheetName.GetHashCode();
+                    hashCode = hashCode * 59 + this.SheetName.GetHashCode();
                 if (this.StopRequested != null)
-                    hash = hash * 59 + this.StopRequested.GetHashCode();
+                    hashCode = hashCode * 59 + this.StopRequested.GetHashCode();
                 if (this.Stopped != null)
-                    hash = hash * 59 + this.Stopped.GetHashCode();
+                    hashCode = hashCode * 59 + this.Stopped.GetHashCode();
                 if (this.SucceedCount != null)
-                    hash = hash * 59 + this.SucceedCount.GetHashCode();
+                    hashCode = hashCode * 59 + this.SucceedCount.GetHashCode();
                 if (this.TotalCount != null)
-                    hash = hash * 59 + this.TotalCount.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.TotalCount.GetHashCode();
+                return hashCode;
             }
         }
 

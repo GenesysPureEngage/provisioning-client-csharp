@@ -101,45 +101,43 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as UpdateOptionsDataData);
+            return this.Equals(input as UpdateOptionsDataData);
         }
 
         /// <summary>
         /// Returns true if UpdateOptionsDataData instances are equal
         /// </summary>
-        /// <param name="other">Instance of UpdateOptionsDataData to be compared</param>
+        /// <param name="input">Instance of UpdateOptionsDataData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(UpdateOptionsDataData other)
+        public bool Equals(UpdateOptionsDataData input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Application == other.Application ||
-                    this.Application != null &&
-                    this.Application.Equals(other.Application)
+                    this.Application == input.Application ||
+                    (this.Application != null &&
+                    this.Application.Equals(input.Application))
                 ) && 
                 (
-                    this.NewOptions == other.NewOptions ||
-                    this.NewOptions != null &&
-                    this.NewOptions.Equals(other.NewOptions)
+                    this.NewOptions == input.NewOptions ||
+                    (this.NewOptions != null &&
+                    this.NewOptions.Equals(input.NewOptions))
                 ) && 
                 (
-                    this.ChangedOptions == other.ChangedOptions ||
-                    this.ChangedOptions != null &&
-                    this.ChangedOptions.Equals(other.ChangedOptions)
+                    this.ChangedOptions == input.ChangedOptions ||
+                    (this.ChangedOptions != null &&
+                    this.ChangedOptions.Equals(input.ChangedOptions))
                 ) && 
                 (
-                    this.DeletedOptions == other.DeletedOptions ||
-                    this.DeletedOptions != null &&
-                    this.DeletedOptions.Equals(other.DeletedOptions)
+                    this.DeletedOptions == input.DeletedOptions ||
+                    (this.DeletedOptions != null &&
+                    this.DeletedOptions.Equals(input.DeletedOptions))
                 );
         }
 
@@ -149,20 +147,18 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Application != null)
-                    hash = hash * 59 + this.Application.GetHashCode();
+                    hashCode = hashCode * 59 + this.Application.GetHashCode();
                 if (this.NewOptions != null)
-                    hash = hash * 59 + this.NewOptions.GetHashCode();
+                    hashCode = hashCode * 59 + this.NewOptions.GetHashCode();
                 if (this.ChangedOptions != null)
-                    hash = hash * 59 + this.ChangedOptions.GetHashCode();
+                    hashCode = hashCode * 59 + this.ChangedOptions.GetHashCode();
                 if (this.DeletedOptions != null)
-                    hash = hash * 59 + this.DeletedOptions.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.DeletedOptions.GetHashCode();
+                return hashCode;
             }
         }
 

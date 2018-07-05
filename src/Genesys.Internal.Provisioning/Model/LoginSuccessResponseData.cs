@@ -71,30 +71,28 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as LoginSuccessResponseData);
+            return this.Equals(input as LoginSuccessResponseData);
         }
 
         /// <summary>
         /// Returns true if LoginSuccessResponseData instances are equal
         /// </summary>
-        /// <param name="other">Instance of LoginSuccessResponseData to be compared</param>
+        /// <param name="input">Instance of LoginSuccessResponseData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(LoginSuccessResponseData other)
+        public bool Equals(LoginSuccessResponseData input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.SessionId == other.SessionId ||
-                    this.SessionId != null &&
-                    this.SessionId.Equals(other.SessionId)
+                    this.SessionId == input.SessionId ||
+                    (this.SessionId != null &&
+                    this.SessionId.Equals(input.SessionId))
                 );
         }
 
@@ -104,14 +102,12 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.SessionId != null)
-                    hash = hash * 59 + this.SessionId.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.SessionId.GetHashCode();
+                return hashCode;
             }
         }
 

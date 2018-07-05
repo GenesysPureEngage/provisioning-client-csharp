@@ -109,45 +109,43 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ExportFileDataFilterParameters);
+            return this.Equals(input as ExportFileDataFilterParameters);
         }
 
         /// <summary>
         /// Returns true if ExportFileDataFilterParameters instances are equal
         /// </summary>
-        /// <param name="other">Instance of ExportFileDataFilterParameters to be compared</param>
+        /// <param name="input">Instance of ExportFileDataFilterParameters to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ExportFileDataFilterParameters other)
+        public bool Equals(ExportFileDataFilterParameters input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.AgentGroupFilter == other.AgentGroupFilter ||
+                    this.AgentGroupFilter == input.AgentGroupFilter ||
                     this.AgentGroupFilter != null &&
-                    this.AgentGroupFilter.SequenceEqual(other.AgentGroupFilter)
+                    this.AgentGroupFilter.SequenceEqual(input.AgentGroupFilter)
                 ) && 
                 (
-                    this.Order == other.Order ||
-                    this.Order != null &&
-                    this.Order.Equals(other.Order)
+                    this.Order == input.Order ||
+                    (this.Order != null &&
+                    this.Order.Equals(input.Order))
                 ) && 
                 (
-                    this.SortBy == other.SortBy ||
+                    this.SortBy == input.SortBy ||
                     this.SortBy != null &&
-                    this.SortBy.SequenceEqual(other.SortBy)
+                    this.SortBy.SequenceEqual(input.SortBy)
                 ) && 
                 (
-                    this.Subresources == other.Subresources ||
-                    this.Subresources != null &&
-                    this.Subresources.Equals(other.Subresources)
+                    this.Subresources == input.Subresources ||
+                    (this.Subresources != null &&
+                    this.Subresources.Equals(input.Subresources))
                 );
         }
 
@@ -157,20 +155,18 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.AgentGroupFilter != null)
-                    hash = hash * 59 + this.AgentGroupFilter.GetHashCode();
+                    hashCode = hashCode * 59 + this.AgentGroupFilter.GetHashCode();
                 if (this.Order != null)
-                    hash = hash * 59 + this.Order.GetHashCode();
+                    hashCode = hashCode * 59 + this.Order.GetHashCode();
                 if (this.SortBy != null)
-                    hash = hash * 59 + this.SortBy.GetHashCode();
+                    hashCode = hashCode * 59 + this.SortBy.GetHashCode();
                 if (this.Subresources != null)
-                    hash = hash * 59 + this.Subresources.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Subresources.GetHashCode();
+                return hashCode;
             }
         }
 

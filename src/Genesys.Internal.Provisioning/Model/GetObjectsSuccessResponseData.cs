@@ -101,45 +101,43 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as GetObjectsSuccessResponseData);
+            return this.Equals(input as GetObjectsSuccessResponseData);
         }
 
         /// <summary>
         /// Returns true if GetObjectsSuccessResponseData instances are equal
         /// </summary>
-        /// <param name="other">Instance of GetObjectsSuccessResponseData to be compared</param>
+        /// <param name="input">Instance of GetObjectsSuccessResponseData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetObjectsSuccessResponseData other)
+        public bool Equals(GetObjectsSuccessResponseData input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Dns == other.Dns ||
+                    this.Dns == input.Dns ||
                     this.Dns != null &&
-                    this.Dns.SequenceEqual(other.Dns)
+                    this.Dns.SequenceEqual(input.Dns)
                 ) && 
                 (
-                    this.AgentGroups == other.AgentGroups ||
+                    this.AgentGroups == input.AgentGroups ||
                     this.AgentGroups != null &&
-                    this.AgentGroups.SequenceEqual(other.AgentGroups)
+                    this.AgentGroups.SequenceEqual(input.AgentGroups)
                 ) && 
                 (
-                    this.DnGroups == other.DnGroups ||
+                    this.DnGroups == input.DnGroups ||
                     this.DnGroups != null &&
-                    this.DnGroups.SequenceEqual(other.DnGroups)
+                    this.DnGroups.SequenceEqual(input.DnGroups)
                 ) && 
                 (
-                    this.TotalCount == other.TotalCount ||
-                    this.TotalCount != null &&
-                    this.TotalCount.Equals(other.TotalCount)
+                    this.TotalCount == input.TotalCount ||
+                    (this.TotalCount != null &&
+                    this.TotalCount.Equals(input.TotalCount))
                 );
         }
 
@@ -149,20 +147,18 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Dns != null)
-                    hash = hash * 59 + this.Dns.GetHashCode();
+                    hashCode = hashCode * 59 + this.Dns.GetHashCode();
                 if (this.AgentGroups != null)
-                    hash = hash * 59 + this.AgentGroups.GetHashCode();
+                    hashCode = hashCode * 59 + this.AgentGroups.GetHashCode();
                 if (this.DnGroups != null)
-                    hash = hash * 59 + this.DnGroups.GetHashCode();
+                    hashCode = hashCode * 59 + this.DnGroups.GetHashCode();
                 if (this.TotalCount != null)
-                    hash = hash * 59 + this.TotalCount.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.TotalCount.GetHashCode();
+                return hashCode;
             }
         }
 

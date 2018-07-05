@@ -94,35 +94,33 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ModifyOptionsDataData);
+            return this.Equals(input as ModifyOptionsDataData);
         }
 
         /// <summary>
         /// Returns true if ModifyOptionsDataData instances are equal
         /// </summary>
-        /// <param name="other">Instance of ModifyOptionsDataData to be compared</param>
+        /// <param name="input">Instance of ModifyOptionsDataData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ModifyOptionsDataData other)
+        public bool Equals(ModifyOptionsDataData input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Application == other.Application ||
-                    this.Application != null &&
-                    this.Application.Equals(other.Application)
+                    this.Application == input.Application ||
+                    (this.Application != null &&
+                    this.Application.Equals(input.Application))
                 ) && 
                 (
-                    this.Options == other.Options ||
-                    this.Options != null &&
-                    this.Options.Equals(other.Options)
+                    this.Options == input.Options ||
+                    (this.Options != null &&
+                    this.Options.Equals(input.Options))
                 );
         }
 
@@ -132,16 +130,14 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Application != null)
-                    hash = hash * 59 + this.Application.GetHashCode();
+                    hashCode = hashCode * 59 + this.Application.GetHashCode();
                 if (this.Options != null)
-                    hash = hash * 59 + this.Options.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Options.GetHashCode();
+                return hashCode;
             }
         }
 

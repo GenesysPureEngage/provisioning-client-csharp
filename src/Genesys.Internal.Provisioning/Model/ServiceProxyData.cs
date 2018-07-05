@@ -112,40 +112,38 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ServiceProxyData);
+            return this.Equals(input as ServiceProxyData);
         }
 
         /// <summary>
         /// Returns true if ServiceProxyData instances are equal
         /// </summary>
-        /// <param name="other">Instance of ServiceProxyData to be compared</param>
+        /// <param name="input">Instance of ServiceProxyData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ServiceProxyData other)
+        public bool Equals(ServiceProxyData input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Service == other.Service ||
-                    this.Service != null &&
-                    this.Service.Equals(other.Service)
+                    this.Service == input.Service ||
+                    (this.Service != null &&
+                    this.Service.Equals(input.Service))
                 ) && 
                 (
-                    this.Method == other.Method ||
-                    this.Method != null &&
-                    this.Method.Equals(other.Method)
+                    this.Method == input.Method ||
+                    (this.Method != null &&
+                    this.Method.Equals(input.Method))
                 ) && 
                 (
-                    this.Args == other.Args ||
-                    this.Args != null &&
-                    this.Args.Equals(other.Args)
+                    this.Args == input.Args ||
+                    (this.Args != null &&
+                    this.Args.Equals(input.Args))
                 );
         }
 
@@ -155,18 +153,16 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Service != null)
-                    hash = hash * 59 + this.Service.GetHashCode();
+                    hashCode = hashCode * 59 + this.Service.GetHashCode();
                 if (this.Method != null)
-                    hash = hash * 59 + this.Method.GetHashCode();
+                    hashCode = hashCode * 59 + this.Method.GetHashCode();
                 if (this.Args != null)
-                    hash = hash * 59 + this.Args.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Args.GetHashCode();
+                return hashCode;
             }
         }
 

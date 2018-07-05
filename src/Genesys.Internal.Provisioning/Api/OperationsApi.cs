@@ -166,15 +166,9 @@ namespace Genesys.Internal.Provisioning.Api
         /// <returns></returns>
         public OperationsApi(String basePath)
         {
-            this.Configuration = new Configuration(new ApiClient(basePath));
+            this.Configuration = new Configuration { BasePath = basePath };
 
             ExceptionFactory = Genesys.Internal.Provisioning.Client.Configuration.DefaultExceptionFactory;
-
-            // ensure API client has configuration ready
-            if (Configuration.ApiClient.Configuration == null)
-            {
-                this.Configuration.ApiClient.Configuration = this.Configuration;
-            }
         }
 
         /// <summary>
@@ -191,12 +185,6 @@ namespace Genesys.Internal.Provisioning.Api
                 this.Configuration = configuration;
 
             ExceptionFactory = Genesys.Internal.Provisioning.Client.Configuration.DefaultExceptionFactory;
-
-            // ensure API client has configuration ready
-            if (Configuration.ApiClient.Configuration == null)
-            {
-                this.Configuration.ApiClient.Configuration = this.Configuration;
-            }
         }
 
         /// <summary>
@@ -245,9 +233,9 @@ namespace Genesys.Internal.Provisioning.Api
         /// </summary>
         /// <returns>Dictionary of HTTP header</returns>
         [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public Dictionary<String, String> DefaultHeader()
+        public IDictionary<String, String> DefaultHeader()
         {
-            return this.Configuration.DefaultHeader;
+            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
         }
 
         /// <summary>
@@ -288,7 +276,7 @@ namespace Genesys.Internal.Provisioning.Api
 
             var localVarPath = "/operations/get-used-skills";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
@@ -308,7 +296,7 @@ namespace Genesys.Internal.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (aioId != null) localVarQueryParams.Add("_aioId", Configuration.ApiClient.ParameterToString(aioId)); // query parameter
+            if (aioId != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "_aioId", aioId)); // query parameter
 
 
             // make the HTTP request
@@ -356,7 +344,7 @@ namespace Genesys.Internal.Provisioning.Api
 
             var localVarPath = "/operations/get-used-skills";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
@@ -376,7 +364,7 @@ namespace Genesys.Internal.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (aioId != null) localVarQueryParams.Add("_aioId", Configuration.ApiClient.ParameterToString(aioId)); // query parameter
+            if (aioId != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "_aioId", aioId)); // query parameter
 
 
             // make the HTTP request
@@ -443,7 +431,7 @@ namespace Genesys.Internal.Provisioning.Api
 
             var localVarPath = "/operations/get-users";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
@@ -463,17 +451,17 @@ namespace Genesys.Internal.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (aioId != null) localVarQueryParams.Add("_aioId", Configuration.ApiClient.ParameterToString(aioId)); // query parameter
-            if (limit != null) localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
-            if (offset != null) localVarQueryParams.Add("offset", Configuration.ApiClient.ParameterToString(offset)); // query parameter
-            if (order != null) localVarQueryParams.Add("order", Configuration.ApiClient.ParameterToString(order)); // query parameter
-            if (sortBy != null) localVarQueryParams.Add("sortBy", Configuration.ApiClient.ParameterToString(sortBy)); // query parameter
-            if (filterName != null) localVarQueryParams.Add("filterName", Configuration.ApiClient.ParameterToString(filterName)); // query parameter
-            if (filterParameters != null) localVarQueryParams.Add("filterParameters", Configuration.ApiClient.ParameterToString(filterParameters)); // query parameter
-            if (roles != null) localVarQueryParams.Add("roles", Configuration.ApiClient.ParameterToString(roles)); // query parameter
-            if (skills != null) localVarQueryParams.Add("skills", Configuration.ApiClient.ParameterToString(skills)); // query parameter
-            if (userEnabled != null) localVarQueryParams.Add("userEnabled", Configuration.ApiClient.ParameterToString(userEnabled)); // query parameter
-            if (userValid != null) localVarQueryParams.Add("userValid", Configuration.ApiClient.ParameterToString(userValid)); // query parameter
+            if (aioId != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "_aioId", aioId)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            if (sortBy != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "sortBy", sortBy)); // query parameter
+            if (filterName != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "filterName", filterName)); // query parameter
+            if (filterParameters != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "filterParameters", filterParameters)); // query parameter
+            if (roles != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "roles", roles)); // query parameter
+            if (skills != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "skills", skills)); // query parameter
+            if (userEnabled != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "userEnabled", userEnabled)); // query parameter
+            if (userValid != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "userValid", userValid)); // query parameter
 
 
             // make the HTTP request
@@ -541,7 +529,7 @@ namespace Genesys.Internal.Provisioning.Api
 
             var localVarPath = "/operations/get-users";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
@@ -561,17 +549,17 @@ namespace Genesys.Internal.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (aioId != null) localVarQueryParams.Add("_aioId", Configuration.ApiClient.ParameterToString(aioId)); // query parameter
-            if (limit != null) localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
-            if (offset != null) localVarQueryParams.Add("offset", Configuration.ApiClient.ParameterToString(offset)); // query parameter
-            if (order != null) localVarQueryParams.Add("order", Configuration.ApiClient.ParameterToString(order)); // query parameter
-            if (sortBy != null) localVarQueryParams.Add("sortBy", Configuration.ApiClient.ParameterToString(sortBy)); // query parameter
-            if (filterName != null) localVarQueryParams.Add("filterName", Configuration.ApiClient.ParameterToString(filterName)); // query parameter
-            if (filterParameters != null) localVarQueryParams.Add("filterParameters", Configuration.ApiClient.ParameterToString(filterParameters)); // query parameter
-            if (roles != null) localVarQueryParams.Add("roles", Configuration.ApiClient.ParameterToString(roles)); // query parameter
-            if (skills != null) localVarQueryParams.Add("skills", Configuration.ApiClient.ParameterToString(skills)); // query parameter
-            if (userEnabled != null) localVarQueryParams.Add("userEnabled", Configuration.ApiClient.ParameterToString(userEnabled)); // query parameter
-            if (userValid != null) localVarQueryParams.Add("userValid", Configuration.ApiClient.ParameterToString(userValid)); // query parameter
+            if (aioId != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "_aioId", aioId)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            if (sortBy != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "sortBy", sortBy)); // query parameter
+            if (filterName != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "filterName", filterName)); // query parameter
+            if (filterParameters != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "filterParameters", filterParameters)); // query parameter
+            if (roles != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "roles", roles)); // query parameter
+            if (skills != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "skills", skills)); // query parameter
+            if (userEnabled != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "userEnabled", userEnabled)); // query parameter
+            if (userValid != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "userValid", userValid)); // query parameter
 
 
             // make the HTTP request

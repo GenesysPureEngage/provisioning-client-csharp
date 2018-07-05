@@ -39,28 +39,28 @@ namespace Genesys.Internal.Provisioning.Model
         {
             
             /// <summary>
-            /// Enum DISABLECTI for value: DISABLE_CTI
+            /// Enum DISABLECTI for "DISABLE_CTI"
             /// </summary>
             [EnumMember(Value = "DISABLE_CTI")]
-            DISABLECTI = 1,
+            DISABLECTI,
             
             /// <summary>
-            /// Enum GENESYSSOFTPHONE for value: GENESYS_SOFTPHONE
+            /// Enum GENESYSSOFTPHONE for "GENESYS_SOFTPHONE"
             /// </summary>
             [EnumMember(Value = "GENESYS_SOFTPHONE")]
-            GENESYSSOFTPHONE = 2,
+            GENESYSSOFTPHONE,
             
             /// <summary>
-            /// Enum GENESYS420HTAUDIOCODES4xxHD for value: GENESYS_420HT_AUDIOCODES_4xxHD
+            /// Enum GENESYS420HTAUDIOCODES4xxHD for "GENESYS_420HT_AUDIOCODES_4xxHD"
             /// </summary>
             [EnumMember(Value = "GENESYS_420HT_AUDIOCODES_4xxHD")]
-            GENESYS420HTAUDIOCODES4xxHD = 3,
+            GENESYS420HTAUDIOCODES4xxHD,
             
             /// <summary>
-            /// Enum GENERICPHONE for value: GENERIC_PHONE
+            /// Enum GENERICPHONE for "GENERIC_PHONE"
             /// </summary>
             [EnumMember(Value = "GENERIC_PHONE")]
-            GENERICPHONE = 4
+            GENERICPHONE
         }
 
         /// <summary>
@@ -360,138 +360,140 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="obj">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        public override bool Equals(object obj)
         {
-            return this.Equals(input as AddUserDataData);
+            // credit: http://stackoverflow.com/a/10454552/677735
+            return this.Equals(obj as AddUserDataData);
         }
 
         /// <summary>
         /// Returns true if AddUserDataData instances are equal
         /// </summary>
-        /// <param name="input">Instance of AddUserDataData to be compared</param>
+        /// <param name="other">Instance of AddUserDataData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AddUserDataData input)
+        public bool Equals(AddUserDataData other)
         {
-            if (input == null)
+            // credit: http://stackoverflow.com/a/10454552/677735
+            if (other == null)
                 return false;
 
             return 
                 (
-                    this.ChangePasswordOnNextLogin == input.ChangePasswordOnNextLogin ||
-                    (this.ChangePasswordOnNextLogin != null &&
-                    this.ChangePasswordOnNextLogin.Equals(input.ChangePasswordOnNextLogin))
+                    this.ChangePasswordOnNextLogin == other.ChangePasswordOnNextLogin ||
+                    this.ChangePasswordOnNextLogin != null &&
+                    this.ChangePasswordOnNextLogin.Equals(other.ChangePasswordOnNextLogin)
                 ) && 
                 (
-                    this.EmailAddress == input.EmailAddress ||
-                    (this.EmailAddress != null &&
-                    this.EmailAddress.Equals(input.EmailAddress))
+                    this.EmailAddress == other.EmailAddress ||
+                    this.EmailAddress != null &&
+                    this.EmailAddress.Equals(other.EmailAddress)
                 ) && 
                 (
-                    this.EmployeeID == input.EmployeeID ||
-                    (this.EmployeeID != null &&
-                    this.EmployeeID.Equals(input.EmployeeID))
+                    this.EmployeeID == other.EmployeeID ||
+                    this.EmployeeID != null &&
+                    this.EmployeeID.Equals(other.EmployeeID)
                 ) && 
                 (
-                    this.ExternalID == input.ExternalID ||
-                    (this.ExternalID != null &&
-                    this.ExternalID.Equals(input.ExternalID))
+                    this.ExternalID == other.ExternalID ||
+                    this.ExternalID != null &&
+                    this.ExternalID.Equals(other.ExternalID)
                 ) && 
                 (
-                    this.Enabled == input.Enabled ||
-                    (this.Enabled != null &&
-                    this.Enabled.Equals(input.Enabled))
+                    this.Enabled == other.Enabled ||
+                    this.Enabled != null &&
+                    this.Enabled.Equals(other.Enabled)
                 ) && 
                 (
-                    this.Folder == input.Folder ||
-                    (this.Folder != null &&
-                    this.Folder.Equals(input.Folder))
+                    this.Folder == other.Folder ||
+                    this.Folder != null &&
+                    this.Folder.Equals(other.Folder)
                 ) && 
                 (
-                    this.UserName == input.UserName ||
-                    (this.UserName != null &&
-                    this.UserName.Equals(input.UserName))
+                    this.UserName == other.UserName ||
+                    this.UserName != null &&
+                    this.UserName.Equals(other.UserName)
                 ) && 
                 (
-                    this.FirstName == input.FirstName ||
-                    (this.FirstName != null &&
-                    this.FirstName.Equals(input.FirstName))
+                    this.FirstName == other.FirstName ||
+                    this.FirstName != null &&
+                    this.FirstName.Equals(other.FirstName)
                 ) && 
                 (
-                    this.LastName == input.LastName ||
-                    (this.LastName != null &&
-                    this.LastName.Equals(input.LastName))
+                    this.LastName == other.LastName ||
+                    this.LastName != null &&
+                    this.LastName.Equals(other.LastName)
                 ) && 
                 (
-                    this.LoginCode == input.LoginCode ||
-                    (this.LoginCode != null &&
-                    this.LoginCode.Equals(input.LoginCode))
+                    this.LoginCode == other.LoginCode ||
+                    this.LoginCode != null &&
+                    this.LoginCode.Equals(other.LoginCode)
                 ) && 
                 (
-                    this.Password == input.Password ||
-                    (this.Password != null &&
-                    this.Password.Equals(input.Password))
+                    this.Password == other.Password ||
+                    this.Password != null &&
+                    this.Password.Equals(other.Password)
                 ) && 
                 (
-                    this.PlaceNames == input.PlaceNames ||
+                    this.PlaceNames == other.PlaceNames ||
                     this.PlaceNames != null &&
-                    this.PlaceNames.SequenceEqual(input.PlaceNames)
+                    this.PlaceNames.SequenceEqual(other.PlaceNames)
                 ) && 
                 (
-                    this.IsAgent == input.IsAgent ||
-                    (this.IsAgent != null &&
-                    this.IsAgent.Equals(input.IsAgent))
+                    this.IsAgent == other.IsAgent ||
+                    this.IsAgent != null &&
+                    this.IsAgent.Equals(other.IsAgent)
                 ) && 
                 (
-                    this.Wwe == input.Wwe ||
-                    (this.Wwe != null &&
-                    this.Wwe.Equals(input.Wwe))
+                    this.Wwe == other.Wwe ||
+                    this.Wwe != null &&
+                    this.Wwe.Equals(other.Wwe)
                 ) && 
                 (
-                    this.SwitchNames == input.SwitchNames ||
+                    this.SwitchNames == other.SwitchNames ||
                     this.SwitchNames != null &&
-                    this.SwitchNames.SequenceEqual(input.SwitchNames)
+                    this.SwitchNames.SequenceEqual(other.SwitchNames)
                 ) && 
                 (
-                    this.Phones == input.Phones ||
+                    this.Phones == other.Phones ||
                     this.Phones != null &&
-                    this.Phones.SequenceEqual(input.Phones)
+                    this.Phones.SequenceEqual(other.Phones)
                 ) && 
                 (
-                    this.SupportSoftPhone == input.SupportSoftPhone ||
-                    (this.SupportSoftPhone != null &&
-                    this.SupportSoftPhone.Equals(input.SupportSoftPhone))
+                    this.SupportSoftPhone == other.SupportSoftPhone ||
+                    this.SupportSoftPhone != null &&
+                    this.SupportSoftPhone.Equals(other.SupportSoftPhone)
                 ) && 
                 (
-                    this.SipPhoneType == input.SipPhoneType ||
-                    (this.SipPhoneType != null &&
-                    this.SipPhoneType.Equals(input.SipPhoneType))
+                    this.SipPhoneType == other.SipPhoneType ||
+                    this.SipPhoneType != null &&
+                    this.SipPhoneType.Equals(other.SipPhoneType)
                 ) && 
                 (
-                    this.Skills == input.Skills ||
+                    this.Skills == other.Skills ||
                     this.Skills != null &&
-                    this.Skills.SequenceEqual(input.Skills)
+                    this.Skills.SequenceEqual(other.Skills)
                 ) && 
                 (
-                    this.AgentGroups == input.AgentGroups ||
+                    this.AgentGroups == other.AgentGroups ||
                     this.AgentGroups != null &&
-                    this.AgentGroups.SequenceEqual(input.AgentGroups)
+                    this.AgentGroups.SequenceEqual(other.AgentGroups)
                 ) && 
                 (
-                    this.AccessGroups == input.AccessGroups ||
+                    this.AccessGroups == other.AccessGroups ||
                     this.AccessGroups != null &&
-                    this.AccessGroups.SequenceEqual(input.AccessGroups)
+                    this.AccessGroups.SequenceEqual(other.AccessGroups)
                 ) && 
                 (
-                    this.VoiceMail == input.VoiceMail ||
-                    (this.VoiceMail != null &&
-                    this.VoiceMail.Equals(input.VoiceMail))
+                    this.VoiceMail == other.VoiceMail ||
+                    this.VoiceMail != null &&
+                    this.VoiceMail.Equals(other.VoiceMail)
                 ) && 
                 (
-                    this.WrapUpTime == input.WrapUpTime ||
-                    (this.WrapUpTime != null &&
-                    this.WrapUpTime.Equals(input.WrapUpTime))
+                    this.WrapUpTime == other.WrapUpTime ||
+                    this.WrapUpTime != null &&
+                    this.WrapUpTime.Equals(other.WrapUpTime)
                 );
         }
 
@@ -501,56 +503,58 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
+            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hash = 41;
+                // Suitable nullity checks etc, of course :)
                 if (this.ChangePasswordOnNextLogin != null)
-                    hashCode = hashCode * 59 + this.ChangePasswordOnNextLogin.GetHashCode();
+                    hash = hash * 59 + this.ChangePasswordOnNextLogin.GetHashCode();
                 if (this.EmailAddress != null)
-                    hashCode = hashCode * 59 + this.EmailAddress.GetHashCode();
+                    hash = hash * 59 + this.EmailAddress.GetHashCode();
                 if (this.EmployeeID != null)
-                    hashCode = hashCode * 59 + this.EmployeeID.GetHashCode();
+                    hash = hash * 59 + this.EmployeeID.GetHashCode();
                 if (this.ExternalID != null)
-                    hashCode = hashCode * 59 + this.ExternalID.GetHashCode();
+                    hash = hash * 59 + this.ExternalID.GetHashCode();
                 if (this.Enabled != null)
-                    hashCode = hashCode * 59 + this.Enabled.GetHashCode();
+                    hash = hash * 59 + this.Enabled.GetHashCode();
                 if (this.Folder != null)
-                    hashCode = hashCode * 59 + this.Folder.GetHashCode();
+                    hash = hash * 59 + this.Folder.GetHashCode();
                 if (this.UserName != null)
-                    hashCode = hashCode * 59 + this.UserName.GetHashCode();
+                    hash = hash * 59 + this.UserName.GetHashCode();
                 if (this.FirstName != null)
-                    hashCode = hashCode * 59 + this.FirstName.GetHashCode();
+                    hash = hash * 59 + this.FirstName.GetHashCode();
                 if (this.LastName != null)
-                    hashCode = hashCode * 59 + this.LastName.GetHashCode();
+                    hash = hash * 59 + this.LastName.GetHashCode();
                 if (this.LoginCode != null)
-                    hashCode = hashCode * 59 + this.LoginCode.GetHashCode();
+                    hash = hash * 59 + this.LoginCode.GetHashCode();
                 if (this.Password != null)
-                    hashCode = hashCode * 59 + this.Password.GetHashCode();
+                    hash = hash * 59 + this.Password.GetHashCode();
                 if (this.PlaceNames != null)
-                    hashCode = hashCode * 59 + this.PlaceNames.GetHashCode();
+                    hash = hash * 59 + this.PlaceNames.GetHashCode();
                 if (this.IsAgent != null)
-                    hashCode = hashCode * 59 + this.IsAgent.GetHashCode();
+                    hash = hash * 59 + this.IsAgent.GetHashCode();
                 if (this.Wwe != null)
-                    hashCode = hashCode * 59 + this.Wwe.GetHashCode();
+                    hash = hash * 59 + this.Wwe.GetHashCode();
                 if (this.SwitchNames != null)
-                    hashCode = hashCode * 59 + this.SwitchNames.GetHashCode();
+                    hash = hash * 59 + this.SwitchNames.GetHashCode();
                 if (this.Phones != null)
-                    hashCode = hashCode * 59 + this.Phones.GetHashCode();
+                    hash = hash * 59 + this.Phones.GetHashCode();
                 if (this.SupportSoftPhone != null)
-                    hashCode = hashCode * 59 + this.SupportSoftPhone.GetHashCode();
+                    hash = hash * 59 + this.SupportSoftPhone.GetHashCode();
                 if (this.SipPhoneType != null)
-                    hashCode = hashCode * 59 + this.SipPhoneType.GetHashCode();
+                    hash = hash * 59 + this.SipPhoneType.GetHashCode();
                 if (this.Skills != null)
-                    hashCode = hashCode * 59 + this.Skills.GetHashCode();
+                    hash = hash * 59 + this.Skills.GetHashCode();
                 if (this.AgentGroups != null)
-                    hashCode = hashCode * 59 + this.AgentGroups.GetHashCode();
+                    hash = hash * 59 + this.AgentGroups.GetHashCode();
                 if (this.AccessGroups != null)
-                    hashCode = hashCode * 59 + this.AccessGroups.GetHashCode();
+                    hash = hash * 59 + this.AccessGroups.GetHashCode();
                 if (this.VoiceMail != null)
-                    hashCode = hashCode * 59 + this.VoiceMail.GetHashCode();
+                    hash = hash * 59 + this.VoiceMail.GetHashCode();
                 if (this.WrapUpTime != null)
-                    hashCode = hashCode * 59 + this.WrapUpTime.GetHashCode();
-                return hashCode;
+                    hash = hash * 59 + this.WrapUpTime.GetHashCode();
+                return hash;
             }
         }
 

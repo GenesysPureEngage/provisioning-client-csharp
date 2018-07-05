@@ -101,43 +101,45 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="obj">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        public override bool Equals(object obj)
         {
-            return this.Equals(input as Extension);
+            // credit: http://stackoverflow.com/a/10454552/677735
+            return this.Equals(obj as Extension);
         }
 
         /// <summary>
         /// Returns true if Extension instances are equal
         /// </summary>
-        /// <param name="input">Instance of Extension to be compared</param>
+        /// <param name="other">Instance of Extension to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Extension input)
+        public bool Equals(Extension other)
         {
-            if (input == null)
+            // credit: http://stackoverflow.com/a/10454552/677735
+            if (other == null)
                 return false;
 
             return 
                 (
-                    this.Number == input.Number ||
-                    (this.Number != null &&
-                    this.Number.Equals(input.Number))
+                    this.Number == other.Number ||
+                    this.Number != null &&
+                    this.Number.Equals(other.Number)
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.Description == other.Description ||
+                    this.Description != null &&
+                    this.Description.Equals(other.Description)
                 ) && 
                 (
-                    this.IsDefault == input.IsDefault ||
-                    (this.IsDefault != null &&
-                    this.IsDefault.Equals(input.IsDefault))
+                    this.IsDefault == other.IsDefault ||
+                    this.IsDefault != null &&
+                    this.IsDefault.Equals(other.IsDefault)
                 ) && 
                 (
-                    this.PlaceName == input.PlaceName ||
-                    (this.PlaceName != null &&
-                    this.PlaceName.Equals(input.PlaceName))
+                    this.PlaceName == other.PlaceName ||
+                    this.PlaceName != null &&
+                    this.PlaceName.Equals(other.PlaceName)
                 );
         }
 
@@ -147,18 +149,20 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
+            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hash = 41;
+                // Suitable nullity checks etc, of course :)
                 if (this.Number != null)
-                    hashCode = hashCode * 59 + this.Number.GetHashCode();
+                    hash = hash * 59 + this.Number.GetHashCode();
                 if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
+                    hash = hash * 59 + this.Description.GetHashCode();
                 if (this.IsDefault != null)
-                    hashCode = hashCode * 59 + this.IsDefault.GetHashCode();
+                    hash = hash * 59 + this.IsDefault.GetHashCode();
                 if (this.PlaceName != null)
-                    hashCode = hashCode * 59 + this.PlaceName.GetHashCode();
-                return hashCode;
+                    hash = hash * 59 + this.PlaceName.GetHashCode();
+                return hash;
             }
         }
 

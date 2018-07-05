@@ -176,9 +176,15 @@ namespace Genesys.Internal.Provisioning.Api
         /// <returns></returns>
         public OptionsApi(String basePath)
         {
-            this.Configuration = new Configuration { BasePath = basePath };
+            this.Configuration = new Configuration(new ApiClient(basePath));
 
             ExceptionFactory = Genesys.Internal.Provisioning.Client.Configuration.DefaultExceptionFactory;
+
+            // ensure API client has configuration ready
+            if (Configuration.ApiClient.Configuration == null)
+            {
+                this.Configuration.ApiClient.Configuration = this.Configuration;
+            }
         }
 
         /// <summary>
@@ -195,6 +201,12 @@ namespace Genesys.Internal.Provisioning.Api
                 this.Configuration = configuration;
 
             ExceptionFactory = Genesys.Internal.Provisioning.Client.Configuration.DefaultExceptionFactory;
+
+            // ensure API client has configuration ready
+            if (Configuration.ApiClient.Configuration == null)
+            {
+                this.Configuration.ApiClient.Configuration = this.Configuration;
+            }
         }
 
         /// <summary>
@@ -243,9 +255,9 @@ namespace Genesys.Internal.Provisioning.Api
         /// </summary>
         /// <returns>Dictionary of HTTP header</returns>
         [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public IDictionary<String, String> DefaultHeader()
+        public Dictionary<String, String> DefaultHeader()
         {
-            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
+            return this.Configuration.DefaultHeader;
         }
 
         /// <summary>
@@ -287,7 +299,7 @@ namespace Genesys.Internal.Provisioning.Api
 
             var localVarPath = "/options";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
@@ -307,9 +319,9 @@ namespace Genesys.Internal.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (personDbid != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "person_dbid", personDbid)); // query parameter
-            if (agentGroupDbid != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "agent_group_dbid", agentGroupDbid)); // query parameter
-            if (application != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "application", application)); // query parameter
+            if (personDbid != null) localVarQueryParams.Add("person_dbid", Configuration.ApiClient.ParameterToString(personDbid)); // query parameter
+            if (agentGroupDbid != null) localVarQueryParams.Add("agent_group_dbid", Configuration.ApiClient.ParameterToString(agentGroupDbid)); // query parameter
+            if (application != null) localVarQueryParams.Add("application", Configuration.ApiClient.ParameterToString(application)); // query parameter
 
 
             // make the HTTP request
@@ -358,7 +370,7 @@ namespace Genesys.Internal.Provisioning.Api
 
             var localVarPath = "/options";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
@@ -378,9 +390,9 @@ namespace Genesys.Internal.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (personDbid != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "person_dbid", personDbid)); // query parameter
-            if (agentGroupDbid != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "agent_group_dbid", agentGroupDbid)); // query parameter
-            if (application != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "application", application)); // query parameter
+            if (personDbid != null) localVarQueryParams.Add("person_dbid", Configuration.ApiClient.ParameterToString(personDbid)); // query parameter
+            if (agentGroupDbid != null) localVarQueryParams.Add("agent_group_dbid", Configuration.ApiClient.ParameterToString(agentGroupDbid)); // query parameter
+            if (application != null) localVarQueryParams.Add("application", Configuration.ApiClient.ParameterToString(application)); // query parameter
 
 
             // make the HTTP request
@@ -427,7 +439,7 @@ namespace Genesys.Internal.Provisioning.Api
 
             var localVarPath = "/options";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
@@ -502,7 +514,7 @@ namespace Genesys.Internal.Provisioning.Api
 
             var localVarPath = "/options";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
@@ -576,7 +588,7 @@ namespace Genesys.Internal.Provisioning.Api
 
             var localVarPath = "/options";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
@@ -651,7 +663,7 @@ namespace Genesys.Internal.Provisioning.Api
 
             var localVarPath = "/options";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();

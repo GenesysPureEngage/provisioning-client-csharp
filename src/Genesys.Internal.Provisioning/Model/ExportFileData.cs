@@ -41,7 +41,7 @@ namespace Genesys.Internal.Provisioning.Model
         /// <param name="Fields">An array of user property names to include in the export. Only these properties are included in the exported list of users.  (required).</param>
         /// <param name="FileName">The name of the file to save the exported users.  (required) (default to &quot;users.csv&quot;).</param>
         /// <param name="PersonDBIDs">A list of user IDs to export.  (required).</param>
-        /// <param name="FilterParameters">FilterParameters (required).</param>
+        /// <param name="FilterParameters">FilterParameters.</param>
         public ExportFileData(List<string> Fields = default(List<string>), string FileName = "users.csv", List<string> PersonDBIDs = default(List<string>), ExportFileDataFilterParameters FilterParameters = default(ExportFileDataFilterParameters))
         {
             // to ensure "Fields" is required (not null)
@@ -71,15 +71,7 @@ namespace Genesys.Internal.Provisioning.Model
             {
                 this.PersonDBIDs = PersonDBIDs;
             }
-            // to ensure "FilterParameters" is required (not null)
-            if (FilterParameters == null)
-            {
-                throw new InvalidDataException("FilterParameters is a required property for ExportFileData and cannot be null");
-            }
-            else
-            {
-                this.FilterParameters = FilterParameters;
-            }
+            this.FilterParameters = FilterParameters;
         }
         
         /// <summary>
@@ -137,43 +129,45 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="obj">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        public override bool Equals(object obj)
         {
-            return this.Equals(input as ExportFileData);
+            // credit: http://stackoverflow.com/a/10454552/677735
+            return this.Equals(obj as ExportFileData);
         }
 
         /// <summary>
         /// Returns true if ExportFileData instances are equal
         /// </summary>
-        /// <param name="input">Instance of ExportFileData to be compared</param>
+        /// <param name="other">Instance of ExportFileData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ExportFileData input)
+        public bool Equals(ExportFileData other)
         {
-            if (input == null)
+            // credit: http://stackoverflow.com/a/10454552/677735
+            if (other == null)
                 return false;
 
             return 
                 (
-                    this.Fields == input.Fields ||
+                    this.Fields == other.Fields ||
                     this.Fields != null &&
-                    this.Fields.SequenceEqual(input.Fields)
+                    this.Fields.SequenceEqual(other.Fields)
                 ) && 
                 (
-                    this.FileName == input.FileName ||
-                    (this.FileName != null &&
-                    this.FileName.Equals(input.FileName))
+                    this.FileName == other.FileName ||
+                    this.FileName != null &&
+                    this.FileName.Equals(other.FileName)
                 ) && 
                 (
-                    this.PersonDBIDs == input.PersonDBIDs ||
+                    this.PersonDBIDs == other.PersonDBIDs ||
                     this.PersonDBIDs != null &&
-                    this.PersonDBIDs.SequenceEqual(input.PersonDBIDs)
+                    this.PersonDBIDs.SequenceEqual(other.PersonDBIDs)
                 ) && 
                 (
-                    this.FilterParameters == input.FilterParameters ||
-                    (this.FilterParameters != null &&
-                    this.FilterParameters.Equals(input.FilterParameters))
+                    this.FilterParameters == other.FilterParameters ||
+                    this.FilterParameters != null &&
+                    this.FilterParameters.Equals(other.FilterParameters)
                 );
         }
 
@@ -183,18 +177,20 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
+            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hash = 41;
+                // Suitable nullity checks etc, of course :)
                 if (this.Fields != null)
-                    hashCode = hashCode * 59 + this.Fields.GetHashCode();
+                    hash = hash * 59 + this.Fields.GetHashCode();
                 if (this.FileName != null)
-                    hashCode = hashCode * 59 + this.FileName.GetHashCode();
+                    hash = hash * 59 + this.FileName.GetHashCode();
                 if (this.PersonDBIDs != null)
-                    hashCode = hashCode * 59 + this.PersonDBIDs.GetHashCode();
+                    hash = hash * 59 + this.PersonDBIDs.GetHashCode();
                 if (this.FilterParameters != null)
-                    hashCode = hashCode * 59 + this.FilterParameters.GetHashCode();
-                return hashCode;
+                    hash = hash * 59 + this.FilterParameters.GetHashCode();
+                return hash;
             }
         }
 

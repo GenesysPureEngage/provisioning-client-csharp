@@ -136,9 +136,15 @@ namespace Genesys.Internal.Provisioning.Api
         /// <returns></returns>
         public ObjectsApi(String basePath)
         {
-            this.Configuration = new Configuration { BasePath = basePath };
+            this.Configuration = new Configuration(new ApiClient(basePath));
 
             ExceptionFactory = Genesys.Internal.Provisioning.Client.Configuration.DefaultExceptionFactory;
+
+            // ensure API client has configuration ready
+            if (Configuration.ApiClient.Configuration == null)
+            {
+                this.Configuration.ApiClient.Configuration = this.Configuration;
+            }
         }
 
         /// <summary>
@@ -155,6 +161,12 @@ namespace Genesys.Internal.Provisioning.Api
                 this.Configuration = configuration;
 
             ExceptionFactory = Genesys.Internal.Provisioning.Client.Configuration.DefaultExceptionFactory;
+
+            // ensure API client has configuration ready
+            if (Configuration.ApiClient.Configuration == null)
+            {
+                this.Configuration.ApiClient.Configuration = this.Configuration;
+            }
         }
 
         /// <summary>
@@ -203,9 +215,9 @@ namespace Genesys.Internal.Provisioning.Api
         /// </summary>
         /// <returns>Dictionary of HTTP header</returns>
         [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public IDictionary<String, String> DefaultHeader()
+        public Dictionary<String, String> DefaultHeader()
         {
-            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
+            return this.Configuration.DefaultHeader;
         }
 
         /// <summary>
@@ -272,7 +284,7 @@ namespace Genesys.Internal.Provisioning.Api
 
             var localVarPath = "/objects/{object_type}";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
@@ -293,19 +305,19 @@ namespace Genesys.Internal.Provisioning.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (objectType != null) localVarPathParams.Add("object_type", Configuration.ApiClient.ParameterToString(objectType)); // path parameter
-            if (dnType != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "dn_type", dnType)); // query parameter
-            if (dnGroups != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("csv", "dn_groups", dnGroups)); // query parameter
-            if (groupType != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "group_type", groupType)); // query parameter
-            if (limit != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
-            if (offset != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
-            if (searchTerm != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "search_term", searchTerm)); // query parameter
-            if (searchKey != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "search_key", searchKey)); // query parameter
-            if (matchMethod != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "match_method", matchMethod)); // query parameter
-            if (sortKey != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "sort_key", sortKey)); // query parameter
-            if (sortAscending != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "sort_ascending", sortAscending)); // query parameter
-            if (sortMethod != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "sort_method", sortMethod)); // query parameter
-            if (dbids != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "dbids", dbids)); // query parameter
-            if (inUse != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "in_use", inUse)); // query parameter
+            if (dnType != null) localVarQueryParams.Add("dn_type", Configuration.ApiClient.ParameterToString(dnType)); // query parameter
+            if (dnGroups != null) localVarQueryParams.Add("dn_groups", Configuration.ApiClient.ParameterToString(dnGroups)); // query parameter
+            if (groupType != null) localVarQueryParams.Add("group_type", Configuration.ApiClient.ParameterToString(groupType)); // query parameter
+            if (limit != null) localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
+            if (offset != null) localVarQueryParams.Add("offset", Configuration.ApiClient.ParameterToString(offset)); // query parameter
+            if (searchTerm != null) localVarQueryParams.Add("search_term", Configuration.ApiClient.ParameterToString(searchTerm)); // query parameter
+            if (searchKey != null) localVarQueryParams.Add("search_key", Configuration.ApiClient.ParameterToString(searchKey)); // query parameter
+            if (matchMethod != null) localVarQueryParams.Add("match_method", Configuration.ApiClient.ParameterToString(matchMethod)); // query parameter
+            if (sortKey != null) localVarQueryParams.Add("sort_key", Configuration.ApiClient.ParameterToString(sortKey)); // query parameter
+            if (sortAscending != null) localVarQueryParams.Add("sort_ascending", Configuration.ApiClient.ParameterToString(sortAscending)); // query parameter
+            if (sortMethod != null) localVarQueryParams.Add("sort_method", Configuration.ApiClient.ParameterToString(sortMethod)); // query parameter
+            if (dbids != null) localVarQueryParams.Add("dbids", Configuration.ApiClient.ParameterToString(dbids)); // query parameter
+            if (inUse != null) localVarQueryParams.Add("in_use", Configuration.ApiClient.ParameterToString(inUse)); // query parameter
 
 
             // make the HTTP request
@@ -379,7 +391,7 @@ namespace Genesys.Internal.Provisioning.Api
 
             var localVarPath = "/objects/{object_type}";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
@@ -400,19 +412,19 @@ namespace Genesys.Internal.Provisioning.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (objectType != null) localVarPathParams.Add("object_type", Configuration.ApiClient.ParameterToString(objectType)); // path parameter
-            if (dnType != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "dn_type", dnType)); // query parameter
-            if (dnGroups != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("csv", "dn_groups", dnGroups)); // query parameter
-            if (groupType != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "group_type", groupType)); // query parameter
-            if (limit != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
-            if (offset != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
-            if (searchTerm != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "search_term", searchTerm)); // query parameter
-            if (searchKey != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "search_key", searchKey)); // query parameter
-            if (matchMethod != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "match_method", matchMethod)); // query parameter
-            if (sortKey != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "sort_key", sortKey)); // query parameter
-            if (sortAscending != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "sort_ascending", sortAscending)); // query parameter
-            if (sortMethod != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "sort_method", sortMethod)); // query parameter
-            if (dbids != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "dbids", dbids)); // query parameter
-            if (inUse != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "in_use", inUse)); // query parameter
+            if (dnType != null) localVarQueryParams.Add("dn_type", Configuration.ApiClient.ParameterToString(dnType)); // query parameter
+            if (dnGroups != null) localVarQueryParams.Add("dn_groups", Configuration.ApiClient.ParameterToString(dnGroups)); // query parameter
+            if (groupType != null) localVarQueryParams.Add("group_type", Configuration.ApiClient.ParameterToString(groupType)); // query parameter
+            if (limit != null) localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
+            if (offset != null) localVarQueryParams.Add("offset", Configuration.ApiClient.ParameterToString(offset)); // query parameter
+            if (searchTerm != null) localVarQueryParams.Add("search_term", Configuration.ApiClient.ParameterToString(searchTerm)); // query parameter
+            if (searchKey != null) localVarQueryParams.Add("search_key", Configuration.ApiClient.ParameterToString(searchKey)); // query parameter
+            if (matchMethod != null) localVarQueryParams.Add("match_method", Configuration.ApiClient.ParameterToString(matchMethod)); // query parameter
+            if (sortKey != null) localVarQueryParams.Add("sort_key", Configuration.ApiClient.ParameterToString(sortKey)); // query parameter
+            if (sortAscending != null) localVarQueryParams.Add("sort_ascending", Configuration.ApiClient.ParameterToString(sortAscending)); // query parameter
+            if (sortMethod != null) localVarQueryParams.Add("sort_method", Configuration.ApiClient.ParameterToString(sortMethod)); // query parameter
+            if (dbids != null) localVarQueryParams.Add("dbids", Configuration.ApiClient.ParameterToString(dbids)); // query parameter
+            if (inUse != null) localVarQueryParams.Add("in_use", Configuration.ApiClient.ParameterToString(inUse)); // query parameter
 
 
             // make the HTTP request

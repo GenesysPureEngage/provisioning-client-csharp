@@ -81,33 +81,35 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="obj">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        public override bool Equals(object obj)
         {
-            return this.Equals(input as UpdateUserDataDataWwe);
+            // credit: http://stackoverflow.com/a/10454552/677735
+            return this.Equals(obj as UpdateUserDataDataWwe);
         }
 
         /// <summary>
         /// Returns true if UpdateUserDataDataWwe instances are equal
         /// </summary>
-        /// <param name="input">Instance of UpdateUserDataDataWwe to be compared</param>
+        /// <param name="other">Instance of UpdateUserDataDataWwe to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(UpdateUserDataDataWwe input)
+        public bool Equals(UpdateUserDataDataWwe other)
         {
-            if (input == null)
+            // credit: http://stackoverflow.com/a/10454552/677735
+            if (other == null)
                 return false;
 
             return 
                 (
-                    this.Roles == input.Roles ||
+                    this.Roles == other.Roles ||
                     this.Roles != null &&
-                    this.Roles.SequenceEqual(input.Roles)
+                    this.Roles.SequenceEqual(other.Roles)
                 ) && 
                 (
-                    this.DeletedRoles == input.DeletedRoles ||
+                    this.DeletedRoles == other.DeletedRoles ||
                     this.DeletedRoles != null &&
-                    this.DeletedRoles.SequenceEqual(input.DeletedRoles)
+                    this.DeletedRoles.SequenceEqual(other.DeletedRoles)
                 );
         }
 
@@ -117,14 +119,16 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
+            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hash = 41;
+                // Suitable nullity checks etc, of course :)
                 if (this.Roles != null)
-                    hashCode = hashCode * 59 + this.Roles.GetHashCode();
+                    hash = hash * 59 + this.Roles.GetHashCode();
                 if (this.DeletedRoles != null)
-                    hashCode = hashCode * 59 + this.DeletedRoles.GetHashCode();
-                return hashCode;
+                    hash = hash * 59 + this.DeletedRoles.GetHashCode();
+                return hash;
             }
         }
 

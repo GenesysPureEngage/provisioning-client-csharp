@@ -71,28 +71,30 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="obj">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        public override bool Equals(object obj)
         {
-            return this.Equals(input as ExportFileResponseData);
+            // credit: http://stackoverflow.com/a/10454552/677735
+            return this.Equals(obj as ExportFileResponseData);
         }
 
         /// <summary>
         /// Returns true if ExportFileResponseData instances are equal
         /// </summary>
-        /// <param name="input">Instance of ExportFileResponseData to be compared</param>
+        /// <param name="other">Instance of ExportFileResponseData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ExportFileResponseData input)
+        public bool Equals(ExportFileResponseData other)
         {
-            if (input == null)
+            // credit: http://stackoverflow.com/a/10454552/677735
+            if (other == null)
                 return false;
 
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
                 );
         }
 
@@ -102,12 +104,14 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
+            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hash = 41;
+                // Suitable nullity checks etc, of course :)
                 if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                return hashCode;
+                    hash = hash * 59 + this.Id.GetHashCode();
+                return hash;
             }
         }
 

@@ -79,33 +79,35 @@ namespace Genesys.Internal.Provisioning.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="obj">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        public override bool Equals(object obj)
         {
-            return this.Equals(input as LoginSuccessResponse);
+            // credit: http://stackoverflow.com/a/10454552/677735
+            return this.Equals(obj as LoginSuccessResponse);
         }
 
         /// <summary>
         /// Returns true if LoginSuccessResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of LoginSuccessResponse to be compared</param>
+        /// <param name="other">Instance of LoginSuccessResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(LoginSuccessResponse input)
+        public bool Equals(LoginSuccessResponse other)
         {
-            if (input == null)
+            // credit: http://stackoverflow.com/a/10454552/677735
+            if (other == null)
                 return false;
 
             return 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
+                    this.Status == other.Status ||
+                    this.Status != null &&
+                    this.Status.Equals(other.Status)
                 ) && 
                 (
-                    this.Data == input.Data ||
-                    (this.Data != null &&
-                    this.Data.Equals(input.Data))
+                    this.Data == other.Data ||
+                    this.Data != null &&
+                    this.Data.Equals(other.Data)
                 );
         }
 
@@ -115,14 +117,16 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
+            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hash = 41;
+                // Suitable nullity checks etc, of course :)
                 if (this.Status != null)
-                    hashCode = hashCode * 59 + this.Status.GetHashCode();
+                    hash = hash * 59 + this.Status.GetHashCode();
                 if (this.Data != null)
-                    hashCode = hashCode * 59 + this.Data.GetHashCode();
-                return hashCode;
+                    hash = hash * 59 + this.Data.GetHashCode();
+                return hash;
             }
         }
 

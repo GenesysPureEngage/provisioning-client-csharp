@@ -371,7 +371,7 @@ namespace Genesys.Internal.Provisioning.Api
         public ApiResponse<Object> ConnectWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/connect";
+            var localVarPath = "/notifications-cometd/connect";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -432,7 +432,7 @@ namespace Genesys.Internal.Provisioning.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> ConnectAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/connect";
+            var localVarPath = "/notifications-cometd/connect";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -492,7 +492,7 @@ namespace Genesys.Internal.Provisioning.Api
         public ApiResponse<Object> DisconnectWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/disconnect";
+            var localVarPath = "/notifications-cometd/disconnect";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -553,7 +553,7 @@ namespace Genesys.Internal.Provisioning.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> DisconnectAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/disconnect";
+            var localVarPath = "/notifications-cometd/disconnect";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -613,7 +613,7 @@ namespace Genesys.Internal.Provisioning.Api
         public ApiResponse<Object> HandshakeWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/handshake";
+            var localVarPath = "/notifications-cometd/handshake";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -674,7 +674,7 @@ namespace Genesys.Internal.Provisioning.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> HandshakeAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/handshake";
+            var localVarPath = "/notifications-cometd/handshake";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -734,7 +734,7 @@ namespace Genesys.Internal.Provisioning.Api
         public ApiResponse<Object> NotificationsWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications";
+            var localVarPath = "/notifications-cometd";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -795,7 +795,7 @@ namespace Genesys.Internal.Provisioning.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> NotificationsAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications";
+            var localVarPath = "/notifications-cometd";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -855,7 +855,7 @@ namespace Genesys.Internal.Provisioning.Api
         public ApiResponse<Object> SubscribeWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/subscribe";
+            var localVarPath = "/notifications-cometd/subscribe";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -916,7 +916,7 @@ namespace Genesys.Internal.Provisioning.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> SubscribeAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/subscribe";
+            var localVarPath = "/notifications-cometd/subscribe";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -976,7 +976,7 @@ namespace Genesys.Internal.Provisioning.Api
         public ApiResponse<Object> UnsubscribeWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/unsubscribe";
+            var localVarPath = "/notifications-cometd/unsubscribe";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1037,7 +1037,7 @@ namespace Genesys.Internal.Provisioning.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> UnsubscribeAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/unsubscribe";
+            var localVarPath = "/notifications-cometd/unsubscribe";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);

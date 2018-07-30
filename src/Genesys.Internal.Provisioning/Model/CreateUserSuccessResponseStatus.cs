@@ -25,35 +25,25 @@ using SwaggerDateConverter = Genesys.Internal.Provisioning.Client.SwaggerDateCon
 namespace Genesys.Internal.Provisioning.Model
 {
     /// <summary>
-    /// Properties related to Workspace Web Edition. 
+    /// CreateUserSuccessResponseStatus
     /// </summary>
     [DataContract]
-    public partial class UpdateUserDataDataWwe :  IEquatable<UpdateUserDataDataWwe>, IValidatableObject
+    public partial class CreateUserSuccessResponseStatus :  IEquatable<CreateUserSuccessResponseStatus>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateUserDataDataWwe" /> class.
+        /// Initializes a new instance of the <see cref="CreateUserSuccessResponseStatus" /> class.
         /// </summary>
-        /// <param name="Roles">The roles that are added to the user. .</param>
-        /// <param name="DeletedRoles">The roles that are removed from the user. .</param>
-        public UpdateUserDataDataWwe(List<string> Roles = default(List<string>), List<string> DeletedRoles = default(List<string>))
+        /// <param name="Code">Code.</param>
+        public CreateUserSuccessResponseStatus(int? Code = default(int?))
         {
-            this.Roles = Roles;
-            this.DeletedRoles = DeletedRoles;
+            this.Code = Code;
         }
         
         /// <summary>
-        /// The roles that are added to the user. 
+        /// Gets or Sets Code
         /// </summary>
-        /// <value>The roles that are added to the user. </value>
-        [DataMember(Name="roles", EmitDefaultValue=false)]
-        public List<string> Roles { get; set; }
-
-        /// <summary>
-        /// The roles that are removed from the user. 
-        /// </summary>
-        /// <value>The roles that are removed from the user. </value>
-        [DataMember(Name="deletedRoles", EmitDefaultValue=false)]
-        public List<string> DeletedRoles { get; set; }
+        [DataMember(Name="code", EmitDefaultValue=false)]
+        public int? Code { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,9 +52,8 @@ namespace Genesys.Internal.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class UpdateUserDataDataWwe {\n");
-            sb.Append("  Roles: ").Append(Roles).Append("\n");
-            sb.Append("  DeletedRoles: ").Append(DeletedRoles).Append("\n");
+            sb.Append("class CreateUserSuccessResponseStatus {\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -85,29 +74,24 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as UpdateUserDataDataWwe);
+            return this.Equals(input as CreateUserSuccessResponseStatus);
         }
 
         /// <summary>
-        /// Returns true if UpdateUserDataDataWwe instances are equal
+        /// Returns true if CreateUserSuccessResponseStatus instances are equal
         /// </summary>
-        /// <param name="input">Instance of UpdateUserDataDataWwe to be compared</param>
+        /// <param name="input">Instance of CreateUserSuccessResponseStatus to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(UpdateUserDataDataWwe input)
+        public bool Equals(CreateUserSuccessResponseStatus input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Roles == input.Roles ||
-                    this.Roles != null &&
-                    this.Roles.SequenceEqual(input.Roles)
-                ) && 
-                (
-                    this.DeletedRoles == input.DeletedRoles ||
-                    this.DeletedRoles != null &&
-                    this.DeletedRoles.SequenceEqual(input.DeletedRoles)
+                    this.Code == input.Code ||
+                    (this.Code != null &&
+                    this.Code.Equals(input.Code))
                 );
         }
 
@@ -120,10 +104,8 @@ namespace Genesys.Internal.Provisioning.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Roles != null)
-                    hashCode = hashCode * 59 + this.Roles.GetHashCode();
-                if (this.DeletedRoles != null)
-                    hashCode = hashCode * 59 + this.DeletedRoles.GetHashCode();
+                if (this.Code != null)
+                    hashCode = hashCode * 59 + this.Code.GetHashCode();
                 return hashCode;
             }
         }

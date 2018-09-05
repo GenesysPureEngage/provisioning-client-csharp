@@ -14,260 +14,235 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Genesys.Internal.Provisioning.Client;
+using Genesys.Internal.Provisioning.Model;
 
 namespace Genesys.Internal.Provisioning.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface INotificationsApi : IApiAccessor
+    public interface IEmailSettingsApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// CometD connect
+        /// Delete inbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD connect, see https://docs.cometd.org/current/reference/#_bayeux_meta_connect
+        /// Deletes data of one inbound client identified by it&#39;s name.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void Connect ();
+        /// <param name="name">Name of an inbound client.</param>
+        /// <returns>GetInboundResponse</returns>
+        GetInboundResponse DeleteInboundSettings (string name);
 
         /// <summary>
-        /// CometD connect
+        /// Delete inbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD connect, see https://docs.cometd.org/current/reference/#_bayeux_meta_connect
+        /// Deletes data of one inbound client identified by it&#39;s name.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ConnectWithHttpInfo ();
+        /// <param name="name">Name of an inbound client.</param>
+        /// <returns>ApiResponse of GetInboundResponse</returns>
+        ApiResponse<GetInboundResponse> DeleteInboundSettingsWithHttpInfo (string name);
         /// <summary>
-        /// CometD disconnect
+        /// Get inbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD disconnect, see https://docs.cometd.org/current/reference/#_bayeux_meta_disconnect
+        /// Returns inbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void Disconnect ();
+        /// <returns>GetInboundResponse</returns>
+        GetInboundResponse GetInboundSettings ();
 
         /// <summary>
-        /// CometD disconnect
+        /// Get inbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD disconnect, see https://docs.cometd.org/current/reference/#_bayeux_meta_disconnect
+        /// Returns inbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DisconnectWithHttpInfo ();
+        /// <returns>ApiResponse of GetInboundResponse</returns>
+        ApiResponse<GetInboundResponse> GetInboundSettingsWithHttpInfo ();
         /// <summary>
-        /// CometD handshake
+        /// Get outbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_handshake
+        /// Returns outbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void Handshake ();
+        /// <returns>GetOutboundResponse</returns>
+        GetOutboundResponse GetOutboundSettings ();
 
         /// <summary>
-        /// CometD handshake
+        /// Get outbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_handshake
+        /// Returns outbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> HandshakeWithHttpInfo ();
+        /// <returns>ApiResponse of GetOutboundResponse</returns>
+        ApiResponse<GetOutboundResponse> GetOutboundSettingsWithHttpInfo ();
         /// <summary>
-        /// CometD endpoint
+        /// Modify inbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD endpoint
+        /// Adds or updates inbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void Notifications ();
+        /// <param name="body">Body Data</param>
+        /// <returns>ApiSuccessResponse</returns>
+        ApiSuccessResponse ModifyInboundSettings (ModifyInboundData body);
 
         /// <summary>
-        /// CometD endpoint
+        /// Modify inbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD endpoint
+        /// Adds or updates inbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> NotificationsWithHttpInfo ();
+        /// <param name="body">Body Data</param>
+        /// <returns>ApiResponse of ApiSuccessResponse</returns>
+        ApiResponse<ApiSuccessResponse> ModifyInboundSettingsWithHttpInfo (ModifyInboundData body);
         /// <summary>
-        /// CometD subscribe to channel
+        /// Modify outbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_subscribe  Current channels:  &lt;b&gt;/statistics/v3/service&lt;/b&gt; - information about service state  &lt;b&gt;/statistics/v3/updates&lt;/b&gt; - statistics updates  
+        /// Adds or updates outbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void Subscribe ();
+        /// <param name="body">Body Data</param>
+        /// <returns>ApiSuccessResponse</returns>
+        ApiSuccessResponse ModifyOutboundSettings (ModifyOutboundData body);
 
         /// <summary>
-        /// CometD subscribe to channel
+        /// Modify outbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_subscribe  Current channels:  &lt;b&gt;/statistics/v3/service&lt;/b&gt; - information about service state  &lt;b&gt;/statistics/v3/updates&lt;/b&gt; - statistics updates  
+        /// Adds or updates outbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> SubscribeWithHttpInfo ();
-        /// <summary>
-        /// CometD unsubscribe
-        /// </summary>
-        /// <remarks>
-        /// unscubscribe from channels, see https://docs.cometd.org/current/reference/#_bayeux_meta_unsubscribe
-        /// </remarks>
-        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void Unsubscribe ();
-
-        /// <summary>
-        /// CometD unsubscribe
-        /// </summary>
-        /// <remarks>
-        /// unscubscribe from channels, see https://docs.cometd.org/current/reference/#_bayeux_meta_unsubscribe
-        /// </remarks>
-        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UnsubscribeWithHttpInfo ();
+        /// <param name="body">Body Data</param>
+        /// <returns>ApiResponse of ApiSuccessResponse</returns>
+        ApiResponse<ApiSuccessResponse> ModifyOutboundSettingsWithHttpInfo (ModifyOutboundData body);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// CometD connect
+        /// Delete inbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD connect, see https://docs.cometd.org/current/reference/#_bayeux_meta_connect
+        /// Deletes data of one inbound client identified by it&#39;s name.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ConnectAsync ();
+        /// <param name="name">Name of an inbound client.</param>
+        /// <returns>Task of GetInboundResponse</returns>
+        System.Threading.Tasks.Task<GetInboundResponse> DeleteInboundSettingsAsync (string name);
 
         /// <summary>
-        /// CometD connect
+        /// Delete inbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD connect, see https://docs.cometd.org/current/reference/#_bayeux_meta_connect
+        /// Deletes data of one inbound client identified by it&#39;s name.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ConnectAsyncWithHttpInfo ();
+        /// <param name="name">Name of an inbound client.</param>
+        /// <returns>Task of ApiResponse (GetInboundResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetInboundResponse>> DeleteInboundSettingsAsyncWithHttpInfo (string name);
         /// <summary>
-        /// CometD disconnect
+        /// Get inbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD disconnect, see https://docs.cometd.org/current/reference/#_bayeux_meta_disconnect
+        /// Returns inbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DisconnectAsync ();
+        /// <returns>Task of GetInboundResponse</returns>
+        System.Threading.Tasks.Task<GetInboundResponse> GetInboundSettingsAsync ();
 
         /// <summary>
-        /// CometD disconnect
+        /// Get inbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD disconnect, see https://docs.cometd.org/current/reference/#_bayeux_meta_disconnect
+        /// Returns inbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DisconnectAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (GetInboundResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetInboundResponse>> GetInboundSettingsAsyncWithHttpInfo ();
         /// <summary>
-        /// CometD handshake
+        /// Get outbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_handshake
+        /// Returns outbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task HandshakeAsync ();
+        /// <returns>Task of GetOutboundResponse</returns>
+        System.Threading.Tasks.Task<GetOutboundResponse> GetOutboundSettingsAsync ();
 
         /// <summary>
-        /// CometD handshake
+        /// Get outbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_handshake
+        /// Returns outbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> HandshakeAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (GetOutboundResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetOutboundResponse>> GetOutboundSettingsAsyncWithHttpInfo ();
         /// <summary>
-        /// CometD endpoint
+        /// Modify inbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD endpoint
+        /// Adds or updates inbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task NotificationsAsync ();
+        /// <param name="body">Body Data</param>
+        /// <returns>Task of ApiSuccessResponse</returns>
+        System.Threading.Tasks.Task<ApiSuccessResponse> ModifyInboundSettingsAsync (ModifyInboundData body);
 
         /// <summary>
-        /// CometD endpoint
+        /// Modify inbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD endpoint
+        /// Adds or updates inbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> NotificationsAsyncWithHttpInfo ();
+        /// <param name="body">Body Data</param>
+        /// <returns>Task of ApiResponse (ApiSuccessResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> ModifyInboundSettingsAsyncWithHttpInfo (ModifyInboundData body);
         /// <summary>
-        /// CometD subscribe to channel
+        /// Modify outbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_subscribe  Current channels:  &lt;b&gt;/statistics/v3/service&lt;/b&gt; - information about service state  &lt;b&gt;/statistics/v3/updates&lt;/b&gt; - statistics updates  
+        /// Adds or updates outbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SubscribeAsync ();
+        /// <param name="body">Body Data</param>
+        /// <returns>Task of ApiSuccessResponse</returns>
+        System.Threading.Tasks.Task<ApiSuccessResponse> ModifyOutboundSettingsAsync (ModifyOutboundData body);
 
         /// <summary>
-        /// CometD subscribe to channel
+        /// Modify outbound settings.
         /// </summary>
         /// <remarks>
-        /// CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_subscribe  Current channels:  &lt;b&gt;/statistics/v3/service&lt;/b&gt; - information about service state  &lt;b&gt;/statistics/v3/updates&lt;/b&gt; - statistics updates  
+        /// Adds or updates outbound settings.
         /// </remarks>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SubscribeAsyncWithHttpInfo ();
-        /// <summary>
-        /// CometD unsubscribe
-        /// </summary>
-        /// <remarks>
-        /// unscubscribe from channels, see https://docs.cometd.org/current/reference/#_bayeux_meta_unsubscribe
-        /// </remarks>
-        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UnsubscribeAsync ();
-
-        /// <summary>
-        /// CometD unsubscribe
-        /// </summary>
-        /// <remarks>
-        /// unscubscribe from channels, see https://docs.cometd.org/current/reference/#_bayeux_meta_unsubscribe
-        /// </remarks>
-        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UnsubscribeAsyncWithHttpInfo ();
+        /// <param name="body">Body Data</param>
+        /// <returns>Task of ApiResponse (ApiSuccessResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> ModifyOutboundSettingsAsyncWithHttpInfo (ModifyOutboundData body);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class NotificationsApi : INotificationsApi
+    public partial class EmailSettingsApi : IEmailSettingsApi
     {
         private Genesys.Internal.Provisioning.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NotificationsApi"/> class.
+        /// Initializes a new instance of the <see cref="EmailSettingsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public NotificationsApi(String basePath)
+        public EmailSettingsApi(String basePath)
         {
             this.Configuration = new Configuration { BasePath = basePath };
 
@@ -275,12 +250,12 @@ namespace Genesys.Internal.Provisioning.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NotificationsApi"/> class
+        /// Initializes a new instance of the <see cref="EmailSettingsApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public NotificationsApi(Configuration configuration = null)
+        public EmailSettingsApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -354,24 +329,160 @@ namespace Genesys.Internal.Provisioning.Api
         }
 
         /// <summary>
-        /// CometD connect CometD connect, see https://docs.cometd.org/current/reference/#_bayeux_meta_connect
+        /// Delete inbound settings. Deletes data of one inbound client identified by it&#39;s name.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void Connect ()
+        /// <param name="name">Name of an inbound client.</param>
+        /// <returns>GetInboundResponse</returns>
+        public GetInboundResponse DeleteInboundSettings (string name)
         {
-             ConnectWithHttpInfo();
+             ApiResponse<GetInboundResponse> localVarResponse = DeleteInboundSettingsWithHttpInfo(name);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// CometD connect CometD connect, see https://docs.cometd.org/current/reference/#_bayeux_meta_connect
+        /// Delete inbound settings. Deletes data of one inbound client identified by it&#39;s name.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ConnectWithHttpInfo ()
+        /// <param name="name">Name of an inbound client.</param>
+        /// <returns>ApiResponse of GetInboundResponse</returns>
+        public ApiResponse< GetInboundResponse > DeleteInboundSettingsWithHttpInfo (string name)
+        {
+            // verify the required parameter 'name' is set
+            if (name == null)
+                throw new ApiException(400, "Missing required parameter 'name' when calling EmailSettingsApi->DeleteInboundSettings");
+
+            var localVarPath = "/email-settings/inbound";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (name != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "name", name)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteInboundSettings", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetInboundResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (GetInboundResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetInboundResponse)));
+        }
+
+        /// <summary>
+        /// Delete inbound settings. Deletes data of one inbound client identified by it&#39;s name.
+        /// </summary>
+        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="name">Name of an inbound client.</param>
+        /// <returns>Task of GetInboundResponse</returns>
+        public async System.Threading.Tasks.Task<GetInboundResponse> DeleteInboundSettingsAsync (string name)
+        {
+             ApiResponse<GetInboundResponse> localVarResponse = await DeleteInboundSettingsAsyncWithHttpInfo(name);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Delete inbound settings. Deletes data of one inbound client identified by it&#39;s name.
+        /// </summary>
+        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="name">Name of an inbound client.</param>
+        /// <returns>Task of ApiResponse (GetInboundResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetInboundResponse>> DeleteInboundSettingsAsyncWithHttpInfo (string name)
+        {
+            // verify the required parameter 'name' is set
+            if (name == null)
+                throw new ApiException(400, "Missing required parameter 'name' when calling EmailSettingsApi->DeleteInboundSettings");
+
+            var localVarPath = "/email-settings/inbound";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (name != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "name", name)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteInboundSettings", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetInboundResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (GetInboundResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetInboundResponse)));
+        }
+
+        /// <summary>
+        /// Get inbound settings. Returns inbound settings.
+        /// </summary>
+        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetInboundResponse</returns>
+        public GetInboundResponse GetInboundSettings ()
+        {
+             ApiResponse<GetInboundResponse> localVarResponse = GetInboundSettingsWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get inbound settings. Returns inbound settings.
+        /// </summary>
+        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetInboundResponse</returns>
+        public ApiResponse< GetInboundResponse > GetInboundSettingsWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/connect";
+            var localVarPath = "/email-settings/inbound";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -397,42 +508,43 @@ namespace Genesys.Internal.Provisioning.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Connect", localVarResponse);
+                Exception exception = ExceptionFactory("GetInboundSettings", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<GetInboundResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (GetInboundResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetInboundResponse)));
         }
 
         /// <summary>
-        /// CometD connect CometD connect, see https://docs.cometd.org/current/reference/#_bayeux_meta_connect
+        /// Get inbound settings. Returns inbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ConnectAsync ()
+        /// <returns>Task of GetInboundResponse</returns>
+        public async System.Threading.Tasks.Task<GetInboundResponse> GetInboundSettingsAsync ()
         {
-             await ConnectAsyncWithHttpInfo();
+             ApiResponse<GetInboundResponse> localVarResponse = await GetInboundSettingsAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// CometD connect CometD connect, see https://docs.cometd.org/current/reference/#_bayeux_meta_connect
+        /// Get inbound settings. Returns inbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ConnectAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (GetInboundResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetInboundResponse>> GetInboundSettingsAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/connect";
+            var localVarPath = "/email-settings/inbound";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -458,41 +570,42 @@ namespace Genesys.Internal.Provisioning.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Connect", localVarResponse);
+                Exception exception = ExceptionFactory("GetInboundSettings", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<GetInboundResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (GetInboundResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetInboundResponse)));
         }
 
         /// <summary>
-        /// CometD disconnect CometD disconnect, see https://docs.cometd.org/current/reference/#_bayeux_meta_disconnect
+        /// Get outbound settings. Returns outbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void Disconnect ()
+        /// <returns>GetOutboundResponse</returns>
+        public GetOutboundResponse GetOutboundSettings ()
         {
-             DisconnectWithHttpInfo();
+             ApiResponse<GetOutboundResponse> localVarResponse = GetOutboundSettingsWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// CometD disconnect CometD disconnect, see https://docs.cometd.org/current/reference/#_bayeux_meta_disconnect
+        /// Get outbound settings. Returns outbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DisconnectWithHttpInfo ()
+        /// <returns>ApiResponse of GetOutboundResponse</returns>
+        public ApiResponse< GetOutboundResponse > GetOutboundSettingsWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/disconnect";
+            var localVarPath = "/email-settings/outbound";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -518,42 +631,43 @@ namespace Genesys.Internal.Provisioning.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Disconnect", localVarResponse);
+                Exception exception = ExceptionFactory("GetOutboundSettings", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<GetOutboundResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (GetOutboundResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetOutboundResponse)));
         }
 
         /// <summary>
-        /// CometD disconnect CometD disconnect, see https://docs.cometd.org/current/reference/#_bayeux_meta_disconnect
+        /// Get outbound settings. Returns outbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DisconnectAsync ()
+        /// <returns>Task of GetOutboundResponse</returns>
+        public async System.Threading.Tasks.Task<GetOutboundResponse> GetOutboundSettingsAsync ()
         {
-             await DisconnectAsyncWithHttpInfo();
+             ApiResponse<GetOutboundResponse> localVarResponse = await GetOutboundSettingsAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// CometD disconnect CometD disconnect, see https://docs.cometd.org/current/reference/#_bayeux_meta_disconnect
+        /// Get outbound settings. Returns outbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DisconnectAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (GetOutboundResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetOutboundResponse>> GetOutboundSettingsAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/notifications/disconnect";
+            var localVarPath = "/email-settings/outbound";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -579,41 +693,47 @@ namespace Genesys.Internal.Provisioning.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Disconnect", localVarResponse);
+                Exception exception = ExceptionFactory("GetOutboundSettings", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<GetOutboundResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (GetOutboundResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetOutboundResponse)));
         }
 
         /// <summary>
-        /// CometD handshake CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_handshake
+        /// Modify inbound settings. Adds or updates inbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void Handshake ()
+        /// <param name="body">Body Data</param>
+        /// <returns>ApiSuccessResponse</returns>
+        public ApiSuccessResponse ModifyInboundSettings (ModifyInboundData body)
         {
-             HandshakeWithHttpInfo();
+             ApiResponse<ApiSuccessResponse> localVarResponse = ModifyInboundSettingsWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// CometD handshake CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_handshake
+        /// Modify inbound settings. Adds or updates inbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> HandshakeWithHttpInfo ()
+        /// <param name="body">Body Data</param>
+        /// <returns>ApiResponse of ApiSuccessResponse</returns>
+        public ApiResponse< ApiSuccessResponse > ModifyInboundSettingsWithHttpInfo (ModifyInboundData body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling EmailSettingsApi->ModifyInboundSettings");
 
-            var localVarPath = "/notifications/handshake";
+            var localVarPath = "/email-settings/inbound";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -635,6 +755,14 @@ namespace Genesys.Internal.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
 
 
             // make the HTTP request
@@ -646,35 +774,41 @@ namespace Genesys.Internal.Provisioning.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Handshake", localVarResponse);
+                Exception exception = ExceptionFactory("ModifyInboundSettings", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
         }
 
         /// <summary>
-        /// CometD handshake CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_handshake
+        /// Modify inbound settings. Adds or updates inbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task HandshakeAsync ()
+        /// <param name="body">Body Data</param>
+        /// <returns>Task of ApiSuccessResponse</returns>
+        public async System.Threading.Tasks.Task<ApiSuccessResponse> ModifyInboundSettingsAsync (ModifyInboundData body)
         {
-             await HandshakeAsyncWithHttpInfo();
+             ApiResponse<ApiSuccessResponse> localVarResponse = await ModifyInboundSettingsAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// CometD handshake CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_handshake
+        /// Modify inbound settings. Adds or updates inbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> HandshakeAsyncWithHttpInfo ()
+        /// <param name="body">Body Data</param>
+        /// <returns>Task of ApiResponse (ApiSuccessResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> ModifyInboundSettingsAsyncWithHttpInfo (ModifyInboundData body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling EmailSettingsApi->ModifyInboundSettings");
 
-            var localVarPath = "/notifications/handshake";
+            var localVarPath = "/email-settings/inbound";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -696,6 +830,14 @@ namespace Genesys.Internal.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
 
 
             // make the HTTP request
@@ -707,34 +849,40 @@ namespace Genesys.Internal.Provisioning.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Handshake", localVarResponse);
+                Exception exception = ExceptionFactory("ModifyInboundSettings", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
         }
 
         /// <summary>
-        /// CometD endpoint CometD endpoint
+        /// Modify outbound settings. Adds or updates outbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void Notifications ()
+        /// <param name="body">Body Data</param>
+        /// <returns>ApiSuccessResponse</returns>
+        public ApiSuccessResponse ModifyOutboundSettings (ModifyOutboundData body)
         {
-             NotificationsWithHttpInfo();
+             ApiResponse<ApiSuccessResponse> localVarResponse = ModifyOutboundSettingsWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// CometD endpoint CometD endpoint
+        /// Modify outbound settings. Adds or updates outbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> NotificationsWithHttpInfo ()
+        /// <param name="body">Body Data</param>
+        /// <returns>ApiResponse of ApiSuccessResponse</returns>
+        public ApiResponse< ApiSuccessResponse > ModifyOutboundSettingsWithHttpInfo (ModifyOutboundData body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling EmailSettingsApi->ModifyOutboundSettings");
 
-            var localVarPath = "/notifications";
+            var localVarPath = "/email-settings/outbound";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -756,6 +904,14 @@ namespace Genesys.Internal.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
 
 
             // make the HTTP request
@@ -767,35 +923,41 @@ namespace Genesys.Internal.Provisioning.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Notifications", localVarResponse);
+                Exception exception = ExceptionFactory("ModifyOutboundSettings", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
         }
 
         /// <summary>
-        /// CometD endpoint CometD endpoint
+        /// Modify outbound settings. Adds or updates outbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task NotificationsAsync ()
+        /// <param name="body">Body Data</param>
+        /// <returns>Task of ApiSuccessResponse</returns>
+        public async System.Threading.Tasks.Task<ApiSuccessResponse> ModifyOutboundSettingsAsync (ModifyOutboundData body)
         {
-             await NotificationsAsyncWithHttpInfo();
+             ApiResponse<ApiSuccessResponse> localVarResponse = await ModifyOutboundSettingsAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// CometD endpoint CometD endpoint
+        /// Modify outbound settings. Adds or updates outbound settings.
         /// </summary>
         /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> NotificationsAsyncWithHttpInfo ()
+        /// <param name="body">Body Data</param>
+        /// <returns>Task of ApiResponse (ApiSuccessResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ApiSuccessResponse>> ModifyOutboundSettingsAsyncWithHttpInfo (ModifyOutboundData body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling EmailSettingsApi->ModifyOutboundSettings");
 
-            var localVarPath = "/notifications";
+            var localVarPath = "/email-settings/outbound";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -817,6 +979,14 @@ namespace Genesys.Internal.Provisioning.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
 
 
             // make the HTTP request
@@ -828,255 +998,13 @@ namespace Genesys.Internal.Provisioning.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Notifications", localVarResponse);
+                Exception exception = ExceptionFactory("ModifyOutboundSettings", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ApiSuccessResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        /// CometD subscribe to channel CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_subscribe  Current channels:  &lt;b&gt;/statistics/v3/service&lt;/b&gt; - information about service state  &lt;b&gt;/statistics/v3/updates&lt;/b&gt; - statistics updates  
-        /// </summary>
-        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void Subscribe ()
-        {
-             SubscribeWithHttpInfo();
-        }
-
-        /// <summary>
-        /// CometD subscribe to channel CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_subscribe  Current channels:  &lt;b&gt;/statistics/v3/service&lt;/b&gt; - information about service state  &lt;b&gt;/statistics/v3/updates&lt;/b&gt; - statistics updates  
-        /// </summary>
-        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> SubscribeWithHttpInfo ()
-        {
-
-            var localVarPath = "/notifications/subscribe";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Subscribe", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        /// CometD subscribe to channel CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_subscribe  Current channels:  &lt;b&gt;/statistics/v3/service&lt;/b&gt; - information about service state  &lt;b&gt;/statistics/v3/updates&lt;/b&gt; - statistics updates  
-        /// </summary>
-        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SubscribeAsync ()
-        {
-             await SubscribeAsyncWithHttpInfo();
-
-        }
-
-        /// <summary>
-        /// CometD subscribe to channel CometD handshake, see https://docs.cometd.org/current/reference/#_bayeux_meta_subscribe  Current channels:  &lt;b&gt;/statistics/v3/service&lt;/b&gt; - information about service state  &lt;b&gt;/statistics/v3/updates&lt;/b&gt; - statistics updates  
-        /// </summary>
-        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> SubscribeAsyncWithHttpInfo ()
-        {
-
-            var localVarPath = "/notifications/subscribe";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Subscribe", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        /// CometD unsubscribe unscubscribe from channels, see https://docs.cometd.org/current/reference/#_bayeux_meta_unsubscribe
-        /// </summary>
-        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void Unsubscribe ()
-        {
-             UnsubscribeWithHttpInfo();
-        }
-
-        /// <summary>
-        /// CometD unsubscribe unscubscribe from channels, see https://docs.cometd.org/current/reference/#_bayeux_meta_unsubscribe
-        /// </summary>
-        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UnsubscribeWithHttpInfo ()
-        {
-
-            var localVarPath = "/notifications/unsubscribe";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Unsubscribe", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        /// CometD unsubscribe unscubscribe from channels, see https://docs.cometd.org/current/reference/#_bayeux_meta_unsubscribe
-        /// </summary>
-        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UnsubscribeAsync ()
-        {
-             await UnsubscribeAsyncWithHttpInfo();
-
-        }
-
-        /// <summary>
-        /// CometD unsubscribe unscubscribe from channels, see https://docs.cometd.org/current/reference/#_bayeux_meta_unsubscribe
-        /// </summary>
-        /// <exception cref="Genesys.Internal.Provisioning.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UnsubscribeAsyncWithHttpInfo ()
-        {
-
-            var localVarPath = "/notifications/unsubscribe";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Unsubscribe", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (ApiSuccessResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiSuccessResponse)));
         }
 
     }

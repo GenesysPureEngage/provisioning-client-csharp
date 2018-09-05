@@ -25,25 +25,33 @@ using SwaggerDateConverter = Genesys.Internal.Provisioning.Client.SwaggerDateCon
 namespace Genesys.Internal.Provisioning.Model
 {
     /// <summary>
-    /// CreateUserSuccessResponseStatus
+    /// GetInboundResponse
     /// </summary>
     [DataContract]
-    public partial class CreateUserSuccessResponseStatus :  IEquatable<CreateUserSuccessResponseStatus>, IValidatableObject
+    public partial class GetInboundResponse :  IEquatable<GetInboundResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateUserSuccessResponseStatus" /> class.
+        /// Initializes a new instance of the <see cref="GetInboundResponse" /> class.
         /// </summary>
-        /// <param name="Code">Code.</param>
-        public CreateUserSuccessResponseStatus(int? Code = default(int?))
+        /// <param name="Status">Status.</param>
+        /// <param name="Data">Data.</param>
+        public GetInboundResponse(CreateUserSuccessResponseStatus Status = default(CreateUserSuccessResponseStatus), GetInboundResponseData Data = default(GetInboundResponseData))
         {
-            this.Code = Code;
+            this.Status = Status;
+            this.Data = Data;
         }
         
         /// <summary>
-        /// Gets or Sets Code
+        /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public int? Code { get; set; }
+        [DataMember(Name="status", EmitDefaultValue=false)]
+        public CreateUserSuccessResponseStatus Status { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Data
+        /// </summary>
+        [DataMember(Name="data", EmitDefaultValue=false)]
+        public GetInboundResponseData Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,8 +60,9 @@ namespace Genesys.Internal.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CreateUserSuccessResponseStatus {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class GetInboundResponse {\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,24 +83,29 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CreateUserSuccessResponseStatus);
+            return this.Equals(input as GetInboundResponse);
         }
 
         /// <summary>
-        /// Returns true if CreateUserSuccessResponseStatus instances are equal
+        /// Returns true if GetInboundResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of CreateUserSuccessResponseStatus to be compared</param>
+        /// <param name="input">Instance of GetInboundResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CreateUserSuccessResponseStatus input)
+        public bool Equals(GetInboundResponse input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.Data == input.Data ||
+                    (this.Data != null &&
+                    this.Data.Equals(input.Data))
                 );
         }
 
@@ -104,8 +118,10 @@ namespace Genesys.Internal.Provisioning.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Code != null)
-                    hashCode = hashCode * 59 + this.Code.GetHashCode();
+                if (this.Status != null)
+                    hashCode = hashCode * 59 + this.Status.GetHashCode();
+                if (this.Data != null)
+                    hashCode = hashCode * 59 + this.Data.GetHashCode();
                 return hashCode;
             }
         }

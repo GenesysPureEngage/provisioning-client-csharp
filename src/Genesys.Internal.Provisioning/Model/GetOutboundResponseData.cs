@@ -25,25 +25,25 @@ using SwaggerDateConverter = Genesys.Internal.Provisioning.Client.SwaggerDateCon
 namespace Genesys.Internal.Provisioning.Model
 {
     /// <summary>
-    /// CreateUserSuccessResponseStatus
+    /// GetOutboundResponseData
     /// </summary>
     [DataContract]
-    public partial class CreateUserSuccessResponseStatus :  IEquatable<CreateUserSuccessResponseStatus>, IValidatableObject
+    public partial class GetOutboundResponseData :  IEquatable<GetOutboundResponseData>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateUserSuccessResponseStatus" /> class.
+        /// Initializes a new instance of the <see cref="GetOutboundResponseData" /> class.
         /// </summary>
-        /// <param name="Code">Code.</param>
-        public CreateUserSuccessResponseStatus(int? Code = default(int?))
+        /// <param name="Settings">Settings.</param>
+        public GetOutboundResponseData(List<OutboundData> Settings = default(List<OutboundData>))
         {
-            this.Code = Code;
+            this.Settings = Settings;
         }
         
         /// <summary>
-        /// Gets or Sets Code
+        /// Gets or Sets Settings
         /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public int? Code { get; set; }
+        [DataMember(Name="settings", EmitDefaultValue=false)]
+        public List<OutboundData> Settings { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,8 +52,8 @@ namespace Genesys.Internal.Provisioning.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CreateUserSuccessResponseStatus {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class GetOutboundResponseData {\n");
+            sb.Append("  Settings: ").Append(Settings).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,24 +74,24 @@ namespace Genesys.Internal.Provisioning.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CreateUserSuccessResponseStatus);
+            return this.Equals(input as GetOutboundResponseData);
         }
 
         /// <summary>
-        /// Returns true if CreateUserSuccessResponseStatus instances are equal
+        /// Returns true if GetOutboundResponseData instances are equal
         /// </summary>
-        /// <param name="input">Instance of CreateUserSuccessResponseStatus to be compared</param>
+        /// <param name="input">Instance of GetOutboundResponseData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CreateUserSuccessResponseStatus input)
+        public bool Equals(GetOutboundResponseData input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
+                    this.Settings == input.Settings ||
+                    this.Settings != null &&
+                    this.Settings.SequenceEqual(input.Settings)
                 );
         }
 
@@ -104,8 +104,8 @@ namespace Genesys.Internal.Provisioning.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Code != null)
-                    hashCode = hashCode * 59 + this.Code.GetHashCode();
+                if (this.Settings != null)
+                    hashCode = hashCode * 59 + this.Settings.GetHashCode();
                 return hashCode;
             }
         }
